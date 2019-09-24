@@ -1,0 +1,18 @@
+div.bh:hover {
+    font-weight: bold;
+}
+
+#div1 {
+    font-size: 2rem;
+    background: red;
+}
+
+#div2 {
+    font-size: 4rem;
+    background: yellow;
+}
+
+#div3 {
+    font-size: 6rem;
+    background: blue;
+}

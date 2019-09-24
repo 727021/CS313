@@ -1,0 +1,33 @@
+* {
+    user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+
+div.box {
+    padding: 5px;
+    margin: 3px;
+}
+
+div.box a {
+    border: 1px solid black;
+    border-radius: 5px;
+    background: #343a40;
+    color: rgba(255,255,255,.5);
+    display: block;
+    height: 100%;
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+div.box a:hover {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navbar-brand {
+    cursor: default;
+}

@@ -1,5 +1,5 @@
 <?php
 
-  phpinfo();
+header('location: 02/');
 
 ?>
