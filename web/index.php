@@ -1,5 +1,5 @@
 <?php
 
-header('location: 02/');
+header('location: 2/');
 
 ?>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="Andrew Schimelpfening" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <title>Hello World!</title>
+    <style>
+    h2 {
+        text-align: center;
+        cursor: default;
+        /* Prevent highlighting */
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+    </style>
+</head>
+<body id="top">
+    <h2 title="Click me...">Hello World!</h2>
+    <div id="footer">
+        <a title="GitHub/727021" href="https://github.com/727021" target="_blank"><i class="fab fa-github"></i></a>
+        <a title="Top" href="#top"><i class="fas fa-angle-double-up"></i></a>
+    </div>
+    <script>
+    var flag = true;
+    document.getElementsByTagName("h2")[0].onclick = function() {
+        let p = document.createElement("h2");
+        p.appendChild(document.createTextNode((flag) ? "Hello" : "World!"));
+        flag = !flag;
+        p.onclick = function() {
+            document.getElementsByTagName("html")[0].removeChild(p);
+        }
+        document.getElementsByTagName("html")[0].appendChild(p);
+    }
+    </script>
+</body>
+</html>

@@ -30,4 +30,15 @@ div.box a:hover {
 
 .navbar-brand {
     cursor: default;
+    pointer-events: none;
+}
+
+a[href="#top"] {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    font-size: 2rem;
+    padding: 0 0.75rem;
+    display: none;
+    border: none;
 }

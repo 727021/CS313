@@ -23,13 +23,14 @@
                 </div>
                 <div class="col-12 col-md-4">
                     <div class="box">
-                        <a class="text-center" target="_blank" href="https://github.com/727021">Github</a>
+                        <a class="text-center" target="_blank" href="https://727021.github.io">Github</a>
                     </div>
                 </div>
             </div>
         </div>
     </main>
 
+    <?php include('top.php'); ?>
     <?php include('scripts.php'); ?>
 </body>
 </html>

@@ -13,6 +13,7 @@
         </div>
     </main>
 
+    <?php include('top.php'); ?>
     <?php include('scripts.php'); ?>
 </body>
 </html>
