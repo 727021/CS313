@@ -33,6 +33,7 @@ div.box a:hover {
     pointer-events: none;
 }
 
+/* Toplink */
 a[href="#top"] {
     position: fixed;
     bottom: 1rem;
