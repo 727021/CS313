@@ -1,3 +1,4 @@
+<?php echo $_SERVER['SERVER_ADDR']; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
