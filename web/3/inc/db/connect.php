@@ -11,6 +11,4 @@ $db = null;
     $db = pg_connect("host=$host port=$port dbname=$database user=$user password=$pass") or die("Unable to connect to database.");
 }
 
-var_dump($db);
-
 ?>
