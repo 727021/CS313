@@ -19,6 +19,12 @@ $query = array(
         name VARCHAR(20),
         stars SMALLINT DEFAULT 0,
         id_item INTEGER REFERENCES Item(id_item)
+    )",
+    "CREATE TABLE IF NOT EXISTS Array_Lookup (
+        index INTEGER NOT NULL,
+        context VARCHAR(16) NOT NULL,
+        data VARCHAR(30) NOT NULL,
+        PRIMARY KEY (index,context)
     )"
 );
 
@@ -29,6 +35,6 @@ for ($i = 0; $result = pg_query($db, $query[$i]); $i++) {
 
 pg_close($db);
 
-// var_dump($results);
+var_dump($results);
 
 ?>

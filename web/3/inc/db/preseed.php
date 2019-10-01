@@ -3,7 +3,6 @@
 require_once('connect.php');
 
 $queries = array(// Fill the database with preseed data
-    "SELECT * FROM Item"
 );
 
 $results = array();
