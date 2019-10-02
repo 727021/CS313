@@ -40,16 +40,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </form>
             <br>
             <div id="cResult">
-            <table>
+                <table>
                     <tr>
-                        <th>id_item</th>
+                        <th>id_category</th>
                         <th>name</th>
-                        <th>price</th>
-                        <th>description</th>
-                        <th>category</th>
                     </tr>
                 <?php
-                    foreach (pg_fetch_all(pg_query($db, "SELECT * FROM Item")) as $result) {
+                    foreach (pg_fetch_all(pg_query($db, "SELECT * FROM Category")) as $result) {
                         echo '<tr>';
                             foreach ($result as $r) {
                                 echo "<td>$r</td>";
@@ -78,13 +75,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </form>
             <br>
             <div id="iResult">
-                <table>
+            <table>
                     <tr>
-                        <th>id_category</th>
+                        <th>id_item</th>
                         <th>name</th>
+                        <th>price</th>
+                        <th>description</th>
+                        <th>category</th>
                     </tr>
                 <?php
-                    foreach (pg_fetch_all(pg_query($db, "SELECT * FROM Category")) as $result) {
+                    foreach (pg_fetch_all(pg_query($db, "SELECT * FROM Item")) as $result) {
                         echo '<tr>';
                             foreach ($result as $r) {
                                 echo "<td>$r</td>";
