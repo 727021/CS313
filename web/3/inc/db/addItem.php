@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <option value="NULL">None</option>
                     <?php
                         foreach (pg_fetch_all(pg_query($db, "SELECT * FROM Category")) as $result) {
-                            echo '<option value="' . $result[0] . '">' . $result[1] . '</option>';
+                            var_dump($result);
                         }
                     ?>
                 </select>
