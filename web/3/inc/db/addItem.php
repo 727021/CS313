@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <form name="addCategory" action="addItem.php?add=category" method="POST">
                 <p>Add Category:</p>
                 <input type="text" name="cName" placeholder="Name">
-                <button type="submit" onclick="addCategory">Add +</button>
+                <button type="submit">Add +</button>
             </form>
             <br>
             <div id="cResult">
@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         }
                     ?>
                 </select>
-                <button type="button" onclick="addItem">Add +</button>
+                <button type="submit">Add +</button>
             </form>
             <br>
             <div id="iResult">
