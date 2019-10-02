@@ -24,6 +24,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     </form>
     <p>Result:</p>
     <br>
-    <p><?php if (isset($result)) echo $result; ?></p>
+    <p><?php if (isset($result)) echo pg_fetch_row($result); ?></p>
 </body>
 </html>
