@@ -4,6 +4,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     require_once('connect.php');
     $query = $_POST['query']; // I know this isn't secure at all; it's temporary.
     $result = pg_query($db, str_replace(';', '', $query));
+    pg_close($db);
 }
 
 ?>
