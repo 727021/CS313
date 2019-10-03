@@ -7,6 +7,6 @@ function addToCart(id) {
             $("#itemCount").text(i + Number(this.responseText));
         }
     }
-    xhttp.open("GET", `action.php?id=${id}`, true);
-    xhttp.send();
+    xhttp.open("POST", `action.php`, true);
+    xhttp.send(`id=${id}`);
 }
