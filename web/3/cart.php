@@ -20,8 +20,24 @@
                         ...
                         |------+-------+----------+--------|
                         |                     Total: $0.00 |
-
                     -->
+                    <?php
+                        require_once('inc/db/connect.php');
+                        foreach ($_SESSION['cart'] as $id => $items) {
+                            if ($items > 0) {
+                                $result = pg_fetch_all(pg_query($db, "SELECT * FROM Item WHERE id_item = $id"));
+                                foreach ($items as $item) {
+                                    echo '<tr>
+                                    <td>' . $item['name'] . '</td>
+                                    <td>$' . number_format(floatval($item['price']) / 100.0, 2) . '</td>
+                                    <td>' . count($items) . '</td>
+                                    <td><button role="button" class="btn btn-danger><i class="far fa-times-circle"></i></button>"</td>
+                                    </tr>';
+                                }
+                            }
+                        }
+                        pg_close($db);
+                    ?>
                 </table>
             </div>
         </div>
