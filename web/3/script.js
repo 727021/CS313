@@ -8,4 +8,5 @@ function addToCart(id) {
         }
     }
     xhttp.open("GET", `action.php?id=${id}`, true);
+    xhttp.send();
 }
