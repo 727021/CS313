@@ -24,13 +24,13 @@
 
                         foreach ($results as $result) {
                             echo "<tr>
-                                <td>
+                                <td class='align-middle'>
                                     <p><b>" . $result['name'] . "</b></p>
                                 </td>
-                                <td>
+                                <td class='align-middle'>
                                     <p class='text-truncate'>" . $result['description'] . "</p>
                                 </td>
-                                <td>
+                                <td class='align-middle'>
                                     <button type='button' class='btn btn-success' onclick='addToCart(" . $result['id_item'] . ")'><i class='fas fa-cart-plus'></i> \$" . number_format((floatval($result['price']) / 100.0), 2) . "</button>
                                 </td>
                             </tr>";
