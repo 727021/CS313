@@ -13,7 +13,7 @@
         <div class="container mt-1 mb-2 p-1">
             <div class="row"><!-- TODO Use a button and a modal to set filters -->
                 <div class="col">
-                    <h3 class="display-1">Store</h3>
+                    <h3 class="display-4">Store</h3>
                     <table class="table">
                     <?php
                         require_once('inc/db/connect.php');
