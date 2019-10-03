@@ -23,9 +23,11 @@
 
                         foreach ($results as $result) {
                             echo "<div class='row'>
-                                <div class='col'>
+                                <div class='col-8'>
                                     <p class='text-truncate'>" . $result['name'] . " - " . $result['description'] . "</p>
-                                    <button type='button' class='btn btn-primary' onclick='addToCart(" . $result['id_item'] . ")'><i class='fas fa-cart-plus'></i> \$" . number_format((floatval($result['price']) / 100.0), 2) . "</button>
+                                </div>
+                                <div class='col-4'>
+                                    <button type='button' class='btn btn-success' onclick='addToCart(" . $result['id_item'] . ")'><i class='fas fa-cart-plus'></i> \$" . number_format((floatval($result['price']) / 100.0), 2) . "</button>
                                 </div>
                             </div>";
                         }
