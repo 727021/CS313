@@ -14,6 +14,7 @@
             <div class="row"><!-- TODO Use a button and a modal to set filters -->
                 <div class="d-none d-md-block col-2"><!-- Spacer --></div>
                 <div class="col">
+                    <table class="table">
                     <?php
                         require_once('inc/db/connect.php');
 
@@ -22,16 +23,20 @@
                         pg_close($db);
 
                         foreach ($results as $result) {
-                            echo "<div class='row'>
-                                <div class='col-8'>
-                                    <p class='text-truncate'>" . $result['name'] . " - " . $result['description'] . "</p>
-                                </div>
-                                <div class='col-4'>
+                            echo "<tr>
+                                <td>
+                                    <p><b>" . $result['name'] . "</b></p>
+                                </td>
+                                <td>
+                                    <p class='text-truncate'>" . $result['description'] . "</p>
+                                </td>
+                                <td>
                                     <button type='button' class='btn btn-success' onclick='addToCart(" . $result['id_item'] . ")'><i class='fas fa-cart-plus'></i> \$" . number_format((floatval($result['price']) / 100.0), 2) . "</button>
-                                </div>
-                            </div>";
+                                </td>
+                            </tr>";
                         }
                     ?>
+                    </table>
                 </div>
                 <div class="d-none d-md-block col-2"><!-- Spacer --></div>
             </div>
