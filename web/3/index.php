@@ -12,8 +12,8 @@
     <main class="flex-shrink-0 pl-1 pr-1 pl-md-0 pr-md-0">
         <div class="container mt-1 mb-2 p-1">
             <div class="row"><!-- TODO Use a button and a modal to set filters -->
-                <!-- <div class="d-none d-md-block col-2">Spacer</div> -->
                 <div class="col">
+                    <h3 class="display-1">Store</h3>
                     <table class="table">
                     <?php
                         require_once('inc/db/connect.php');
@@ -38,7 +38,6 @@
                     ?>
                     </table>
                 </div>
-                <!-- <div class="d-none d-md-block col-2">Spacer</div> -->
             </div>
         </div>
     </main>
