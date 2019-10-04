@@ -8,13 +8,15 @@ function addToCart(id) {
             console.log(`addToCart(${id}) => ${this.responseText}`);
         }
     }
+
+    xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhttp.open("POST", `action.php?a=add`, true);
     xhttp.send(`id=${id}`);
 }
 
 $(function() {
     $(".removeItem").click(function(e) {
-        let i = Number($(this).parent().sibling(".itemCount").text());
+        let i = Number($(this).parent().siblings(".itemCount").text());
         if (i > 1) { // Decrease by one
 
         } else { // Remove completely
