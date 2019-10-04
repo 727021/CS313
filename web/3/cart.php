@@ -24,8 +24,10 @@
                     <?php
                         require_once('inc/db/connect.php');
                         foreach ($_SESSION['cart'] as $id => $items) {
+                            var_dump($items);
                             if (count($items > 0)) {
                                 $result = pg_fetch_all(pg_query($db, "SELECT * FROM Item WHERE id_item = $id"));
+                                var_dump($result);
                                     echo '<tr>
                                     <td>' . $result['name'] . '</td>
                                     <td>$' . number_format(floatval($result['price']) / 100.0, 2) . '</td>
