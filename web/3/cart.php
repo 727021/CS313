@@ -23,19 +23,16 @@
                     -->
                     <?php
                         require_once('inc/db/connect.php');
-                        var_dump($_SESSION['cart']);
                         foreach ($_SESSION['cart'] as $id => $items) {
                             if (count($items > 0)) {
                                 $result = pg_fetch_all(pg_query($db, "SELECT * FROM Item WHERE id_item = $id"));
-                                var_dump($result);
-                                if ($result) {
+                                print_r($result);
                                     echo '<tr>
                                     <td>' . $result['name'] . '</td>
                                     <td>$' . number_format(floatval($result['price']) / 100.0, 2) . '</td>
                                     <td>' . count($items) . '</td>
                                     <td><button role="button" class="btn btn-danger"><i class="far fa-times-circle"></i></button></td>
                                     </tr>';
-                                }
                             }
                         }
                         pg_close($db);
