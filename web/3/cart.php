@@ -24,9 +24,11 @@
                     <?php
                         require_once('inc/db/connect.php');
                         foreach ($_SESSION['cart'] as $id => $items) {
-                            var_dump($items);
+                            echo "$id => $items";
                             if (count($items > 0)) {
-                                $result = pg_fetch_all(pg_query($db, "SELECT * FROM Item WHERE id_item = $id"));
+                                $query = "SELECT * FROM Item WHERE id_item = " . intval($id);
+                                echo $query;
+                                $result = pg_fetch_all(pg_query($db, $query));
                                 var_dump($result);
                                     echo '<tr>
                                     <td>' . $result['name'] . '</td>
