@@ -25,7 +25,7 @@
                         require_once('inc/db/connect.php');
                         foreach ($_SESSION['cart'] as $id => $items) {
                             if (count($items > 0)) {
-                                $result = pg_fetch_all(pg_query($db, "SELECT * FROM Item WHERE id_item = $id"));
+                                $result = pg_fetch_assoc(pg_query($db, "SELECT * FROM Item WHERE id_item = $id LIMIT 1"));
                                 print_r($result);
                                     echo '<tr>
                                     <td>' . $result['name'] . '</td>
