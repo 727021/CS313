@@ -30,8 +30,8 @@
                                     echo '<tr>
                                     <td>' . $result['name'] . '</td>
                                     <td>$' . number_format(floatval($result['price']) / 100.0, 2) . '</td>
-                                    <td>' . $items . '</td>
-                                    <td><button role="button" class="btn btn-danger"><i class="far fa-times-circle"></i></button></td>
+                                    <td class="itemCount">' . $items . '</td>
+                                    <td><button role="button" class="btn btn-danger btn-small removeItem"><i class="far fa-times-circle"></i></button></td>
                                     </tr>';
                             }
                         }

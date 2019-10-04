@@ -8,6 +8,18 @@ function addToCart(id) {
             console.log(`addToCart(${id}) => ${this.responseText}`);
         }
     }
-    xhttp.open("GET", `action.php?id=${id}`, true);
-    xhttp.send();
+    xhttp.open("POST", `action.php?a=add`, true);
+    xhttp.send(`id=${id}`);
 }
+
+$(function() {
+    $(".removeItem").click(function(e) {
+        let i = Number($(this).parent().sibling(".itemCount").text());
+        if (i > 1) { // Decrease by one
+
+        } else { // Remove completely
+
+        }
+
+    });
+});
