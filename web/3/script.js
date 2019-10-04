@@ -9,8 +9,8 @@ function addToCart(id) {
         }
     }
 
-    xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhttp.open("POST", `action.php?a=add`, true);
+    xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhttp.send(`id=${id}`);
 }
 
