@@ -8,6 +8,6 @@ function addToCart(id) {
             console.log(`addToCart(${id}) => ${this.responseText}`);
         }
     }
-    xhttp.open("POST", `action.php`, true);
-    xhttp.send(`id=${id}`);
+    xhttp.open("GET", `action.php?id=${id}`, true);
+    xhttp.send();
 }
