@@ -29,7 +29,7 @@ function removeFromCart(id) {
                 } else { // Remove the whole row
                     btn.parent().parent().remove();
                 }
-                var i = Number($(".itemTotal").text());
+                var i = Number(document.getElementsByClassName("itemTotal")[0].text());
                 console.log(i);
                 $(".itemTotal").each(function() { $(this).text(i - 1); });
             }
