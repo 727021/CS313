@@ -38,7 +38,7 @@ pg_close($db);
                 <div class="row">
                     <div class="col"><input class="form-control" type="text" name="city" placeholder="City"></div>
                     <div class="col"><select class="form-control" name="state"></select></div>
-                    <div class="col"><input class="form-control" type="text" name="zip" id="ZIP"></div>
+                    <div class="col"><input class="form-control" type="text" name="zip" placeholder="ZIP"></div>
                 </div>
                 <div class="row">
                     <div class="col text-left"><a href="cart.php" class="btn btn-primary" role="button">Back to Cart</a></div>
