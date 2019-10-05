@@ -21,22 +21,37 @@
                         |------+-------+----------+--------|
                         |                     Total: $0.00 |
                     -->
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th></th>
+                    </tr>
                     <?php
                         require_once('inc/db/connect.php');
+                        $price = 0;
                         foreach ($_SESSION['cart'] as $id => $items) {
                             if ($items > 0) {
                                 $result = pg_fetch_assoc(pg_query($db, "SELECT * FROM Item WHERE id_item = $id LIMIT 1"));
-                                print_r($result);
                                     echo '<tr>
                                     <td class="align-middle">' . $result['name'] . '</td>
-                                    <td class="align-middle">$' . number_format(floatval($result['price']) / 100.0, 2) . '</td>
+                                    <td class="itemPrice align-middle">$' . number_format(floatval($result['price']) / 100.0, 2) . '</td>
                                     <td class="itemCount align-middle">' . $items . '</td>
                                     <td class="align-middle"><button data-id="' . $id . '" role="button" class="btn btn-danger btn-small removeItem" onclick="removeFromCart(' . $id . ')"><i class="far fa-times-circle"></i></button></td>
                                     </tr>';
+                                $price += intval($items) * $result['price'];
                             }
                         }
                         pg_close($db);
                     ?>
+                    <tr>
+                        <th colspan="3"></th>
+                        <th>Total:</th>
+                    </tr>
+                    <tr>
+                        <td colspan="3"></td>
+                        <td id="totalPrice">$<?php echo number_format($price / 100.0, 2); ?></td>
+                    </tr>
                 </table>
             </div>
         </div>
