@@ -30,7 +30,7 @@ function removeFromCart(id) {
                     btn.parent().parent().remove();
                 }
                 var i = Number($("#itemCount").text());
-                $("#itemCount").text(i - 1);
+                $("#itemCount").each(function() { $(this).text(i - 1); });
                 // $(".itemCount").text(i - 1);
             }
         }
