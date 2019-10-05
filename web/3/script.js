@@ -16,6 +16,7 @@ function addToCart(id) {
 
 $(function() {
     $(".removeItem").click(function(e) {
+        var btn = $(this);
         console.log("Button clicked");
         var id = Number($(this).data("id"));
         var xhttp = new XMLHttpRequest();
@@ -23,12 +24,11 @@ $(function() {
             if (this.readyState = 4 && this.status == 200) {
                 console.log(`.removeItem.click(${id}) => ${this.responseText}`);
                 var r = Number(this.responseText);
-                console.log($(this));
                 if (r > 0) { // Decrease count by one
-                    var i = Number($(this).parent().siblings("itemCount").text());
-                    $(this).parent().siblings("itemCount").text(i - 1);
+                    var i = Number(btn.parent().siblings("itemCount").text());
+                    btn.parent().siblings("itemCount").text(i - 1);
                 } else { // Remove the whole row
-                    $(this).parent().parent().remove();
+                    btn.parent().parent().remove();
                 }
             }
         }
