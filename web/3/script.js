@@ -21,6 +21,7 @@ $(function() {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
             if (this.readyState = 4 && this.status == 200) {
+                console.log(`.removeItem.click(${id}) => ${this.responseText}`);
                 var r = Number(this.responseText);
                 if (r > 0) { // Decrease count by one
                     var i = Number($(this).parent().siblings("itemCount").text());
