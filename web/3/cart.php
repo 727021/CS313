@@ -11,7 +11,7 @@
     <!-- Main page content -->
     <main class="flex-shrink-0 pl-1 pr-1 pl-md-0 pr-md-0">
         <div class="container mt-1 mb-2 p-1"><!-- TODO Use a button and a modal to set filters -->
-            <h3 class="display-4">Cart <small class="text-muted">(<?php $i = 0; foreach ($_SESSION['cart'] as $sess) { $i += $sess; } echo $i; ?>)</small></h3>
+            <h3 class="display-4">Cart <small class="text-muted">(<span id="itemCount"><?php $i = 0; foreach ($_SESSION['cart'] as $sess) { $i += $sess; } echo $i; ?></span>)</small></h3>
             <div class="table-responsive">
                 <table class="table">
                     <!--
@@ -30,7 +30,7 @@
                                     echo '<tr>
                                     <td class="align-middle">' . $result['name'] . '</td>
                                     <td class="align-middle">$' . number_format(floatval($result['price']) / 100.0, 2) . '</td>
-                                    <td id="itemCount" class="itemCount align-middle">' . $items . '</td>
+                                    <td class="itemCount align-middle">' . $items . '</td>
                                     <td class="align-middle"><button data-id="' . $id . '" role="button" class="btn btn-danger btn-small removeItem" onclick="removeFromCart(' . $id . ')"><i class="far fa-times-circle"></i></button></td>
                                     </tr>';
                             }
