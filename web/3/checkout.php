@@ -26,23 +26,23 @@ pg_close($db);
             <h3 class="display-4">Checkout</h3>
             <form action="confirm.php" method="GET" name="checkout">
                 <div class="form-row">
-                    <div class="col"><input type="text" name="fname" placeholder="First name"></div>
-                    <div class="col"><input type="text" name="lname" placeholder="Last name"></div>
+                    <div class="col"><input class="form-control" type="text" name="fname" placeholder="First name"></div>
+                    <div class="col"><input class="form-control" type="text" name="lname" placeholder="Last name"></div>
                 </div>
                 <div class="form-row">
-                    <div class="col"><input type="text" name="addr1" placeholder="Address Line 1"></div>
+                    <div class="col"><input class="form-control" type="text" name="addr1" placeholder="Address Line 1"></div>
                 </div>
                 <div class="form-row">
-                    <div class="col"><input type="text" name="addr2" placeholder="Address Line 2"></div>
+                    <div class="col"><input class="form-control" type="text" name="addr2" placeholder="Address Line 2"></div>
                 </div>
                 <div class="form-row">
-                    <div class="col"><input type="text" name="city" placeholder="City"></div>
-                    <div class="col"><select name="state"></select></div>
-                    <div class="col"><input type="text" name="zip" id="ZIP"></div>
+                    <div class="col"><input class="form-control" type="text" name="city" placeholder="City"></div>
+                    <div class="col"><select class="form-control" name="state"></select></div>
+                    <div class="col"><input class="form-control" type="text" name="zip" id="ZIP"></div>
                 </div>
                 <div class="form-row">
                     <div class="col"><a href="cart.php" class="btn btn-default" role="button">Back to Cart</a></div>
-                    <div class="col"><button class="btn btn-success" type="submit">Continue</button></div>
+                    <div class="col"><button class="btn btn-success" type="submit">Checkout ($<?php echo $price; ?>)</button></div>
                 </div>
             </form>
         </div>
