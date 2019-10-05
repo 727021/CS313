@@ -11,7 +11,7 @@ $filename = basename($_SERVER['PHP_SELF']);
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item<?php if ($filename == "index.php") echo " active"; ?>"><a href="index.php" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
-                    <li class="nav-item<?php if ($filename == "cart.php") echo " active"; ?>"><a href="cart.php" class="nav-link"><i class="fas fa-shopping-cart"></i> Cart (<span id="itemCount"><?php if (!isset($_SESSION['cart'])) { echo 0; } else { $i = 0; foreach ($_SESSION['cart'] as $sess) { $i += $sess; } echo $i; } ?></span>)</a></li>
+                    <li class="nav-item<?php if ($filename == "cart.php") echo " active"; ?>"><a href="cart.php" class="nav-link"><i class="fas fa-shopping-cart"></i> Cart (<span class="itemTotal"><?php if (!isset($_SESSION['cart'])) { echo 0; } else { $i = 0; foreach ($_SESSION['cart'] as $sess) { $i += $sess; } echo $i; } ?></span>)</a></li>
                 </ul>
             </div>
         </div>

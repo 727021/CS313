@@ -11,7 +11,7 @@
     <!-- Main page content -->
     <main class="flex-shrink-0 pl-1 pr-1 pl-md-0 pr-md-0">
         <div class="container mt-1 mb-2 p-1"><!-- TODO Use a button and a modal to set filters -->
-            <h3 class="display-4">Cart <small class="text-muted">(<span id="itemCount"><?php $i = 0; foreach ($_SESSION['cart'] as $sess) { $i += $sess; } echo $i; ?></span>)</small></h3>
+            <h3 class="display-4">Cart <small class="text-muted">(<span class="itemTotal"><?php $i = 0; foreach ($_SESSION['cart'] as $sess) { $i += $sess; } echo $i; ?></span>)</small></h3>
             <div class="table-responsive">
                 <table class="table">
                     <!--

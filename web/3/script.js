@@ -3,8 +3,8 @@ function addToCart(id) {
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             console.log(`addToCart(${id}) => ${this.responseText}`);
-            var i = Number($("#itemCount").text());
-            $("#itemCount").text(i + Number(Boolean(Number(this.responseText))));
+            var i = Number($(".itemTotal").text());
+            $(".itemTotal").text(i + Number(Boolean(Number(this.responseText))));
             console.log(`addToCart(${id}) => ${this.responseText}`);
         }
     }
@@ -29,9 +29,8 @@ function removeFromCart(id) {
                 } else { // Remove the whole row
                     btn.parent().parent().remove();
                 }
-                var i = Number($("#itemCount").text());
-                $("#itemCount").each(function() { $(this).text(i - 1); });
-                // $(".itemCount").text(i - 1);
+                var i = Number($(".itemTotal").text());
+                $(".itemTotal").each(function() { $(this).text(i - 1); });
             }
         }
     }
