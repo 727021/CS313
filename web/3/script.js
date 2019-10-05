@@ -16,6 +16,7 @@ function addToCart(id) {
 
 $(function() {
     $(".removeItem").click(function(e) {
+        console.log("Button clicked");
         var id = Number($(this).data("id"));
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
