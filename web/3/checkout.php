@@ -24,21 +24,33 @@ pg_close($db);
     <main class="flex-shrink-0 pl-1 pr-1 pl-md-0 pr-md-0">
         <div class="container mt-1 mb-2 p-1">
             <h3 class="display-4">Checkout</h3>
-            <form action="confirm.php" method="GET" name="checkout">
+            <form action="confirm.php" method="POST" name="checkout" class="needs-validation" novalidate>
                 <div class="row">
-                    <div class="col"><input class="form-control" type="text" name="fname" placeholder="First name"></div>
-                    <div class="col"><input class="form-control" type="text" name="lname" placeholder="Last name"></div>
+                    <div class="col">
+                        <input class="form-control" type="text" name="fname" id="fname" placeholder="First name" required>
+                        <div class="invalid-feedback">Please provide a first name.</div>
+                    </div>
+                    <div class="col">
+                        <input class="form-control" type="text" name="lname" id="lname" placeholder="Last name" required>
+                        <div class="invalid-feedback">Please provide a last name.</div>
+                    </div>
                 </div>
                 <div class="row">
-                    <div class="col"><input class="form-control" type="text" name="addr1" placeholder="Address Line 1"></div>
+                    <div class="col">
+                        <input class="form-control" type="text" name="addr1" id="addr1" placeholder="Address Line 1" required>
+                        <div class="invalid-feedback">Please provide a valid address.</div>
+                    </div>
                 </div>
                 <div class="row">
-                    <div class="col"><input class="form-control" type="text" name="addr2" placeholder="Address Line 2"></div>
+                    <div class="col"><input class="form-control" type="text" name="addr2" id="addr2" placeholder="Address Line 2"></div>
                 </div>
                 <div class="row">
-                    <div class="col"><input class="form-control" type="text" name="city" placeholder="City"></div>
-                    <div class="col"><select class="form-control" name="state"></select></div>
-                    <div class="col"><input class="form-control" type="text" name="zip" placeholder="ZIP"></div>
+                    <div class="col">
+                        <input class="form-control" type="text" name="city" id="city" placeholder="City" required>
+                        <div class="invalid-feedback">Please provide a city.</div>
+                    </div>
+                    <div class="col"><select class="form-control" name="state" id="state" required></select></div>
+                    <div class="col"><input class="form-control" type="text" name="zip" id="zip" placeholder="ZIP" required></div>
                 </div>
                 <div class="row">
                     <div class="col text-left"><a href="cart.php" class="btn btn-primary" role="button">Back to Cart</a></div>
