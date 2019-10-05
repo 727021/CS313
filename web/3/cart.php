@@ -53,6 +53,10 @@
                         <td colspan="3"></td>
                         <td id="totalPrice">$<?php echo number_format($price / 100.0, 2); ?></td>
                     </tr>
+                    <tr>
+                        <td colspan="2" class="text-left"><button class="btn btn-primary"> Continue Shopping</button></td>
+                        <td colspan="2" class="text-right"><button class="btn btn-success">Checkout</button></td>
+                    </tr>
                 </table>
             </div>
         </div>
