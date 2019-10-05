@@ -30,8 +30,8 @@ function removeFromCart(id) {
                     btn.parent().parent().remove();
                 }
                 var i = Number($("#itemCount").text());
-                $("#itemCount").text(i - Number(Boolean(Number(this.responseText))));
-                $(".itemCount").text(i - Number(Boolean(Number(this.responseText))));
+                $("#itemCount").text(i - 1);
+                // $(".itemCount").text(i - 1);
             }
         }
     }
