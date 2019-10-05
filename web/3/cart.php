@@ -30,8 +30,10 @@
                     <?php
                         require_once('inc/db/connect.php');
                         $price = 0;
+                        $rows = 0;
                         foreach ($_SESSION['cart'] as $id => $items) {
                             if ($items > 0) {
+                                $rows++;
                                 $result = pg_fetch_assoc(pg_query($db, "SELECT * FROM Item WHERE id_item = $id LIMIT 1"));
                                     echo '<tr>
                                     <td class="align-middle">' . $result['name'] . '</td>
@@ -43,6 +45,9 @@
                             }
                         }
                         pg_close($db);
+                        if ($rows = 0) {
+                            echo '<tr><td class="text-center" colspan="4">No items in cart.</td></tr>';
+                        }
                     ?>
                     <tr>
                         <th colspan="3"></th>
