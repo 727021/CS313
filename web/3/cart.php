@@ -32,7 +32,6 @@
                         $price = 0;
                         foreach ($_SESSION['cart'] as $id => $items) {
                             if ($items > 0) {
-                                $rows++;
                                 $result = pg_fetch_assoc(pg_query($db, "SELECT * FROM Item WHERE id_item = $id LIMIT 1"));
                                     echo '<tr>
                                     <td class="align-middle">' . $result['name'] . '</td>
@@ -54,8 +53,8 @@
                         <td id="totalPrice">$<?php echo number_format($price / 100.0, 2); ?></td>
                     </tr>
                     <tr>
-                        <td colspan="2" class="text-left"><button class="btn btn-primary"> Continue Shopping</button></td>
-                        <td colspan="2" class="text-right"><button class="btn btn-success">Checkout</button></td>
+                        <td colspan="2" class="text-left"><a href="index.php" role="button" class="btn btn-primary"> Continue Shopping</a></td>
+                        <td colspan="2" class="text-right"><a href="checkout.php" role="button" class="btn btn-success">Checkout</a></td>
                     </tr>
                 </table>
             </div>
