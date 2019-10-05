@@ -27,6 +27,11 @@ function removeFromCart(id) {
                 }
                 var i = Number(document.getElementsByClassName("itemTotal")[0].innerHTML);
                 $(".itemTotal").each(function() { $(this).text(i - 1); });
+
+                var price = Number(btn.parent().sibling(".itemPrice").text().replace('$', ''));
+                var total = Number($("#totalPrice").text().replace('$', ''));
+
+                $("#totalPrice").text(`$${total - price}`);
             }
         }
     }
