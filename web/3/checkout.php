@@ -41,8 +41,8 @@ pg_close($db);
                     <div class="col"><input class="form-control" type="text" name="zip" id="ZIP"></div>
                 </div>
                 <div class="row">
-                    <div class="col"><a href="cart.php" class="btn btn-primary" role="button">Back to Cart</a></div>
-                    <div class="col"><button class="btn btn-success" type="submit">Checkout ($<?php echo $price; ?>)</button></div>
+                    <div class="col text-left"><a href="cart.php" class="btn btn-primary" role="button">Back to Cart</a></div>
+                    <div class="col text-right"><button class="btn btn-success" type="submit">Checkout ($<?php echo $price; ?>)</button></div>
                 </div>
             </form>
         </div>
