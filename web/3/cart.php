@@ -28,10 +28,10 @@
                                 $result = pg_fetch_assoc(pg_query($db, "SELECT * FROM Item WHERE id_item = $id LIMIT 1"));
                                 print_r($result);
                                     echo '<tr>
-                                    <td>' . $result['name'] . '</td>
-                                    <td>$' . number_format(floatval($result['price']) / 100.0, 2) . '</td>
-                                    <td class="itemCount">' . $items . '</td>
-                                    <td><button role="button" class="btn btn-danger btn-small removeItem"><i class="far fa-times-circle"></i></button></td>
+                                    <td class="align-middle">' . $result['name'] . '</td>
+                                    <td class="align-middle">$' . number_format(floatval($result['price']) / 100.0, 2) . '</td>
+                                    <td class="itemCount align-middle">' . $items . '</td>
+                                    <td class="align-middle"><button data-id="' . $id . '" role="button" class="btn btn-danger btn-small removeItem"><i class="far fa-times-circle"></i></button></td>
                                     </tr>';
                             }
                         }
