@@ -31,7 +31,7 @@
                                     <td class="align-middle">' . $result['name'] . '</td>
                                     <td class="align-middle">$' . number_format(floatval($result['price']) / 100.0, 2) . '</td>
                                     <td class="itemCount align-middle">' . $items . '</td>
-                                    <td class="align-middle"><button data-id="' . $id . '" role="button" class="btn btn-danger btn-small removeItem"><i class="far fa-times-circle"></i></button></td>
+                                    <td class="align-middle"><button data-id="' . $id . '" role="button" class="btn btn-danger btn-small removeItem" onclick="removeFromCart(' . $id . ')"><i class="far fa-times-circle"></i></button></td>
                                     </tr>';
                             }
                         }
