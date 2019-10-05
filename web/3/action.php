@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $i = intval($_SESSION['cart'][intval($_POST['id'])]);
             if ($i > 0) {
                 $_SESSION['cart'][intval($_POST['id'])] -= 1;
-                echo intval($_POST['id']);
+                echo ($_SESSION['cart'][intval($_POST['id'])] > 0) ? intval($_POST['id']) : 0;
             } else {
                 echo 0;
             }
