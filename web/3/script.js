@@ -24,8 +24,8 @@ function removeFromCart(id) {
                 console.log(`.removeItem.click(${id}) => ${this.responseText}`);
                 var r = Number(this.responseText);
                 if (r > 0) { // Decrease count by one
-                    var i = Number(btn.parent().siblings("itemCount").text());
-                    btn.parent().siblings("itemCount").text(i - 1);
+                    var i = Number(btn.parent().siblings(".itemCount").text());
+                    btn.parent().siblings(".itemCount").text(i - 1);
                 } else { // Remove the whole row
                     btn.parent().parent().remove();
                 }
