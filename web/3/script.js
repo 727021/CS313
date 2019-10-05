@@ -29,6 +29,9 @@ function removeFromCart(id) {
                 } else { // Remove the whole row
                     btn.parent().parent().remove();
                 }
+                var i = Number($("#itemCount").text());
+                $("#itemCount").text(i - Number(Boolean(Number(this.responseText))));
+                $(".itemCount").text(i - Number(Boolean(Number(this.responseText))));
             }
         }
     }
