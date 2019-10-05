@@ -31,7 +31,7 @@ function removeFromCart(id) {
                 var price = Number(btn.parent().siblings(".itemPrice").text().replace('$', ''));
                 var total = Number($("#totalPrice").text().replace('$', ''));
 
-                $("#totalPrice").text(`$${total - price}`);
+                $("#totalPrice").text(`$${(total - price).toFixed(2)}`);
             }
         }
     }
