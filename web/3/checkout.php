@@ -40,6 +40,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     if ($allValid) { // Store form values in $_SESSION['checkout'] and redirect
         $_SESSION['checkout'] = array('fname' => $fname, 'lname' => $lname, 'addr1' => $addr1, 'addr2' => $addr2, 'city' => $city, 'state' => $state, 'zip' => $zip);
+        $_SESSION['order'] = $_SESSION['cart'];
+        unset($_SESSION['cart']);
         header('location: confirm.php');
     }
 }

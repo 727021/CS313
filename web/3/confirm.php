@@ -19,7 +19,7 @@ session_start();
                     <tr><th colspan="2">Order:</th></tr>
                     <?php
                     require_once('inc/db/connect.php');
-                    foreach ($_SESSION['cart'] as $id => $items) {
+                    foreach ($_SESSION['order'] as $id => $items) {
                         if ($items > 0) {
                             $result = pg_fetch_assoc(pg_query($db, "SELECT * FROM Item WHERE id_item = $id LIMIT 1"));
                             echo '<tr>
