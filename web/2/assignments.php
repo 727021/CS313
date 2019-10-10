@@ -30,6 +30,12 @@
                             </td>
                         </tr>
                         <?php } ?>
+                        <tr>
+                            <th class="align-middle" scope="row">PHP Project</th>
+                            <td class="align-middle">
+                            <a role="button" class="btn btn-outline-<?php echo file_exists("../surveyproject/index.php") ? "success" : "secondary disabled" ?>" href="../surveyproject/">Survey Project</a>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>

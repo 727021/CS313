@@ -8,7 +8,7 @@ CREATE TABLE Common_Lookup (
 CREATE TABLE Users (
 	user_id SERIAL PRIMARY KEY,
 	username VARCHAR(30) NOT NULL UNIQUE,
-	email VARCHAR(30) NOT NULL UNIQUE,
+	email VARCHAR(255) NOT NULL UNIQUE,
 	first VARCHAR(30) NOT NULL,
 	middle VARCHAR(30),
 	last VARCHAR(30) NOT NULL,
@@ -19,7 +19,7 @@ CREATE TABLE Users (
 CREATE TABLE Survey (
 	survey_id SERIAL PRIMARY KEY,
 	title VARCHAR(30),
-	user_id INT NOT NULL REFERENCES SUser(user_id),
+	user_id INT NOT NULL REFERENCES Users(user_id),
 	status INT NOT NULL REFERENCES Common_Lookup(common_lookup_id)
 );
 
@@ -31,7 +31,7 @@ CREATE TABLE Page (
 CREATE TABLE Question (
 	question_id SERIAL PRIMARY KEY,
 	page_id INT NOT NULL REFERENCES Page(page_id),
-	content VARCHAR(65535) NOT NULL
+	content TEXT NOT NULL
 );
 
 CREATE TABLE Response (
