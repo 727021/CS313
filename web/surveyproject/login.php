@@ -42,25 +42,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <h1 class="display-3 text-white">Log In</h1>
                 <form class="rounded" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
                     <?php if ((isset($user) && $user === false) || (isset($pass) && $pass === false)) { ?>
-                    <div class="form-row">
+                    <div class="row">
                         <div class="col">
                             <div class="alert alert-danger">Username or password was incorrect.</div>
                         </div>
                     </div>
                     <?php } ?>
-                    <div class="form-row">
-                        <div class="col">
-                            <label for="login-username">Username</label>
+                    <div class="form-group row">
+                            <label class="col-sm-2 col-form-label" for="login-username">Username</label>
+                        <div class="col-sm-10">
                             <input class="form-control" type="text" name="username" id="login-username" placeholder="Enter username" <?php if (isset($user)) { echo "value=\"$user\""; } ?>>
                         </div>
                     </div>
-                    <div class="form-row">
-                        <div class="col">
-                            <label for="login-password">Password</label>
+                    <div class="form-group row">
+                            <label class="col-sm-2 col-form-label" for="login-password">Password</label>
+                        <div class="col-sm-10">
                             <input class="form-control" type="password" name="password" id="login-password" placeholder="Enter password">
                         </div>
                     </div>
-                    <div class="form-row">
+                    <div class="form-group row">
                         <div class="col">
                             <button class="btn btn-success" type="submit">Log In</button>
                             <a href="register.php">Create an Account</a>
