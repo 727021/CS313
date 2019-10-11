@@ -49,22 +49,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                     <?php } ?>
                     <div class="form-group row">
-                            <label class="col-sm-2 col-form-label" for="login-username">Username</label>
-                        <div class="col-sm-10">
+                        <div class="d-none d-sm-block col-sm-2 col-lg-4"></div>
+                        <div class="col">
                             <input class="form-control" type="text" name="username" id="login-username" placeholder="Enter username" <?php if (isset($user)) { echo "value=\"$user\""; } ?>>
                         </div>
+                        <div class="d-none d-sm-block col-sm-2 col-lg-4"></div>
                     </div>
                     <div class="form-group row">
-                            <label class="col-sm-2 col-form-label" for="login-password">Password</label>
-                        <div class="col-sm-10">
+                        <div class="d-none d-sm-block col-sm-2 col-lg-4"></div>
+                        <div class="col">
                             <input class="form-control" type="password" name="password" id="login-password" placeholder="Enter password">
                         </div>
+                        <div class="d-none d-sm-block col-sm-2 col-lg-4"></div>
                     </div>
                     <div class="form-group row">
+                        <div class="d-none d-sm-block col-sm-2 col-lg-4"></div>
                         <div class="col">
                             <button class="btn btn-success" type="submit">Log In</button>
-                            <a href="register.php">Create an Account</a>
                         </div>
+                        <div class="col">
+                            <a class="text-white no-underline" href="register.php">Create an Account</a>
+                        </div>
+                        <div class="d-none d-sm-block col-sm-2 col-lg-4"></div>
                     </div>
                 </form>
             </div>
