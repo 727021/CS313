@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="vertical-center">
             <div>
                 <h1 class="display-3 text-white">Log In</h1>
-                <form class="bg-primary rounded" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
+                <form class="rounded" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
                     <?php if ((isset($user) && $user === false) || (isset($pass) && $pass === false)) { ?>
                     <div class="form-row">
                         <div class="col">
@@ -51,18 +51,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <div class="form-row">
                         <div class="col">
                             <label for="login-username">Username</label>
-                            <input type="text" name="username" id="login-username" placeholder="Enter username" <?php if (isset($user)) { echo "value=\"$user\""; } ?>>
+                            <input class="form-control" type="text" name="username" id="login-username" placeholder="Enter username" <?php if (isset($user)) { echo "value=\"$user\""; } ?>>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="col">
                             <label for="login-password">Password</label>
-                            <input type="password" name="password" id="login-password" placeholder="Enter password">
+                            <input class="form-control" type="password" name="password" id="login-password" placeholder="Enter password">
                         </div>
                     </div>
                     <div class="form-row">
-                        <div class="col text-right"><button class="btn btn-success" type="submit">Log In</button></div>
-                        <div class="col"><a class="no-underline" href="register.php">Create an Account</a></div>
+                        <div class="col">
+                            <button class="btn btn-success" type="submit">Log In</button>
+                            <a href="register.php">Create an Account</a>
+                        </div>
                     </div>
                 </form>
             </div>
