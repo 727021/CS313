@@ -9,9 +9,8 @@ if (isset($_SESSION['user'])) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <?php include 'inc/head.php'; ?>
-    <title>New Webpage</title>
-    <link rel="stylesheet" href="style.css">
+    <?php include 'inc/head.inc.php'; ?>
+    <title>Welcome - Survey Project</title>
 </head>
 <body class="bg-info no-select">
     <div class="container">
