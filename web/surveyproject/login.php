@@ -11,7 +11,7 @@ $user = $pass = "";   // Form data
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Sanitize input
-    $user = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
+    $user = isset($_POST['username']) ? htmlspecialchars(trim($user)) : false;
     $pass = isset($_POST['password']) ? password_hash($_POST['password'], PASSWORD_DEFAULT) : false;
 
     if ($user !== false && $pass !== false) {
