@@ -11,19 +11,22 @@ $user = $pass = "";   // Form data
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Sanitize input
-    if (isset($_POST['username'])) { $user = $_POST['username']; echo "set user ($user)"; }
-    if (isset($_POST['password'])) { $pass = $_POST['password']; echo "set pass ($pass)"; }
+    if (isset($_POST['username'])) { $user = htmlspecialchars(trim($_POST['username'])); }
+    if (isset($_POST['password'])) { $pass = htmlspecialchars(trim($_POST['password'])); }
 
     if ($user !== false && $pass !== false) {
         require_once 'inc/db.inc.php';
         $result = pg_fetch_assoc(pg_query($db, "SELECT user_id AS id, hash FROM surveys.users WHERE username = '$user'"));
         pg_close($db);
 
-        var_dump($result);
-
         if ($result !== false && password_verify($pass, $result['hash'])) {
             // Log the user in
             $_SESSION['user'] = $result['id'];
+
+            // Unset anything with the password in it, just to be safe
+            unset($result);
+            unset($_POST);
+            unset($pass);
 
             // Go to dashboard
             header('location: dashboard.php');
