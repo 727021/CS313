@@ -16,12 +16,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($user !== false && $pass !== false) {
         require_once 'inc/db.inc.php';
-        $result = pg_fetch_assoc(pg_query($db, "SELECT user_id AS id FROM surveys.users WHERE username = '$user' AND hash = '$pass'"));
+        $result = pg_fetch_assoc(pg_query($db, "SELECT user_id AS id, hash FROM surveys.users WHERE username = '$user'"));
         pg_close($db);
 
         var_dump($result);
 
-        if ($result !== false) {
+        if ($result !== false && password_verify($pass, $result['hash'])) {
             // Log the user in
             $_SESSION['user'] = $result['id'];
 
