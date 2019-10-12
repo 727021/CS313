@@ -6,6 +6,7 @@ if (isset($_SESSION['user'])) {
     exit;
 }
 
+$error = false;
 $user = $pass = "";   // Form data
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -25,7 +26,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Go to dashboard
             header('location: dashboard.php');
             exit;
+        } else {
+            $error = true;
         }
+    } else {
+        $error = true;
     }
 }
 ?>
@@ -42,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <h1 class="display-3 text-white">Log In</h1>
                 <br />
                 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
-                    <?php if ((isset($user) && $user === false) || (isset($pass) && $pass === false)) { ?>
+                    <?php if ($error) { ?>
                     <div class="row">
                         <div class="col">
                             <div class="alert alert-danger">Username or password was incorrect.</div>
