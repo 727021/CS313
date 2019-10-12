@@ -11,8 +11,8 @@ $user = $pass = "";   // Form data
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Sanitize input
-    $user = isset($_POST['username']) ? strip_tags(trim($_POST['username'])) : false;
-    $pass = isset($_POST['password']) ? password_hash($_POST['password'], PASSWORD_DEFAULT) : false;
+    $user = isset($_POST['username']) ? $_POST['username'] : false;
+    $pass = isset($_POST['password']) ? $_POST['password'] : false;
 
     if ($user !== false && $pass !== false) {
         require_once 'inc/db.inc.php';
