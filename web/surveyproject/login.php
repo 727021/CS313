@@ -18,14 +18,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $result = pg_fetch_assoc(pg_query($db, "SELECT user_id AS id FROM surveys.users WHERE username = $user AND hash = $pass"));
         pg_close($db);
 
-        if ($result !== false) {
-            // Log the user in
-            $_SESSION['user'] = $result['id'];
+        var_dump($result);
+        exit;
+        // if ($result !== false) {
+        //     // Log the user in
+        //     $_SESSION['user'] = $result['id'];
 
-            // Go to dashboard
-            header('location: dashboard.php');
-            exit;
-        }
+        //     // Go to dashboard
+        //     header('location: dashboard.php');
+        //     exit;
+        // }
     }
 }
 ?>
