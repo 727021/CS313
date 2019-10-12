@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="container">
         <div class="vertical-center">
             <div>
-                <h1 class="display-3 text-white">Log In</h1>
+                <h1 class="display-3 text-white no-select">Log In</h1>
                 <br />
                 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
                     <?php if ($error) { ?>
