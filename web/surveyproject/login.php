@@ -11,7 +11,7 @@ $user = $pass = "";   // Form data
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Sanitize input
-    $user = isset($_POST['username']) ? htmlspecialchars(trim($user)) : false;
+    $user = isset($_POST['username']) ? htmlspecialchars(trim($_POST['username'])) : false;
     $pass = isset($_POST['password']) ? password_hash($_POST['password'], PASSWORD_DEFAULT) : false;
 
     if ($user !== false && $pass !== false) {
@@ -49,9 +49,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
                     <?php if ($error) { ?>
                     <div class="row">
+                        <div class="d-none d-sm-block col-sm-2 col-lg-4"></div>
                         <div class="col">
                             <div class="alert alert-danger">Username or password was incorrect.</div>
                         </div>
+                        <div class="d-none d-sm-block col-sm-2 col-lg-4"></div>
                     </div>
                     <?php } ?>
                     <div class="form-group row">
