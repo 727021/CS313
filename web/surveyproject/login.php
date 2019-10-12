@@ -23,10 +23,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if ($result !== null) {
             // Log the user in
-            $_SESSION['user'] = $result['id'];
+            // $_SESSION['user'] = $result['id'];
 
-            // Go to dashboard
-            header('location: dashboard.php');
+            // // Go to dashboard
+            // header('location: dashboard.php');
             exit;
         } else {
             $error = true;
