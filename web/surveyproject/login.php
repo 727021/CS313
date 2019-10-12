@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <div class="form-group row">
                         <div class="d-none d-sm-block col-sm-2 col-lg-4"></div>
                         <div class="col">
-                            <input class="form-control" type="text" name="username" id="login-username" placeholder="Username">
+                            <input class="form-control" type="text" name="username" id="login-username" placeholder="Username" value="<?php echo $user; ?>">
                         </div>
                         <div class="d-none d-sm-block col-sm-2 col-lg-4"></div>
                     </div>
