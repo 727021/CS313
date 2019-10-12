@@ -18,8 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         require_once 'inc/db.inc.php';
         $result = pg_fetch_assoc(pg_query($db, "SELECT user_id AS id, hash FROM surveys.users WHERE username = '$user'"));
         pg_close($db);
-        var_dump($_POST);
-        echo $user . ' ' . $pass;
+
         var_dump($result);
 
         if ($result !== false && password_verify($pass, $result['hash'])) {
