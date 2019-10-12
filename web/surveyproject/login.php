@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Sanitize input
     if (isset($_POST['username'])) { $user = $_POST['username']; }
-    if (isset($_POST['password'])) { $pass = $_POST['username']; }
+    if (isset($_POST['password'])) { $pass = $_POST['password']; }
 
     if ($user !== false && $pass !== false) {
         require_once 'inc/db.inc.php';
