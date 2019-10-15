@@ -22,9 +22,8 @@ try {
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="author" content="Andrew Schimelpfening" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>New Webpage</title>
+    <title>Team Activity</title>
 </head>
 <body>
     <h1>Scripture Resources</h1>
