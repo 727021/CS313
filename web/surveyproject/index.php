@@ -20,8 +20,8 @@ if (isset($_SESSION['user'])) {
                     <div class="d-none d-sm-block col-sm-2 col-lg-4"></div>
                     <div class="col">
                         <?php if (isset($_GET['logout'])) { ?>
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            Successfully logged out.
+                        <div class="alert alert-info alert-dismissible fade show" role="alert">
+                            Log out successful.
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -32,7 +32,7 @@ if (isset($_SESSION['user'])) {
                         <br/><br/>
                         <a href="login.php" class="btn btn-primary btn-lg" role="button">Create an Account</a>
                         <p class="text-primary m-0"><i>or</i></p>
-                        <a href="login.php" class="btn btn-outline-primary">Log in</a>
+                        <a href="login.php" class="btn btn-outline-primary">Log In</a>
                     </div>
                     <div class="d-none d-sm-block col-sm-2 col-lg-4"></div>
                 </div>
