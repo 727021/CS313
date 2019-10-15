@@ -28,8 +28,13 @@ try {
     <?php
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $id = htmlspecialchars(trim($_GET['id']));
-            $row = $db->query("SELECT * FROM scriptures WHERE id=$id LIMIT 1", PDO::FETCH_ASSOC);
-            var_dump($row);
+
+            $stmt = $db->prepare('SELECT * FROM scriptures WHERE id=:id LIMIT 1');
+            $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
             echo '<p><b>' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'] . '</b> - "' . $row['content'] . '"</p>';
         } else {
             header('location: index.php');
