@@ -46,13 +46,7 @@ try {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $book = htmlspecialchars(trim($_POST['book']));
 
-        $stmt = $db->prepare('SELECT * FROM scriptures WHERE book=:book');
-        $stmt->bindValue(':book', $book, PDO::PARAM_STR);
-        $stmt->execute();
-
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        foreach ($result as $row)
+        foreach ($db->query("SELECT * FROM scriptures WHERE book='$book'", PDO::FETCH_ASSOC) as $row)
         {
             echo '<p><b>' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'] . '</b> - "' . $row['content'] . '"</p>';
         }
