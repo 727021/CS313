@@ -48,7 +48,7 @@ try {
 
         foreach ($db->query("SELECT * FROM scriptures WHERE book='$book'", PDO::FETCH_ASSOC) as $row)
         {
-            echo '<p><b>' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'] . '</b> - "' . $row['content'] . '"</p>';
+            echo '<p><a href="scripture.php?id=' . $row['id'] . '"><b>' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'] . '</b></a></p>';
         }
     }
     ?>
