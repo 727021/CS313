@@ -26,7 +26,7 @@ if (isset($_SESSION['user'])) {
                         <p class="text-primary m-0"><i>or</i></p>
                         <a href="login.php" class="btn btn-outline-primary">Log in</a>
                         <?php if (isset($_GET['logout'])) { ?>
-                        <br />
+                        <br /><br />
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
                             Successfully logged out.
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
