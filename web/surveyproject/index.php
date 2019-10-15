@@ -26,7 +26,6 @@ if (isset($_SESSION['user'])) {
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <br /><br />
                         <?php } ?>
                         <h1 class="display-3 text-white">Welcome!</h1>
                         <p class="text-white">It looks like you're not logged in. Click one of the buttons below to start creating your own surveys.</p>
