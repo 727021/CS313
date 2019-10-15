@@ -36,7 +36,7 @@ try {
     }
     ?>
     <br><br>
-    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" action="POST">
+    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
         <p>Search for scriptures in a book:</p>
         <input type="text" name="book" id="book" placeholder="Book">
         <input type="submit" value="Search">
