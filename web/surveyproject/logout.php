@@ -5,5 +5,5 @@ session_unset();
 session_destroy();
 
 // Redirect to homepage
-header('location: index.php?logout=1');
+header('location: index.php?logout');
 ?>
