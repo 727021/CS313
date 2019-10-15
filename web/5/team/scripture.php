@@ -28,7 +28,7 @@ try {
     <?php
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $id = htmlspecialchars(trim($_GET['id']));
-            $row = $db->query("SELECT * FROM scriptures WHERE id=$id", PDO::FETCH_ASSOC);
+            $row = $db->query("SELECT * FROM scriptures WHERE id=$id", PDO::FETCH_ASSOC)[0];
             echo '<p><b>' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'] . '</b> - "' . $row['content'] . '"</p>';
         } else {
             header('location: index.php');
