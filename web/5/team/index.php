@@ -28,10 +28,34 @@ try {
 </head>
 <body>
     <h1>Scripture Resources</h1>
+    <h3>All Scriptures</h3>
     <?php
     foreach ($db->query('SELECT * FROM scriptures', PDO::FETCH_ASSOC) as $row)
     {
         echo '<p><b>' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'] . '</b> - "' . $row['content'] . '"</p>';
+    }
+    ?>
+    <br><br>
+    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" action="POST">
+        <p>Search for scriptures in a book:</p>
+        <input type="text" name="book" id="book" placeholder="Book">
+        <input type="submit" value="Search">
+    </form>
+    <br>
+    <?php
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $book = htmlspecialchars(trim($_POST['book']));
+
+        $stmt = $db->prepare('SELECT * FROM scriptures WHERE book=:book');
+        $stmt->bindValue(':book', $book, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($result as $row)
+        {
+            echo '<p><b>' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'] . '</b> - "' . $row['content'] . '"</p>';
+        }
     }
     ?>
 </body>
