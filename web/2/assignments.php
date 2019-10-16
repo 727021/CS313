@@ -24,7 +24,7 @@
                         <tr>
                             <th class="align-middle" scope="row"><?php echo $i; ?></th>
                             <td class="align-middle">
-                                <a role="button" class="btn btn-outline-<?php echo file_exists("../$i/class/index.php") ? "primary" : "secondary disabled" ?>" href="../<?php echo $i ?>/class/">Class</a>
+                                <a role="button" class="btn btn-outline-<?php echo file_exists("../$i/class/index.php") ? "primary" : "secondary disabled invisible" ?>" href="../<?php echo $i ?>/class/">Class</a>
                                 <a role="button" class="btn btn-outline-<?php echo file_exists("../$i/team/index.php") ? "primary" : "secondary disabled" ?>" href="../<?php echo $i ?>/team/">Team</a>
                                 <a role="button" class="btn btn-outline-<?php echo file_exists("../$i/index.php") ? "success" : "secondary disabled" ?>" href="../<?php echo $i ?>/">Prove</a>
                             </td>
