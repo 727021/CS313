@@ -27,7 +27,7 @@ if (!isset($_SESSION['user'])) {
                         <th class="text-center align-middle" colspan="2">Title</th>
                         <th class="text-center align-middle">Responses</th>
                         <th class="text-center align-middle">Actions</th>
-                        <td class="text-center"><a href="create.php" role="button" class="btn btn-success"><i class="fas fa-plus"></i> New</a></td>
+                        <td class="text-right"><a href="create.php" role="button" class="btn btn-success"><i class="fas fa-plus"></i> New</a></td>
                     </tr>
                 </thead>
                 <tbody>
@@ -72,7 +72,7 @@ if (!isset($_SESSION['user'])) {
                             echo $result['count'];
                             ?>
                         </td>
-                        <td colspan="2" class="text-right">
+                        <td class="text-right">
                             <?php
                             switch (strtolower(trim($survey['status']))) {
                                 case "unpublished":
@@ -98,6 +98,7 @@ if (!isset($_SESSION['user'])) {
                             }
                             ?>
                         </td>
+                        <td></td>
                     </tr>
                     <?php } ?>
 
