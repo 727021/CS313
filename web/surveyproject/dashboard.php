@@ -42,7 +42,7 @@ if (!isset($_SESSION['user'])) {
                     while ($survey = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     ?>
                     <tr>
-                        <td class="text-right">
+                        <td class="text-right align-middle">
                             <?php
                             switch (strtolower($survey['status'])) {
                                 case "unpublished":
@@ -62,8 +62,8 @@ if (!isset($_SESSION['user'])) {
                             }
                             ?>
                         </td>
-                        <td><a href="preview.php?id=<?php echo $survey['id']; ?>"><?php echo $survey['title']; ?></a></td>
-                        <td class="text-center">
+                        <td class="align-middle"><a href="preview.php?id=<?php echo $survey['id']; ?>"><?php echo $survey['title']; ?></a></td>
+                        <td class="text-center align-middle">
                             <?php
                             $stmt1 = $db->prepare('SELECT COUNT(response_id) FROM surveys.response WHERE survey_id=:surveyid');
                             $stmt1->bindValue(':surveyid', $survey['id'], PDO::PARAM_INT);
@@ -72,7 +72,7 @@ if (!isset($_SESSION['user'])) {
                             echo $result['count'];
                             ?>
                         </td>
-                        <td class="text-right">
+                        <td class="text-right align-middle">
                             <?php
                             switch (strtolower(trim($survey['status']))) {
                                 case "unpublished":
