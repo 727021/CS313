@@ -21,15 +21,12 @@ if (!isset($_SESSION['user'])) {
     <title>Dashboard - Survey Project</title>
 </head>
 <body class="bg-info">
-        <nav class="navbar navbar-expand-md navbar-default bg-primary">
-    <div class="container">
-            <span class="navbar-brand text-light">Dashboard</span>
-            <div>
-                <span class="navbar-text text-light">Welcome, <a class="text-info" href="user.php"><?php echo $_SESSION['user']['name']; ?></a>!</span>
-                <a class="btn btn-outline-info" role="button" href="logout.php">Log Out</a>
-            </div>
-    </div>
-        </nav>
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+        <div class="container">
+            <span class="navbar-brand">Dashboard</span>
+            <span class="navbar-text">Welcome, <a class="no-underline text-light" href="user.php"><?php echo $_SESSION['user']['name']; ?></a>!  <a class="btn btn-sm btn-outline-info" role="button" href="logout.php">Log Out</a></span>
+        </div>
+    </nav>
 
     <?php include 'inc/js.inc.php'; ?>
 </body>
