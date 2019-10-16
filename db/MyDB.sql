@@ -49,9 +49,9 @@ CREATE TABLE response
 , response_data TEXT NOT NULL
 , responded_on TIMESTAMP NOT NULL DEFAULT NOW())
 
-CREATE TABLE shortcode
+CREATE TABLE shortcode -- For survey URLs
 ( survey_id INT NOT NULL REFERENCES survey(survey_id)
-, code VARCHAR(16) NOT NULL)
+, code VARCHAR(16) NOT NULL) -- Generated in php with md5(uniqid($survey['id'] . $survey['title']), true)
 
 -- Create a view for easy access to user info
 CREATE VIEW User_Info AS

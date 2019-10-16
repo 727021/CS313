@@ -27,7 +27,7 @@ if (!isset($_SESSION['user'])) {
                         <th class="text-center align-middle" colspan="2">Title</th>
                         <th class="text-center align-middle">Responses</th>
                         <th class="text-center align-middle">Actions</th>
-                        <td class="text-right pl-0 pr-1"><a href="create.php" role="button" class="btn btn-success"><i class="fas fa-plus"></i> New</a></td>
+                        <th class="text-right pl-0 pr-1"><a href="create.php" role="button" class="btn btn-success"><i class="fas fa-plus"></i> New</a></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -39,7 +39,7 @@ if (!isset($_SESSION['user'])) {
                     $stmt->execute();
 
                     // Insert a row for each survey on the account
-                    while ($survey = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    while ($survey = $stmt->fetch(PDO::FETCH_ASSOC)) {// TODO Add a button to copy the survey's permanent link
                     ?>
                     <tr>
                         <td class="text-right align-middle">
