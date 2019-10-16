@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($user !== false && $pass !== false) {
         require_once 'inc/db.inc.php';
 
-        $stmt = $db->prepare('SELECT u.user_id AS id, u.first AS name, u.hash, c.value AS type FROM surveys.users u WHERE u.username=:username INNER JOIN surveys.common_lookup c ON c.common_lookup_id = u.type');
+        $stmt = $db->prepare('SELECT u.user_id AS id, u.first AS name, u.hash, c.value AS type FROM surveys.users u, surveys.common_lookup c WHERE u.username=:username AND c.common_lookup_id = u.type');
         $stmt->bindValue(':username', $user, PDO::PARAM_STR);
         $stmt->execute();
 
