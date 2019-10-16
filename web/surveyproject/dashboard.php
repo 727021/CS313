@@ -24,9 +24,9 @@ if (!isset($_SESSION['user'])) {
             <table class="table">
                 <thead>
                     <tr>
-                        <th colspan="2">Title</th>
-                        <th>Responses</th>
-                        <th>Actions</th>
+                        <th class="text-center" colspan="2">Title</th>
+                        <th class="text-center">Responses</th>
+                        <th class="text-center">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
