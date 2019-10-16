@@ -37,10 +37,8 @@ if (!isset($_SESSION['user'])) {
                     $stmt->bindValue(':userid', $_SESSION['user']['id'], PDO::PARAM_INT);
                     $stmt->execute();
 
-                    $surveys = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
                     // Insert a row for each survey on the account
-                    foreach ($surveys as $survey) {
+                    while ($survey = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     ?>
                     <tr>
                         <td class="text-right">
@@ -66,11 +64,7 @@ if (!isset($_SESSION['user'])) {
                         <td><a href="preview.php?id=<?php echo $survey['id']; ?>"><?php echo $survey['title']; ?></a></td>
                         <td class="text-center">
                             <?php
-                            $stmt = $db->prepare('SELECT COUNT(response_id) FROM surveys.response WHERE survey_id=:sid');
-                            $stmt->bindValue(':sid', $survey['id'], PDO::PARAM_INT);
-                            $stmt->execute();
-                            $responses = $stmt->fetch();
-                            var_dump($responses);
+                            echo $db->query("SELECT COUNT(response_id) FROM surveys.response WHERE survey_id=" . $survey['id']);
                             ?>
                         </td>
                         <td class="text-right">
