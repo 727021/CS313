@@ -24,10 +24,10 @@ if (!isset($_SESSION['user'])) {
             <table class="table">
                 <thead>
                     <tr>
+                        <th class="text-center align-middle" colspan="2">Title</th>
+                        <th class="text-center align-middle">Responses</th>
+                        <th class="text-center align-middle">Actions</th>
                         <td class="text-center"><a href="create.php" role="button" class="btn btn-success"><i class="fas fa-plus"></i> New</a></td>
-                        <th class="text-left">Title</th>
-                        <th class="text-center">Responses</th>
-                        <th class="text-center">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -72,7 +72,7 @@ if (!isset($_SESSION['user'])) {
                             echo $result['count'];
                             ?>
                         </td>
-                        <td class="text-right">
+                        <td colspan="2" class="text-right">
                             <?php
                             switch (strtolower(trim($survey['status']))) {
                                 case "unpublished":
