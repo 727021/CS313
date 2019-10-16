@@ -21,7 +21,15 @@ if (!isset($_SESSION['user'])) {
     <title>Dashboard - Survey Project</title>
 </head>
 <body>
-
+    <div class="container">
+        <nav class="navbar navbar-expand-md">
+            <span class="navbar-brand">Dashboard</span>
+            <div>
+                <span class="navbar-text">Welcome, <a href="user.php"><?php echo $_SESSION['user']['name']; ?></a>!</span>
+                <a class="btn btn-outline-info" role="button" href="logout.php">Log Out</a>
+            </div>
+        </nav>
+    </div>
 
     <?php include 'inc/js.inc.php'; ?>
 </body>

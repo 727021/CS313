@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($user !== false && $pass !== false) {
         require_once 'inc/db.inc.php';
 
-        $stmt = $db->prepare('SELECT user_id AS id, hash FROM surveys.users WHERE username=:username');
+        $stmt = $db->prepare('SELECT u.user_id AS id, u.first AS name, u.hash, c.value AS type FROM surveys.users u WHERE u.username=:username INNER JOIN surveys.common_lookup c ON c.common_lookup_id = u.type');
         $stmt->bindValue(':username', $user, PDO::PARAM_STR);
         $stmt->execute();
 
@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if ($result !== false && password_verify($pass, $result['hash'])) {
             // Log the user in
-            $_SESSION['user'] = $result['id'];
+            $_SESSION['user'] = array('id' => $result['id'], 'name' => $result['name'], 'type' => $result['type']);
 
             // Unset anything with the password in it, just to be safe
             unset($result);
