@@ -27,7 +27,7 @@ if (!isset($_SESSION['user'])) {
                         <th class="text-center align-middle" colspan="2">Title</th>
                         <th class="text-center align-middle">Responses</th>
                         <th class="text-center align-middle">Actions</th>
-                        <td class="text-right"><a href="create.php" role="button" class="btn btn-success"><i class="fas fa-plus"></i> New</a></td>
+                        <td class="text-right pl-0 pr-1"><a href="create.php" role="button" class="btn btn-success"><i class="fas fa-plus"></i> New</a></td>
                     </tr>
                 </thead>
                 <tbody>
@@ -104,7 +104,7 @@ if (!isset($_SESSION['user'])) {
 
 
 
-
+                    <!-- Test rows -->
                     <!-- <tr>
                         <td class="text-right"><span class="badge badge-pill badge-primary">Unpublished</span></td>
                         <td><a href="preview.php?id=1">Survey Title</a></td>
