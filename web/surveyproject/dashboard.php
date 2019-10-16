@@ -22,10 +22,10 @@ if (!isset($_SESSION['user'])) {
 </head>
 <body>
     <div class="container">
-        <nav class="navbar navbar-expand-md">
+        <nav class="navbar navbar-expand-md navbar-default bg-primary">
             <span class="navbar-brand">Dashboard</span>
             <div>
-                <span class="navbar-text">Welcome, <a href="user.php"><?php echo $_SESSION['user']['name']; ?></a>!</span>
+                <span class="navbar-text">Welcome, <a class="text-primary" href="user.php"><?php echo $_SESSION['user']['name']; ?></a>!</span>
                 <a class="btn btn-outline-info" role="button" href="logout.php">Log Out</a>
             </div>
         </nav>
