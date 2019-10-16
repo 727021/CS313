@@ -64,7 +64,8 @@ if (!isset($_SESSION['user'])) {
                         <td><a href="preview.php?id=<?php echo $survey['id']; ?>"><?php echo $survey['title']; ?></a></td>
                         <td class="text-center">
                             <?php
-                            var_dump($db->query("SELECT COUNT(response_id) FROM surveys.response WHERE survey_id=" . $survey['id']));
+                            $responseCount = $db->query("SELECT COUNT(response_id) FROM surveys.response WHERE survey_id=" . $survey['id']);
+                            echo $responseCount;
                             ?>
                         </td>
                         <td class="text-right">
