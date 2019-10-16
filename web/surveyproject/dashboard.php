@@ -24,7 +24,8 @@ if (!isset($_SESSION['user'])) {
             <table class="table">
                 <thead>
                     <tr>
-                        <th class="text-center" colspan="2">Title</th>
+                        <td><a href="create.php" role="button" class="btn btn-primary"><i class="far fa-plus-square"></i>New</a></td>
+                        <th class="text-left">Title</th>
                         <th class="text-center">Responses</th>
                         <th class="text-center">Actions</th>
                     </tr>
