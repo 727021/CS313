@@ -20,16 +20,16 @@ if (!isset($_SESSION['user'])) {
     <?php include 'inc/head.inc.php'; ?>
     <title>Dashboard - Survey Project</title>
 </head>
-<body>
-    <div class="container">
+<body class="bg-info">
         <nav class="navbar navbar-expand-md navbar-default bg-primary">
-            <span class="navbar-brand">Dashboard</span>
+    <div class="container">
+            <span class="navbar-brand text-light">Dashboard</span>
             <div>
-                <span class="navbar-text">Welcome, <a class="text-primary" href="user.php"><?php echo $_SESSION['user']['name']; ?></a>!</span>
+                <span class="navbar-text text-light">Welcome, <a class="text-info" href="user.php"><?php echo $_SESSION['user']['name']; ?></a>!</span>
                 <a class="btn btn-outline-info" role="button" href="logout.php">Log Out</a>
             </div>
-        </nav>
     </div>
+        </nav>
 
     <?php include 'inc/js.inc.php'; ?>
 </body>
