@@ -66,16 +66,16 @@ if (!isset($_SESSION['user'])) {
                         <td><a href="preview.php?id=<?php echo $survey['id']; ?>"><?php echo $survey['title']; ?></a></td>
                         <td class="text-center">
                             <?php
-                            $stmt = $db->prepare('SELECT COUNT(response_id) FROM surveys.responses WHERE survey_id=:sid');
+                            $stmt = $db->prepare('SELECT COUNT(response_id) FROM surveys.response WHERE survey_id=:sid');
                             $stmt->bindValue(':sid', $survey['id'], PDO::PARAM_INT);
                             $stmt->execute();
                             $responses = $stmt->fetch();
-                            echo $responses;
+                            var_dump($responses);
                             ?>
                         </td>
                         <td class="text-right">
                             <?php
-                            switch (strtolower($survey['status'])) {
+                            switch (strtolower(trim($survey['status']))) {
                                 case "unpublished":
                                 ?>
                                 <a href="dashboard.php?publish=<?php echo $survey['id']; ?>" class="btn btn-success">Publish</a>
