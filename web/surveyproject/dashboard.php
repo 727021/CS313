@@ -64,8 +64,11 @@ if (!isset($_SESSION['user'])) {
                         <td><a href="preview.php?id=<?php echo $survey['id']; ?>"><?php echo $survey['title']; ?></a></td>
                         <td class="text-center">
                             <?php
-                            $responseCount = $db->query("SELECT COUNT(response_id) FROM surveys.response WHERE survey_id=" . $survey['id']);
-                            echo $responseCount;
+                            $stmt = $db->prepare('SELECT response_id FROM surveys.response WHERE survey_id=:surveyid');
+                            $stmt->bindValue(':surveyid', $survey['id'], PDO::PARAM_INT);
+                            $stmt->execute();
+                            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+                            echo count($result);
                             ?>
                         </td>
                         <td class="text-right">
