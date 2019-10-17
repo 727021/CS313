@@ -59,3 +59,29 @@ INSERT INTO surveys.shortcode (survey_id,code) VALUES
 ( (SELECT survey_id FROM surveys.survey WHERE title = 'Test Survey 3')
 , '5d226163de4546078f778f8367e97bdc'
 );
+
+-- Create 'Test Survey'
+INSERT INTO surveys.page (survey_id,page_index) VALUES
+(  (SELECT survey_id FROM surveys.survey WHERE title = 'Test Survey')
+, 1
+);
+
+INSERT INTO surveys.question (page_id,content) VALUES
+( currval('surveys.survey_survey_id_seq')
+, '{"type":"0", "content":{"content":"What is your name?","placeholder":"name","multiline":"false","required":"true"}}'
+);
+
+INSERT INTO surveys.question (page_id,content) VALUES
+( currval('surveys.survey_survey_id_seq')
+, '{"type":"1", "content":{"content":"What is your favorite color?","choices":["Red","Blue","Green"],"radio":"true","required":"true"}}'
+);
+
+INSERT INTO surveys.question (page_id,content) VALUES
+( currval('surveys.survey_survey_id_seq')
+, '{"type":"2", "content":{"content":"Choose some:","choices":["1","2","3","4","5"],"multiple":"true","required":"false"}}'
+);
+
+INSERT INTO surveys.question (page_id,content) VALUES
+( currval('surveys.survey_survey_id_seq')
+, '{"type":"3", "content":{"content":"Rate this site:","start":"0.0","end":"10.0","interval":"1.0","required":"true"}}'
+);
