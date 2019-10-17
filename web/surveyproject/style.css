@@ -23,3 +23,7 @@ a.no-underline:hover {
     -ms-user-select: none;
     user-select: none;
 }
+
+.underline {
+    text-decoration: underline;
+}
