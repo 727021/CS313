@@ -19,7 +19,7 @@ if (!isset($_SESSION['user'])) {
             <span class="navbar-text text-light">Welcome, <a href="user.php"><?php echo $_SESSION['user']['name']; ?></a>!  <a class="btn btn-sm btn-info" role="button" href="logout.php">Log Out</a></span>
         </div>
     </nav>
-    <div class="container bg-light">
+    <div class="container bg-light mt-2 rounded">
         <div class="table-responsive">
             <table class="table">
                 <thead>
