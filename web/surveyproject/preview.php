@@ -35,7 +35,7 @@ if ($survey['user_id'] != $_SESSION['user']['id']) {
 <body class="bg-info">
 
     <div class="container bg-light mt-2 rounded">
-    <h3 class="border-bottom text-center"><?php echo empty($title) ? 'Survey' : $title; ?> by <?php echo $_SESSION['user']['username']; ?></h3>
+    <h3 class="border-bottom text-center"><?php echo empty($title) ? 'Survey' : $title; ?> <small class="text-muted">by <?php echo $_SESSION['user']['username']; ?></small></h3>
         <?php
             $stmt1 = $db->prepare('SELECT q.question_id AS id, q.content FROM surveys.question q, surveys.page p, surveys.survey s WHERE q.page_id = p.page_id AND s.survey_id=:sid AND p.page_index=:pid');
             $stmt1->bindValue(':sid', $sid, PDO::PARAM_INT);
