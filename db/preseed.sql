@@ -27,21 +27,21 @@ INSERT INTO surveys.Users (username,email,first,last,hash,type) VALUES
 INSERT INTO surveys.Survey (title,user_id,status) VALUES
 ( 'Test Survey'
 , (SELECT user_id FROM surveys.users WHERE username = 'testuser')
-, (SELECT common_lookup_id FROM common_lookup
+, (SELECT common_lookup_id FROM surveys.common_lookup
    WHERE context = 'SURVEY.STATUS' AND value = 'UNPUBLISHED')
 );
 
 INSERT INTO surveys.Survey (title,user_id,status) VALUES
 ( 'Test Survey 2'
 , (SELECT user_id FROM surveys.users WHERE username = 'testuser')
-, (SELECT common_lookup_id FROM common_lookup
+, (SELECT common_lookup_id FROM surveys.common_lookup
    WHERE context = 'SURVEY.STATUS' AND value = 'PUBLISHED')
 );
 
 INSERT INTO surveys.Survey (title,user_id,status) VALUES
 ( 'Test Survey 3'
 , (SELECT user_id FROM surveys.users WHERE username = 'testuser')
-, (SELECT common_lookup_id FROM common_lookup
+, (SELECT common_lookup_id FROM surveys.common_lookup
    WHERE context = 'SURVEY.STATUS' AND value = 'CLOSED')
 );
 

@@ -51,18 +51,18 @@ CREATE TABLE response
 , responded_on 	TIMESTAMP 	NOT NULL DEFAULT NOW())
 
 CREATE TABLE shortcode -- For survey URLs
-( shortcode_id 	INT 		NOT NULL PRIMARY KEY
+( shortcode_id 	SERIAL 		NOT NULL PRIMARY KEY
 , survey_id 	INT 		NOT NULL REFERENCES survey(survey_id)
-, code 			VARCHAR(16) NOT NULL) -- Generated in php with md5(uniqid($survey['id'] . $survey['title']), true)
+, code 			VARCHAR(32) NOT NULL) -- Generated in php with md5(uniqid($survey['id'] . $survey['title']), true)
 
 -- Create a view for easy access to user info
-CREATE VIEW User_Info AS
+CREATE VIEW user_info AS
 	SELECT
 	  u.user_id AS id
 	, u.last || ', ' || u.first AS name
 	, u.username
 	, u.email
 	, cl.value as type
-	FROM Users u
-	INNER JOIN Common_Lookup cl
+	FROM users u
+	INNER JOIN common_lookup cl
 	ON cl.common_lookup_id = u.type;
