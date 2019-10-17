@@ -20,6 +20,11 @@ $stmt->execute();
 $survey = $stmt->fetch(PDO::FETCH_ASSOC);
 $title = $survey['title'];
 
+if ($survey['user_id'] != $_SESSION['user']['id']) {
+    header('location: dashboard.php');
+    exit;
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
