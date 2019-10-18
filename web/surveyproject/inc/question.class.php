@@ -61,9 +61,9 @@ class QText extends Question {
     public function toHTML($id): string {
         return "<div class='form-group'>"
              . "    <label for='question-$id'>$this->content</label>"
-             . $this->multiple
+             . ($this->multiple
              ? "    <textarea class='form-control' id='question-$id' rows='3' name='question-$id' placeholder='$this->placeholder'></textarea>"
-             : "    <input type='text' class='form-control' id='question-$id' name='question-$id' placeholder='$this->placeholder'>"
+             : "    <input type='text' class='form-control' id='question-$id' name='question-$id' placeholder='$this->placeholder'>")
              . "</div>";
     }
 }
@@ -90,7 +90,7 @@ class QCheck extends Question {
         $i = 0;
         foreach ($this->choices as $choice) {
             $html .= "<div class='form-check'>"
-                   . "    <input class='form-check-input' type='" . $this->multiple ? "checkbox" : "radio" . "' id='question-$id-$i' name='question-$id" . $this->multiple ? "-$i" : "" . "' value='" . strtolower(trim(str_replace(" ", "_", $choice))) . "'>"
+                   . "    <input class='form-check-input' type='" . ($this->multiple ? "checkbox" : "radio") . "' id='question-$id-$i' name='question-$id" . ($this->multiple ? "-$i" : "") . "' value='" . strtolower(trim(str_replace(" ", "_", $choice))) . "'>"
                    . "    <label class='form-check-label' for='question-$id-$i'>$choice</label>"
                    . "</div>";
             $i++;
@@ -119,7 +119,7 @@ class QDrop extends Question {
     public function toHTML($id): string {
         $html  = "<div class='form-group'>"
                . "    <label for='question-$id'>$this->content</label>"
-               . "    <select class='form-control' id='question-$id' name='question-$id'" . $this->multiple ? " multiple" : "" . ">";
+               . "    <select class='form-control' id='question-$id' name='question-$id'" . ($this->multiple ? " multiple" : "") . ">";
         foreach ($this->choices as $choice) {
             $html .= "<option value='" . strtolower(trim(str_replace(" ", "_", $choice))) . "'>$choice</option>";
         }
