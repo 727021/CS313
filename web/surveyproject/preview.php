@@ -42,9 +42,9 @@ if ($survey['user_id'] != $_SESSION['user']['id']) {
             $stmt1->bindValue(':pid', $pid, PDO::PARAM_INT);
             $stmt1->execute();
 
-            while ($question = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            while ($question = $stmt1->fetch(PDO::FETCH_ASSOC)) {
                 $qid = $question['id'];
-                var_dump($question);
+                // var_dump($question);
                 $jq = json_decode($question['content']);
                 $qc = $jq->content; // Question content
 
