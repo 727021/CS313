@@ -44,6 +44,7 @@ if ($survey['user_id'] != $_SESSION['user']['id']) {
 
             while ($question = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 $qid = $question['id'];
+                var_dump($question);
                 $jq = json_decode($question['content']);
                 $qc = $jq->content; // Question content
 
