@@ -34,12 +34,12 @@ if (!isset($_SESSION['user'])) {
                     <?php
                     require_once 'inc/db.inc.php';
 
-                    $stmt = $db->prepare('SELECT s.survey_id AS id, s.title, c.value AS status FROM surveys.survey s JOIN surveys.common_lookup c ON s.status = c.common_lookup_id WHERE s.user_id=:userid');
+                    $stmt = $db->prepare('SELECT s.survey_id AS id, s.title, c.value AS status, sh.code AS shortcode FROM surveys.survey s, surveys.common_lookup c, surveys.shortcode sh WHERE sh.survey_id = s.survey_id AND s.status = c.common_lookup_id AND s.user_id=:userid');
                     $stmt->bindValue(':userid', $_SESSION['user']['id'], PDO::PARAM_INT);
                     $stmt->execute();
 
                     // Insert a row for each survey on the account
-                    while ($survey = $stmt->fetch(PDO::FETCH_ASSOC)) {// TODO Add a button to copy the survey's permanent link
+                    while ($survey = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     ?>
                     <tr>
                         <td class="text-right align-middle">
@@ -92,6 +92,7 @@ if (!isset($_SESSION['user'])) {
                                 break;
                                 case "published":
                                 ?>
+                                <a href="survey.php?s=<?php echo $survey['shortcode']; ?>" class="btn btn-info" onclick="showLink('<?php echo $survey['shortcode']; ?>')">Copy Link</a>
                                 <a href="dashboard.php?close=<?php echo $survey['id']; ?>" class="btn btn-danger">Close</a>
                                 <?php
                                 break;

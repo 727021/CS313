@@ -46,18 +46,8 @@ INSERT INTO surveys.Survey (title,user_id,status) VALUES
 );
 
 INSERT INTO surveys.shortcode (survey_id,code) VALUES
-( (SELECT survey_id FROM surveys.survey WHERE title = 'Test Survey')
-, '69b683f14e9fd6e78c72555e3d1ab295'
-);
-
-INSERT INTO surveys.shortcode (survey_id,code) VALUES
 ( (SELECT survey_id FROM surveys.survey WHERE title = 'Test Survey 2')
 , '9fab7e1dfffe3643e9372baf9c63a0a1'
-);
-
-INSERT INTO surveys.shortcode (survey_id,code) VALUES
-( (SELECT survey_id FROM surveys.survey WHERE title = 'Test Survey 3')
-, '5d226163de4546078f778f8367e97bdc'
 );
 
 -- Create 'Test Survey'
