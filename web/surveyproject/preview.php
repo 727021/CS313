@@ -109,7 +109,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // A page has been submitted
                 if ($q == null) { continue; }
 
                 // Actually display the question as HTML
-                echo $q->toHTML($qid, (array_search($qid, $question_errors) !== false));
+                echo $q->toHTML($qid, (array_search($qid, $question_errors) != false));
             }
         }
         ?>
