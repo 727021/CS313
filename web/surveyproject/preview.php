@@ -81,11 +81,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // A page has been submitted
                 // Actually display the question as HTML
                 echo $q->toHTML($qid);
             }
-        }
         ?>
         <div class="form-group text-center">
             <input class="btn btn-primary" type="submit" value="<?php echo ($pid == $pageCount ? 'Submit' : 'Continue'); ?>">
         </div>
+        <?php } ?>
     </form>
     </div>
 
