@@ -1,15 +1,19 @@
 <?php
 session_start();
 
-if (!isset($_GET['id'])) {
-    header('location: survey.php?id=0');
+if (!isset($_GET['s'])) {
+    header('location: survey.php?s=0');
     exit;
 }
 
 require_once 'inc/question.class.php';
 require_once 'inc/db.inc.php';
 
-$sid = intval($_GET['id']); // Survey id
+$stmt3 = $db->prepare('SELECT survey_id AS id FROM surveys.shortcode WHERE code=:shc');
+$stmt3->bindValue(':shc', $_GET['s'], PDO::PARAM_STR);
+$stmt3->execute();
+
+$sid = $stmt3->fetch(PDO::FETCH_ASSOC)['id']; // Survey id
 
 if ($sid != 0) {
     $pid = isset($_GET['p']) ? intval($_GET['p']) : 1;
