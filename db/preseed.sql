@@ -83,5 +83,5 @@ INSERT INTO surveys.question (page_id,content) VALUES
 
 INSERT INTO surveys.question (page_id,content) VALUES
 ( (SELECT page_id FROM surveys.page WHERE page_index = 1 AND survey_id = (SELECT survey_id FROM surveys.survey WHERE title = 'Test Survey'))
-, '{"type":"3", "content":{"content":"Rate this site:","start":"0.0","end":"10.0","interval":"1.0","required":"true"}}'
+, '{"type":"3", "content":{"content":"Rate this site:","start":"1.0","end":"10.0","interval":"1.0","required":"true"}}'
 );

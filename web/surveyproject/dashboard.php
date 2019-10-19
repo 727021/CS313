@@ -62,7 +62,16 @@ if (!isset($_SESSION['user'])) {
                             }
                             ?>
                         </td>
-                        <td class="align-middle"><a href="preview.php?id=<?php echo $survey['id']; ?>"><?php echo $survey['title']; ?></a></td>
+                        <td class="align-middle">
+                            <?php
+                                if (strtolower($survey['status']) == 'closed') {
+                                    echo '<p class="textiprimary">' . $survey['title'] . '</p>';
+                                } else {
+                                    echo '<a href="preview.php?id=' . $survey['id'] . '">' . $survey['title'] . '</a>';
+                                }
+                            ?>
+                            <a href="preview.php?id=<?php echo $survey['id']; ?>"><?php echo $survey['title']; ?></a>
+                        </td>
                         <td class="text-center align-middle">
                             <?php
                             $stmt1 = $db->prepare('SELECT COUNT(response_id) FROM surveys.response WHERE survey_id=:surveyid');
