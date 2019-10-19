@@ -68,20 +68,20 @@ INSERT INTO surveys.page (survey_id,page_index) VALUES
 
 INSERT INTO surveys.question (page_id,content) VALUES
 ( (SELECT page_id FROM surveys.page WHERE page_index = 1 AND survey_id = (SELECT survey_id FROM surveys.survey WHERE title = 'Test Survey'))
-, '{"type":"0", "content":{"content":"What is your name?","placeholder":"name","multiline":"false","required":"true"}}'
+, '{"type":0, "content":{"content":"What is your name?","placeholder":"name","multiline":false,"required":true}}'
 );
 
 INSERT INTO surveys.question (page_id,content) VALUES
 ( (SELECT page_id FROM surveys.page WHERE page_index = 1 AND survey_id = (SELECT survey_id FROM surveys.survey WHERE title = 'Test Survey'))
-, '{"type":"1", "content":{"content":"What is your favorite color?","choices":["Red","Blue","Green"],"radio":"true","required":"true"}}'
+, '{"type":1, "content":{"content":"What is your favorite color?","choices":["Red","Blue","Green"],"radio":true,"required":true}}'
 );
 
 INSERT INTO surveys.question (page_id,content) VALUES
 ( (SELECT page_id FROM surveys.page WHERE page_index = 1 AND survey_id = (SELECT survey_id FROM surveys.survey WHERE title = 'Test Survey'))
-, '{"type":"2", "content":{"content":"Choose some:","choices":["1","2","3","4","5"],"multiple":"true","required":"false"}}'
+, '{"type":2, "content":{"content":"Choose some:","choices":["1","2","3","4","5"],"multiple":true,"required":false}}'
 );
 
 INSERT INTO surveys.question (page_id,content) VALUES
 ( (SELECT page_id FROM surveys.page WHERE page_index = 1 AND survey_id = (SELECT survey_id FROM surveys.survey WHERE title = 'Test Survey'))
-, '{"type":"3", "content":{"content":"Rate this site:","start":"1.0","end":"10.0","interval":"1.0","required":"true"}}'
+, '{"type":3, "content":{"content":"Rate this site:","start":1.0,"end":10.0,"interval":1.0,"required":true}}'
 );
