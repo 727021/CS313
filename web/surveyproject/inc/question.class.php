@@ -59,12 +59,18 @@ class QText extends Question {
     public function getPlaceholder(): string { return $this->placeholder; }
 
     public function toHTML($id): string {
-        return "<div class='form-group'>"
-             . "    <label for='question-$id'>$this->content</label>"
-             . (($this->multiple == true)
-             ? "    <textarea class='form-control' id='question-$id' rows='3' name='question-$id' placeholder='$this->placeholder'></textarea>"
-             : "    <input type='text' class='form-control' id='question-$id' name='question-$id' placeholder='$this->placeholder'>")
-             . "</div>";
+        $html = "<div class='form-group'>"
+             . "    <label for='question-$id'>$this->content</label>";
+
+        if ($this->multiple == true) {
+            $html .= "    <textarea class='form-control' id='question-$id' rows='3' name='question-$id' placeholder='$this->placeholder'></textarea>";
+        } else {
+            $html .= "    <input type='text' class='form-control' id='question-$id' name='question-$id' placeholder='$this->placeholder'>";
+        }
+
+        $html .= "</div>";
+
+        return $html;
     }
 }
 
