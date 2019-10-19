@@ -31,37 +31,7 @@ $stmt2->execute();
 $pageCount = $stmt2->fetch(PDO::FETCH_ASSOC)['count'];
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') { // A page has been submitted
-    $stmt3 = $db->prepare('SELECT question_id,content FROM surveys.question WHERE page_id=(SELECT page_id FROM surveys.page WHERE page_index=:pid AND survey_id=:sid)');
-    $stmt3->bindValue(':pid', $pid - 1, PDO::PARAM_INT);
-    $stmt3->bindValue(':sid', $sid, PDO::PARAM_INT);
-    $stmt3->execute();
-
-    $required_ids = array();
-    $question_errors = array();
-
-    while ($q_validate = $stmt3->fetch(PDO::FETCH_ASSOC)) { // Collect the IDs of the required questions
-        if (json_decode($q_validate['content']->content->required)) { array_push($required_ids, $q_validate['question_id']); }
-    }
-
-    foreach ($_POST as $answer_id => $answer) {
-        if (array_search($answer_id, $required_ids) !== false) {
-            if (empty(trim($answer))) { // Collect the IDs of empty required questions
-                array_push($question_errors, $answer_id);
-            }
-        }
-    }
-
-    if (count($question_errors) == 0) {
-        if (!isset($_SESSION['response'])) {
-            $_SESSION['response'] = array();
-        }
-
-        foreach ($_POST as $answer_id => $answer) {
-            $_SESSION['response'][$answer_id] = htmlspecialchars(trim($answer));
-        }
-    } else {
-        $pid -= 1;
-    }
+    // Do form validation and store answers in $_SESSION['response']
 }
 
 ?>
@@ -109,11 +79,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // A page has been submitted
                 if ($q == null) { continue; }
 
                 // Actually display the question as HTML
-                echo $q->toHTML($qid, (array_search($qid, $question_errors) != false));
+                echo $q->toHTML($qid);
             }
         }
         ?>
-        <input type="submit" value="<?php echo ($pid == $pageCount ? 'Submit' : 'Continue'); ?>">
+        <div class="form-group text-center">
+            <input class="btn btn-primary" type="submit" value="<?php echo ($pid == $pageCount ? 'Submit' : 'Continue'); ?>">
+        </div>
     </form>
     </div>
 
