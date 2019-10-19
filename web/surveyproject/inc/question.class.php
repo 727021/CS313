@@ -61,7 +61,7 @@ class QText extends Question {
     public function toHTML($id): string {
         return "<div class='form-group'>"
              . "    <label for='question-$id'>$this->content</label>"
-             . ($this->multiple
+             . (($this->multiple == true)
              ? "    <textarea class='form-control' id='question-$id' rows='3' name='question-$id' placeholder='$this->placeholder'></textarea>"
              : "    <input type='text' class='form-control' id='question-$id' name='question-$id' placeholder='$this->placeholder'>")
              . "</div>";
