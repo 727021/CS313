@@ -48,7 +48,7 @@ if ($sid != 0) {
         <p class="text-center">No survey was found.</p>
     <?php } else { ?>
     <h3 class="border-bottom text-center display-4"><?php echo empty($title) ? 'Survey' : $title; ?> <small><small class="text-muted">by <?php echo $_SESSION['user']['username']; ?></small></small></h3>
-    <form method="POST" action="survey.php?p=<?php echo $pid + 1; ?>&id=<?php echo $sid; ?>">
+    <form method="POST" action="survey.php?p=<?php echo $pid + 1; ?>&s=<?php echo $sid; ?>">
         <?php
         if ($pid > $pageCount) {
             echo '<p class="text-center">Thank you for your response.</p>';
