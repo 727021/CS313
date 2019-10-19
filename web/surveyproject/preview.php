@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // A page has been submitted
             echo '<p class="text-center">Thank you for your response.</p>';
             echo '<div class="text-center"><a class="btn btn-primary" role="button" href="dashboard.php">Back to Dashboard</a></div>';
         }  else {
-            $stmt1 = $db->prepare('SELECT q.question_id AS id, q.content FROM surveys.question q, surveys.page p, surveys.survey s WHERE q.page_id = p.page_id AND s.survey_id=:sid AND p.page_index=:pid');
+            $stmt1 = $db->prepare('SELECT q.question_id AS id, q.content FROM surveys.question q, surveys.page p WHERE q.page_id = p.page_id AND p.survey_id=:sid AND p.page_index=:pid');
             $stmt1->bindValue(':sid', $sid, PDO::PARAM_INT);
             $stmt1->bindValue(':pid', $pid, PDO::PARAM_INT);
             $stmt1->execute();

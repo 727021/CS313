@@ -62,7 +62,7 @@ INSERT INTO surveys.shortcode (survey_id,code) VALUES
 
 -- Create 'Test Survey'
 INSERT INTO surveys.page (survey_id,page_index) VALUES
-(  (SELECT survey_id FROM surveys.survey WHERE title = 'Test Survey')
+( (SELECT survey_id FROM surveys.survey WHERE title = 'Test Survey')
 , 1
 );
 
@@ -84,4 +84,35 @@ INSERT INTO surveys.question (page_id,content) VALUES
 INSERT INTO surveys.question (page_id,content) VALUES
 ( (SELECT page_id FROM surveys.page WHERE page_index = 1 AND survey_id = (SELECT survey_id FROM surveys.survey WHERE title = 'Test Survey'))
 , '{"type":3, "content":{"content":"Rate this site:","start":1.0,"end":10.0,"interval":1.0,"required":true}}'
+);
+
+-- Create 'Test Survey 2'
+INSERT INTO surveys.page (survey_id,page_index) VALUES
+( (SELECT survey_id FROM surveys.survey WHERE title = 'Test Survey 2')
+, 1
+);
+
+INSERT INTO surveys.page (survey_id,page_index) VALUES
+( (SELECT survey_id FROM surveys.survey WHERE title = 'Test Survey 2')
+, 2
+);
+
+INSERT INTO surveys.question (page_id,content) VALUES
+( (SELECT page_id FROM surveys.page WHERE page_index = 1 AND survey_id = (SELECT survey_id FROM surveys.survey WHERE title = 'Test Survey 2'))
+, '{"type":0, "content":{"content":"What is your name?","placeholder":"Name","multiline":false,"required":true}}'
+);
+
+INSERT INTO surveys.question (page_id,content) VALUES
+( (SELECT page_id FROM surveys.page WHERE page_index = 1 AND survey_id = (SELECT survey_id FROM surveys.survey WHERE title = 'Test Survey 2'))
+, '{"type":0, "content":{"content":"Enter any comments:","placeholder":"Comments","multiline":true,"required":false}}'
+);
+
+INSERT INTO surveys.question (page_id,content) VALUES
+( (SELECT page_id FROM surveys.page WHERE page_index = 2 AND survey_id = (SELECT survey_id FROM surveys.survey WHERE title = 'Test Survey 2'))
+, '{"type":1, "content":{"content":"What are your favorite colors?","choices":["Red","Blue","Green"],"radio":false,"required":true}}'
+);
+
+INSERT INTO surveys.question (page_id,content) VALUES
+( (SELECT page_id FROM surveys.page WHERE page_index = 2 AND survey_id = (SELECT survey_id FROM surveys.survey WHERE title = 'Test Survey 2'))
+, '{"type":2, "content":{"content":"Choose one:","choices":["1","2","3","4","5"],"multiple":false,"required":false}}'
 );
