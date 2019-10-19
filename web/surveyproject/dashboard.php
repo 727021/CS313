@@ -116,37 +116,6 @@ if (!isset($_SESSION['user'])) {
                         <td></td>
                     </tr>
                     <?php } ?>
-
-
-
-                    <!-- Test rows -->
-                    <!-- <tr>
-                        <td class="text-right"><span class="badge badge-pill badge-primary">Unpublished</span></td>
-                        <td><a href="preview.php?id=1">Survey Title</a></td>
-                        <td class="text-center">0</td>
-                        <td class="text-right">
-                            <a href="dashboard.php?publish=1" class="btn btn-success">Publish</a>
-                            <a href="edit.php?id=1" class="btn btn-info">Edit</a>
-                            <a href="dashboard.php?delete=1" class="btn btn-danger">Delete</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-right"><span class="badge badge-pill badge-success">Published</span></td>
-                        <td><a href="preview.php?id=2">Survey Title</a></td>
-                        <td class="text-center">15</td>
-                        <td class="text-right">
-                            <a href="dashboard.php?close=2" class="btn btn-danger">Close</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-right"><span class="badge badge-pill badge-danger">Closed</span></td>
-                        <td><a href="preview.php?id=3">Survey Title</a></td>
-                        <td class="text-center">56</td>
-                        <td class="text-right">
-                            <a href="results.php?id=3" class="btn btn-info">Results</a>
-                            <a href="dashboard.php?delete=3" class="btn btn-danger">Delete</a>
-                        </td>
-                    </tr> -->
                 </tbody>
             </table>
         </div>
