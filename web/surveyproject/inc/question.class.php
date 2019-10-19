@@ -153,11 +153,19 @@ class QSlider extends Question {
     public function getInterval(): float { return $this->interval; }
 
     public function toHTML($id): string {
-        $default = $this->start + $this->interval;
-        return "<div class='form-group'>"
-             . "    <label for='question-$id'>$this->content</label>"
-             . "    <input type='range' class='form-control-range' id='question-$id' name='question-$id' min='$this->start' max='$this->end' step='$this->interval' value='$default'>"
-             . "</div>";
+        $html = "<div class='form-group'>"
+              . "    <label for='question-$id'>$this->content</label>"
+              . "    <div class='d-flex justify-content-between'>";
+
+        for ($i = $this->start; $i <= $this->end; $i += $this->interval) {
+            $html .= "<span>$i</span>";
+        }
+
+        $html .= "</div>"
+              . "    <input type='range' class='form-control-range' id='question-$id' name='question-$id' min='$this->start' max='$this->end' step='$this->interval' value='$this->start'>"
+              . "</div>";
+
+        return $html;
     }
 }
 

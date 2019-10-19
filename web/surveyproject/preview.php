@@ -47,7 +47,7 @@ if ($survey['user_id'] != $_SESSION['user']['id']) {
                 // var_dump($question);
                 $jq = json_decode($question['content']);
                 $qc = $jq->content; // Question content
-                var_dump($qc);
+
                 // Create a Question object based on question type
                 switch ($jq->type) {
                     case QuestionTypes::TEXT:
