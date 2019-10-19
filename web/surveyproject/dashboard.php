@@ -98,7 +98,7 @@ if (!isset($_SESSION['user'])) {
                                     $stmt2->execute();
                                     $survey['shortcode'] = $stmt2->fetch(PDO::FETCH_ASSOC)['code'];
                                 ?>
-                                <a href="survey.php?s=<?php echo $survey['shortcode']; ?>" class="btn btn-info" onclick="showLink('<?php echo $survey['shortcode']; ?>')">Copy Link</a>
+                                <button class="btn btn-info copyLink" data-shortcode="<?php echo $survey['shortcode']; ?>">Copy Link</button>
                                 <a href="dashboard.php?close=<?php echo $survey['id']; ?>" class="btn btn-danger">Close</a>
                                 <?php
                                 break;
