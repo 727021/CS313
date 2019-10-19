@@ -65,7 +65,7 @@ if (!isset($_SESSION['user'])) {
                         <td class="align-middle">
                             <?php
                                 if (strtolower($survey['status']) == 'closed') {
-                                    echo '<p class="textiprimary">' . $survey['title'] . '</p>';
+                                    echo '<p class="text-primary">' . $survey['title'] . '</p>';
                                 } else {
                                     echo '<a href="preview.php?id=' . $survey['id'] . '">' . $survey['title'] . '</a>';
                                 }
