@@ -70,7 +70,6 @@ if (!isset($_SESSION['user'])) {
                                     echo '<a href="preview.php?id=' . $survey['id'] . '">' . $survey['title'] . '</a>';
                                 }
                             ?>
-                            <a href="preview.php?id=<?php echo $survey['id']; ?>"><?php echo $survey['title']; ?></a>
                         </td>
                         <td class="text-center align-middle">
                             <?php
