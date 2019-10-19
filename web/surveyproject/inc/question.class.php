@@ -44,7 +44,7 @@ abstract class Question {
     /**
      * @return string The question as HTML.
      */
-    abstract function toHTML($id): string;
+    abstract function toHTML($id, $error = false): string;
 }
 
 class QText extends Question {
@@ -58,14 +58,14 @@ class QText extends Question {
 
     public function getPlaceholder(): string { return $this->placeholder; }
 
-    public function toHTML($id): string {
+    public function toHTML($id, $error = false): string {
         $html = "<div class='form-group'>"
-             . "    <label for='question-$id'>$this->content</label>";
+             . "    <label for='$id'>$this->content</label>";
 
         if ($this->multiple == true) {
-            $html .= "    <textarea class='form-control' id='question-$id' rows='3' name='question-$id' placeholder='$this->placeholder'></textarea>";
+            $html .= "    <textarea class='form-control" . ($error ? " is-invalid" : "") . "' id='$id' rows='3' name='$id' placeholder='$this->placeholder'></textarea>";
         } else {
-            $html .= "    <input type='text' class='form-control' id='question-$id' name='question-$id' placeholder='$this->placeholder'>";
+            $html .= "    <input type='text' class='form-control" . ($error ? " is-invalid" : "") . "' id='$id' name='$id' placeholder='$this->placeholder'>";
         }
 
         $html .= "</div>";
@@ -90,14 +90,14 @@ class QCheck extends Question {
 
     public function getChoices(): array { return $this->choices; }
 
-    public function toHTML($id): string {
+    public function toHTML($id, $error = false): string {
         $html = "<div class='form-group'>"
               . "    <label>$this->content</label>";
         $i = 0;
         foreach ($this->choices as $choice) {
             $html .= "<div class='form-check'>"
-                   . "    <input class='form-check-input' type='" . ($this->multiple ? "checkbox" : "radio") . "' id='question-$id-$i' name='question-$id" . ($this->multiple ? "-$i" : "") . "' value='" . strtolower(trim(str_replace(" ", "_", $choice))) . "'>"
-                   . "    <label class='form-check-label' for='question-$id-$i'>$choice</label>"
+                   . "    <input class='form-check-input" . ($error ? " is-invalid" : "") . "' type='" . ($this->multiple ? "checkbox" : "radio") . "' id='$id-$i' name='$id" . ($this->multiple ? "-$i" : "") . "' value='" . strtolower(trim(str_replace(" ", "_", $choice))) . "'>"
+                   . "    <label class='form-check-label' for='$id-$i'>$choice</label>"
                    . "</div>";
             $i++;
         }
@@ -122,10 +122,10 @@ class QDrop extends Question {
 
     public function getChoices(): array { return $this->choices; }
 
-    public function toHTML($id): string {
+    public function toHTML($id, $error = false): string {
         $html  = "<div class='form-group'>"
-               . "    <label for='question-$id'>$this->content</label>"
-               . "    <select class='form-control' id='question-$id' name='question-$id'" . ($this->multiple ? " multiple" : "") . ">";
+               . "    <label for='$id'>$this->content</label>"
+               . "    <select class='form-control" . ($error ? " is-invalid" : "") . "' id='$id' name='$id'" . ($this->multiple ? " multiple" : "") . ">";
         foreach ($this->choices as $choice) {
             $html .= "<option value='" . strtolower(trim(str_replace(" ", "_", $choice))) . "'>$choice</option>";
         }
@@ -141,6 +141,15 @@ class QSlider extends Question {
     private $interval;
 
     function __construct(string $content, float $start, float $end, float $interval, bool $required = true) {
+        if ($interval <= 0) {
+            throw new InvalidArgumentException("Slider interval must be positive");
+        }
+        if ($end <= $start) {
+            throw new InvalidArgumentException("Slider end value must be larger than start value");
+        }
+        if (($end - $start) % $interval != 0) {
+            throw new InvalidArgumentException("Slider range must be a multiple of interval");
+        }
         $this->type = QuestionTypes::SLIDER;
         parent::__construct($content, false, $required);
         $this->start = $start;
@@ -152,9 +161,9 @@ class QSlider extends Question {
     public function getEnd(): float { return $this->end; }
     public function getInterval(): float { return $this->interval; }
 
-    public function toHTML($id): string {
+    public function toHTML($id, $error = false): string {
         $html = "<div class='form-group'>"
-              . "    <label for='question-$id'>$this->content</label>"
+              . "    <label for='$id'>$this->content</label>"
               . "    <div class='d-flex justify-content-between'>";
 
         for ($i = $this->start; $i <= $this->end; $i += $this->interval) {
@@ -162,7 +171,7 @@ class QSlider extends Question {
         }
 
         $html .= "</div>"
-              . "    <input type='range' class='form-control-range' id='question-$id' name='question-$id' min='$this->start' max='$this->end' step='$this->interval' value='$this->start'>"
+              . "    <input type='range' class='form-control-range" . ($error ? " is-invalid" : "") . "' id='$id' name='$id' min='$this->start' max='$this->end' step='$this->interval' value='$this->start'>"
               . "</div>";
 
         return $html;

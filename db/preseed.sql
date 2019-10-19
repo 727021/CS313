@@ -68,7 +68,7 @@ INSERT INTO surveys.page (survey_id,page_index) VALUES
 
 INSERT INTO surveys.question (page_id,content) VALUES
 ( (SELECT page_id FROM surveys.page WHERE page_index = 1 AND survey_id = (SELECT survey_id FROM surveys.survey WHERE title = 'Test Survey'))
-, '{"type":0, "content":{"content":"What is your name?","placeholder":"name","multiline":false,"required":true}}'
+, '{"type":0, "content":{"content":"What is your name?","placeholder":"Name","multiline":false,"required":true}}'
 );
 
 INSERT INTO surveys.question (page_id,content) VALUES

@@ -25,6 +25,11 @@ if ($survey['user_id'] != $_SESSION['user']['id']) {
     exit;
 }
 
+$stmt2 = $db->prepare('SELECT COUNT(page_id) FROM surveys.page WHERE survey_id=:sid');
+$stmt2->bindValue(':sid', $sid, PDO::PARAM_INT);
+$stmt2->execute();
+$pageCount = $stmt2->fetch(PDO::FETCH_ASSOC)['count'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,6 +41,7 @@ if ($survey['user_id'] != $_SESSION['user']['id']) {
 
     <div class="container bg-light mt-2 rounded">
     <h3 class="border-bottom text-center display-4"><?php echo empty($title) ? 'Survey' : $title; ?> <small><small class="text-muted">by <?php echo $_SESSION['user']['username']; ?></small></small></h3>
+    <form method="POST" action="<?php echo "preview.php?p=" . $pid + 1; ?>">
         <?php
             $stmt1 = $db->prepare('SELECT q.question_id AS id, q.content FROM surveys.question q, surveys.page p, surveys.survey s WHERE q.page_id = p.page_id AND s.survey_id=:sid AND p.page_index=:pid');
             $stmt1->bindValue(':sid', $sid, PDO::PARAM_INT);
@@ -44,7 +50,6 @@ if ($survey['user_id'] != $_SESSION['user']['id']) {
 
             while ($question = $stmt1->fetch(PDO::FETCH_ASSOC)) {
                 $qid = $question['id'];
-                // var_dump($question);
                 $jq = json_decode($question['content']);
                 $qc = $jq->content; // Question content
 
@@ -65,11 +70,12 @@ if ($survey['user_id'] != $_SESSION['user']['id']) {
                 }
                 if ($q == null) { continue; }
 
-                // Actually display the question HTML
+                // Actually display the question as HTML
                 echo $q->toHTML($qid);
             }
         ?>
         <!-- TODO Add button(s) for page navigation -->
+    </form>
     </div>
 
     <?php include 'inc/js.inc.php'; ?>
