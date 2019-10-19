@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // A page has been submitted
 
     <div class="container bg-light mt-2 rounded">
     <h3 class="border-bottom text-center display-4"><?php echo empty($title) ? 'Survey' : $title; ?> <small><small class="text-muted">by <?php echo $_SESSION['user']['username']; ?></small></small></h3>
-    <form method="POST" action="preview.php?p=<?php echo $pid + 1; ?>">
+    <form method="POST" action="preview.php?p=<?php echo $pid + 1; ?>&id=<?php echo $sid; ?>">
         <?php
         if ($pid > $pageCount) {
             echo '<p class="text-center">Thank you for your response.</p>';
