@@ -33,3 +33,21 @@ var exampleQuestions = [
         "required":"true"
     }}
 ];
+
+var exampleResponses = [
+
+    [// Response for 'Test Surey 2'
+        {"qid":5,"answer":"Andrew"},
+        {"qid":6,"answer":"This is test data and this is a test comment."},
+        {"qid":7,"answer":["Blue","Green"]},
+        {"qid":8,"answer":["4"]}
+    ]
+,
+    [// Another response for 'Test Survey 2'
+        {"qid":5,"answer":"John Doe"},
+        {"qid":6,"answer":"This is more test data and this is another test comment."},
+        {"qid":7,"answer":["Red"]},
+        {"qid":8,"answer":["2"]}
+    ]
+
+];
