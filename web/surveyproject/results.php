@@ -44,12 +44,12 @@ $title = $survey['title'];
 
         // $questions = $stmt2->fetchAll(PDO::FETCH_ASSOC);
     ?>
+    <div class="table-responsive">
     <table class="table">
     <?php
         while ($response = $stmt1->fetch(PDO::FETCH_ASSOC)) {
             ?>
             <tr><th colspan="2">Response: <?php
-            //  print_r($response['responded_on']); echo date_format('M d, Y', strtotime($response['responded_on']));
             $date = explode('-', substr($response['responded_on'], 0, strpos($response['responded_on'], ' ')));
             $y = $date[0];
             $m = $date[1];
@@ -88,6 +88,7 @@ $title = $survey['title'];
         }
     ?>
     </table>
+    </div>
     </div>
 
     <?php include 'inc/js.inc.php'; ?>
