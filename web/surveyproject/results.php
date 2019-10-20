@@ -48,7 +48,7 @@ $title = $survey['title'];
     <?php
         while ($response = $stmt1->fetch(PDO::FETCH_ASSOC)) {
             ?>
-            <tr><th colspan="2">Response</th></tr>
+            <tr><th colspan="2">Response: <?php echo $response['responded_on']; ?></th></tr>
             <?php
             foreach (json_decode($response['data']) as $answer) {
                 ?>
