@@ -62,7 +62,14 @@ $title = $survey['title'];
             foreach (json_decode($response['data']) as $answer) {
                 ?>
                 <tr>
-                    <td>Q<?php echo $answer->qid; ?>:</td>
+                    <td>
+                        <?php
+                            $stmt3 = $db->prepare('SELECT content FROM surveys.question WHERE question_id=:qid');
+                            $stmt3->bindValue(':qid', $answer->qid);
+                            $stmt3->execute();
+                            echo json_decode($stmt3->fetch(PDO::FETCH_ASSOC)['content'])->content->content;
+                        ?>
+                    </td>
                     <td>
                         <?php
                         if (is_array($answer->answer)) {
