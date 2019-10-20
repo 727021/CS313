@@ -47,6 +47,7 @@ $title = $survey['title'];
     <table class="table">
     <?php
         while ($response = $stmt1->fetch(PDO::FETCH_ASSOC)) {
+            var_dump($response);
             ?>
             <tr><th colspan="2">Response: <?php echo date_format('M j, Y', date_create_from_format('Y-m-d H:i:s.u', $response['responded_on'])); ?></th></tr>
             <?php
@@ -56,15 +57,14 @@ $title = $survey['title'];
                     <td>Q<?php echo $answer->qid; ?>:</td>
                     <td>
                         <?php
-                        var_dump($answer);
-                        // if (is_array($answer->answer)) {
-                        //     for ($i = 0; $i < count($answer->answer); $i++) {
-                        //         if ($i > 0) { echo ', '; }
-                        //         echo $answer->answer[$i];
-                        //     }
-                        // } else {
-                        //     echo $answer->answer;
-                        // }
+                        if (is_array($answer->answer)) {
+                            for ($i = 0; $i < count($answer->answer); $i++) {
+                                if ($i > 0) { echo ', '; }
+                                echo $answer->answer[$i];
+                            }
+                        } else {
+                            echo $answer->answer;
+                        }
                         ?>
                     </td>
                 </tr>
