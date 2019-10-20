@@ -31,7 +31,7 @@ $title = $survey['title'];
     <title>Results - Survey Project</title>
 </head>
 <body class="bg-info">
-    <div class="container bg-light mt-2 rounded">
+    <div class="container bg-light mt-2 mb-2 rounded">
     <h3 class="border-bottom text-center display-4"><?php echo empty($title) ? 'Survey' : $title; ?> <small><small class="text-muted">Results</small></small></h3>
     <?php
         $stmt1 = $db->prepare('SELECT response_data AS data, responded_on FROM surveys.response WHERE survey_id=:sid');
@@ -48,7 +48,7 @@ $title = $survey['title'];
     <?php
         while ($response = $stmt1->fetch(PDO::FETCH_ASSOC)) {
             ?>
-            <tr><th colspan="2">Response: <?php echo date_format('M j, Y', date_create($response['responded_on'])); ?></th></tr>
+            <tr><th colspan="2">Response: <?php echo date_format('M j, Y', strtotime($response['responded_on'])); ?></th></tr>
             <?php
             foreach (json_decode($response['data']) as $answer) {
                 ?>
