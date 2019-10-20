@@ -48,7 +48,16 @@ $title = $survey['title'];
     <?php
         while ($response = $stmt1->fetch(PDO::FETCH_ASSOC)) {
             ?>
-            <tr><th colspan="2">Response: <?php print_r($response['responded_on']); echo date_format('M d, Y', strtotime($response['responded_on'])); ?></th></tr>
+            <tr><th colspan="2">Response: <?php
+            //  print_r($response['responded_on']); echo date_format('M d, Y', strtotime($response['responded_on']));
+            $date = explode('-', substr($response['responded_on'], 0, strpos($response['responded_on'], ' ')));
+            $y = $date[0];
+            $m = $date[1];
+            $d = $date[2];
+
+            echo array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec')[$m - 1] . ' ' . ltrim($d, '0') . ', ' . $y;
+
+             ?></th></tr>
             <?php
             foreach (json_decode($response['data']) as $answer) {
                 ?>
