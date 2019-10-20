@@ -38,11 +38,11 @@ $title = $survey['title'];
         $stmt1->bindValue(':sid', $sid, PDO::PARAM_INT);
         $stmt1->execute();
 
-        $stmt2 = $db->prepare('SELECT q.content FROM surveys.question q, surveys.page p WHERE q.page_id=p.page_id AND p.survey_id=:sid');
-        $stmt2->bindValue(':sid', $sid, PDO::PARAM_INT);
-        $stmt2->execute();
+        // $stmt2 = $db->prepare('SELECT q.content FROM surveys.question q, surveys.page p WHERE q.page_id=p.page_id AND p.survey_id=:sid');
+        // $stmt2->bindValue(':sid', $sid, PDO::PARAM_INT);
+        // $stmt2->execute();
 
-        $questions = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+        // $questions = $stmt2->fetchAll(PDO::FETCH_ASSOC);
     ?>
     <table class="table">
     <?php
@@ -50,7 +50,7 @@ $title = $survey['title'];
             ?>
             <tr><th colspan="2">Response</th></tr>
             <?php
-            foreach (json_decode($response) as $answer) {
+            foreach (json_decode($response['data']) as $answer) {
                 ?>
                 <tr>
                     <td>Q<?php echo $answer->qid; ?>:</td>
