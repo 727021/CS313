@@ -43,12 +43,35 @@ $title = $survey['title'];
         $stmt2->execute();
 
         $questions = $stmt2->fetchAll(PDO::FETCH_ASSOC);
-
+    ?>
+    <table class="table">
+    <?php
         while ($response = $stmt1->fetch(PDO::FETCH_ASSOC)) {
-            var_dump($response);
-            echo '<br />';
+            ?>
+            <tr><th colspan="2">Response</th></tr>
+            <?php
+            foreach (json_decode($response) as $answer) {
+                ?>
+                <tr>
+                    <td>Q<?php echo $answer->qid; ?>:</td>
+                    <td>
+                        <?php
+                        if (is_array($answer->answer)) {
+                            for ($i = 0; $i < count($answer->answer); $i++) {
+                                if ($i > 0) { echo ', '; }
+                                echo $answer->answer[$i];
+                            }
+                        } else {
+                            echo $answer->answer;
+                        }
+                        ?>
+                    </td>
+                </tr>
+                <?php
+            }
         }
     ?>
+    </table>
     </div>
 
     <?php include 'inc/js.inc.php'; ?>
