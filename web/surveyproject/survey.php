@@ -25,6 +25,7 @@ if ($sid != 0) {
 
     $survey = $stmt->fetch(PDO::FETCH_ASSOC);
     $title = $survey['title'];
+    $owner = $survey['owner'];
 
     $stmt2 = $db->prepare('SELECT COUNT(page_id) FROM surveys.page WHERE survey_id=:sid');
     $stmt2->bindValue(':sid', $sid, PDO::PARAM_INT);
@@ -48,7 +49,7 @@ if ($sid != 0) {
     <?php if ($sid == 0) { ?>
         <p class="text-center">No survey was found.</p>
     <?php } else { ?>
-    <h3 class="border-bottom text-center display-4"><?php echo empty($title) ? 'Survey' : $title; ?> <small><small class="text-muted">by <?php echo $_SESSION['user']['username']; ?></small></small></h3>
+    <h3 class="border-bottom text-center display-4"><?php echo empty($title) ? 'Survey' : $title; ?> <small><small class="text-muted">by <?php echo $owner; ?></small></small></h3>
     <form method="POST" action="survey.php?p=<?php echo $pid + 1; ?>&s=<?php echo $shortcode; ?>">
         <?php
         if ($pid > $pageCount) {
