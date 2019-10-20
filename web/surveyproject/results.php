@@ -47,9 +47,8 @@ $title = $survey['title'];
     <table class="table">
     <?php
         while ($response = $stmt1->fetch(PDO::FETCH_ASSOC)) {
-            var_dump(json_decode($response['data']));
             ?>
-            <tr><th colspan="2">Response: <?php echo date_format('M j, Y', date_create_from_format('Y-m-d H:i:s.u', $response['responded_on'])); ?></th></tr>
+            <tr><th colspan="2">Response: <?php echo date_format('M j, Y', date_create($response['responded_on'])); ?></th></tr>
             <?php
             foreach (json_decode($response['data']) as $answer) {
                 ?>

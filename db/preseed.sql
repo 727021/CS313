@@ -110,10 +110,10 @@ INSERT INTO surveys.question (page_id,content) VALUES
 -- Responses for 'Test Survey 3'
 INSERT INTO surveys.response (survey_id,response_data) VALUES
 ( (SELECT survey_id FROM surveys.survey WHERE title = 'Test Survey 3')
-, '[{"qid":5,"answer":"Andrew"},{"qid":6,"answer":"This is test data and this is a test comment."},{"qid":7,"answer":["Blue","Green"]},{"qid":8,"answer",["4"]}]'
+, '[{"qid":5,"answer":"Andrew"},{"qid":6,"answer":"This is test data and this is a test comment."},{"qid":7,"answer":["Blue","Green"]},{"qid":8,"answer":["4"]}]'
 );
 
 INSERT INTO surveys.response (survey_id,response_data) VALUES
 ( (SELECT survey_id FROM surveys.survey WHERE title = 'Test Survey 3')
-, '[{"qid":5,"answer":"John Doe"},{"qid":6,"answer":"This is test more data and this is another test comment."},{"qid":7,"answer":["Red"]},{"qid":8,"answer",["2"]}]'
+, '[{"qid":5,"answer":"John Doe"},{"qid":6,"answer":"This is test more data and this is another test comment."},{"qid":7,"answer":["Red"]},{"qid":8,"answer":["2"]}]'
 );
