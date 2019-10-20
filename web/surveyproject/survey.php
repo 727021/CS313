@@ -19,7 +19,7 @@ $sid = $stmt3->fetch(PDO::FETCH_ASSOC)['id']; // Survey id
 if ($sid != 0) {
     $pid = isset($_GET['p']) ? intval($_GET['p']) : 1;
 
-    $stmt = $db->prepare('SELECT title,user_id FROM surveys.survey WHERE survey_id=:sid');
+    $stmt = $db->prepare('SELECT s.title, u.username AS owner FROM surveys.survey s, surveys.users u WHERE s.survey_id=:sid AND u.user_id=s.user_id');
     $stmt->bindValue(':sid', $sid, PDO::PARAM_INT);
     $stmt->execute();
 
