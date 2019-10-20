@@ -9,8 +9,9 @@ if (!isset($_GET['s'])) {
 require_once 'inc/question.class.php';
 require_once 'inc/db.inc.php';
 
+$shortcode = htmlspecialchars(trim($_GET['s']));
 $stmt3 = $db->prepare('SELECT survey_id AS id FROM surveys.shortcode WHERE code=:shc');
-$stmt3->bindValue(':shc', $_GET['s'], PDO::PARAM_STR);
+$stmt3->bindValue(':shc', $shortcode, PDO::PARAM_STR);
 $stmt3->execute();
 
 $sid = $stmt3->fetch(PDO::FETCH_ASSOC)['id']; // Survey id
@@ -48,7 +49,7 @@ if ($sid != 0) {
         <p class="text-center">No survey was found.</p>
     <?php } else { ?>
     <h3 class="border-bottom text-center display-4"><?php echo empty($title) ? 'Survey' : $title; ?> <small><small class="text-muted">by <?php echo $_SESSION['user']['username']; ?></small></small></h3>
-    <form method="POST" action="survey.php?p=<?php echo $pid + 1; ?>&s=<?php echo $sid; ?>">
+    <form method="POST" action="survey.php?p=<?php echo $pid + 1; ?>&s=<?php echo $shortcode; ?>">
         <?php
         if ($pid > $pageCount) {
             echo '<p class="text-center">Thank you for your response.</p>';
