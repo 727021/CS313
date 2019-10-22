@@ -41,7 +41,7 @@ try {
 ?>
 
         <input type="checkbox" name="newTopic" id="newTopic">
-        <input type="text" name="topicText" id="topicText" placeholder="New Topic"
+        <input type="text" name="topicText" id="topicText" placeholder="New Topic">
 
         <input type="submit" value="submit">
 
