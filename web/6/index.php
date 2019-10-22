@@ -28,10 +28,10 @@ try {
 </head>
 <body>
     <form>
-        <input type="text" name="book" id="book">
-        <input type="text" name="chapter" id="chapter">
-        <input type="text" name="verse" id="verse">
-        <textarea name="content" id="content">
+        <input type="text" name="book" id="book" placeholder="Book">
+        <input type="text" name="chapter" id="chapter" placeholder="Chapter">
+        <input type="text" name="verse" id="verse" placeholder="Verse">
+        <textarea name="content" id="content" placeholder="Content">
 
         </textarea>
 <?php
