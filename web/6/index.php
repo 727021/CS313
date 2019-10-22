@@ -8,6 +8,7 @@ try {
     $dbName = ltrim($dbVars['path'], '/');
 
     var_dump(getenv('DATABASE_URL'));
+    var_dump($dbVars);
 
     $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPass);
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
