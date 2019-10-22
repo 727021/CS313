@@ -67,14 +67,13 @@ try {
 
         if($_POST['newTopic'] == "on"){
             $topicText = $_POST["topicText"];
-            if(trim($topicText) != "")
-            {
-                $db->query("INSERT INTO topic (name) VALUES ($topicText)");
-                $db->query("INSERT INTO links (topic, scripture) VALUES
-                ( currval('topic_id_seq')
-                , currval('scriptures_id_seq'))"
-                );
-            }
+
+            $db->query("INSERT INTO topic (name) VALUES ($topicText)");
+
+            $db->query("INSERT INTO links (topic, scripture) VALUES
+            ( currval('topic_id_seq')
+            , currval('scriptures_id_seq'))"
+            );
         }
 
         foreach($topic as $checked){
