@@ -44,5 +44,42 @@ try {
         <input type="submit" value="submit">
 
     </form>
+    <?php
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $book = $_POST["book"];
+        $chapter = $_POST["chapter"];
+        $verse = $_POST["verse"];
+        $content = $_POST["content"];
+        $topic = $_POST["topic"];
+
+        $db->query("INSERT INTO scriptures (book, chapter, verse, content) VALUES
+        ( '$book'
+        , $chapter
+        , $verse
+        , '$content'
+        )");
+
+        foreach($topic as $checked){
+            $db->query("INSERT INTO links (topic, scripture) VALUES
+                ((SELECT id FROM topic WHERE name = '$checked')
+                , currval('scriptures_id_seq'))"
+                );
+        }
+
+    }
+
+    foreach($db->query('SELECT * FROM scriptures', PDO::FETCH_ASSOC) as $row)
+    {
+        echo '<p><b>' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'] . '</b> - "' . $row['content'];
+
+        foreach($db->query('SELECT t.name FROM topic t, links l
+        WHERE t.id = l.topic AND l.scripture = ' . $row['id'], PDO::FETCH_ASSOC) as $topic ){
+            echo ' ' . $topic['name'] ;
+        }
+        echo '</p>';
+
+    }
+
+?>
 </body>
 </html>
