@@ -7,6 +7,8 @@ try {
     $dbPass = $dbvars['pass'];
     $dbName = ltrim($dbVars['path'], '/');
 
+    var_dump($dbvars);
+
     $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPass);
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch(PDOException $ex) {
