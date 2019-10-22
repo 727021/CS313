@@ -55,23 +55,6 @@ try {
         $topic = $_POST["topic"];
         $newTopic = $_POST["newTopic"];
 
-        if(isset($_POST['newTopic'])){
-            $topicText = $_POST["topicText"];
-
-            if(trim($topicText) != "")
-            {
-                $db->query("INSERT INTO topic (name) VALUES ($topicText)");
-
-
-                $db->query("INSERT INTO links (topic, scripture) VALUES
-                ( currval('topic_id_seq')
-                , currval('scriptures_id_seq'))"
-                );
-
-            }
-
-        }
-
         $db->query("INSERT INTO scriptures (book, chapter, verse, content) VALUES
         ( '$book'
         , $chapter
@@ -79,13 +62,24 @@ try {
         , '$content'
         )");
 
+        if(isset($_POST['newTopic'])){
+            $topicText = $_POST["topicText"];
+            if(trim($topicText) != "")
+            {
+                $db->query("INSERT INTO topic (name) VALUES ($topicText)");
+                $db->query("INSERT INTO links (topic, scripture) VALUES
+                ( currval('topic_id_seq')
+                , currval('scriptures_id_seq'))"
+                );
+            }
+        }
+
         foreach($topic as $checked){
             $db->query("INSERT INTO links (topic, scripture) VALUES
                 ((SELECT id FROM topic WHERE name = '$checked')
                 , currval('scriptures_id_seq'))"
                 );
         }
-
     }
 
     foreach($db->query('SELECT * FROM scriptures', PDO::FETCH_ASSOC) as $row)
@@ -97,7 +91,6 @@ try {
             echo ' ' . $topic['name'] ;
         }
         echo '</p>';
-
     }
 
 ?>
