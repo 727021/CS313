@@ -49,8 +49,6 @@ try {
     <?php
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-        var_dump($_POST);
-
         $book = $_POST["book"];
         $chapter = $_POST["chapter"];
         $verse = $_POST["verse"];
