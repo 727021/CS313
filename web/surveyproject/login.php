@@ -5,7 +5,7 @@ if (isset($_SESSION['user'])) {
     header('location: dashboard.php');
     exit;
 }
-
+$register = isset($_GET['reg']);
 $error = false;
 $user = $pass = "";   // Form data
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -61,6 +61,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <div class="d-none d-sm-block col-sm-2 col-lg-4"></div>
                         <div class="col">
                             <div class="alert alert-danger">Username or password was incorrect.</div>
+                        </div>
+                        <div class="d-none d-sm-block col-sm-2 col-lg-4"></div>
+                    </div>
+                    <?php } elseif ($register) { ?>
+                    <div class="row">
+                        <div class="d-none d-sm-block col-sm-2 col-lg-4"></div>
+                        <div class="col">
+                            <div class="alert alert-info">Registration successful.</div>
                         </div>
                         <div class="d-none d-sm-block col-sm-2 col-lg-4"></div>
                     </div>
