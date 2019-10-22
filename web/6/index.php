@@ -27,7 +27,7 @@ try {
     <title>Insert</title>
 </head>
 <body>
-    <form>
+    <form action="index.php" method="POST">
         <input type="text" name="book" id="book" placeholder="Book">
         <input type="text" name="chapter" id="chapter" placeholder="Chapter">
         <input type="text" name="verse" id="verse" placeholder="Verse">
