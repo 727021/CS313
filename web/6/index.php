@@ -65,7 +65,7 @@ try {
         , '$content'
         )");
 
-        if(isset($_POST['newTopic'])){
+        if($_POST['newTopic'] == "on"){
             $topicText = $_POST["topicText"];
             if(trim($topicText) != "")
             {
