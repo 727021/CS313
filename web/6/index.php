@@ -65,10 +65,10 @@ try {
         , '$content'
         )");
 
-        if($_POST['newTopic'] == "on"){
+        if($newTopic == "on"){
             $topicText = $_POST["topicText"];
 
-            $db->query("INSERT INTO topic (name) VALUES ($topicText)");
+            $db->query("INSERT INTO topic (name) VALUES ('$topicText')");
 
             $db->query("INSERT INTO links (topic, scripture) VALUES
             ( currval('topic_id_seq')
