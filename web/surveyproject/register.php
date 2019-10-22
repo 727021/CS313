@@ -7,40 +7,9 @@ if (isset($_SESSION['user'])) {
 }
 
 $error = false;
-$user = $pass = "";   // Form data
+$user = $email = $fname = $mname = $lname = $pass = $cpass = "";   // Form data
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    // Sanitize input
-    if (isset($_POST['username'])) { $user = htmlspecialchars(trim($_POST['username'])); }
-    if (isset($_POST['password'])) { $pass = htmlspecialchars(trim($_POST['password'])); }
-
-    if ($user !== false && $pass !== false) {
-        require_once 'inc/db.inc.php';
-
-        $stmt = $db->prepare('SELECT u.user_id AS id, u.first AS name, u.hash, u.username, c.value AS type FROM surveys.users u, surveys.common_lookup c WHERE u.username=:username AND c.common_lookup_id = u.type');
-        $stmt->bindValue(':username', $user, PDO::PARAM_STR);
-        $stmt->execute();
-
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if ($result !== false && password_verify($pass, $result['hash'])) {
-            // Log the user in
-            $_SESSION['user'] = array('id' => $result['id'], 'name' => $result['name'], 'type' => $result['type'], 'username' => $result['username']);
-
-            // Unset anything with the password in it, just to be safe
-            unset($result);
-            unset($_POST);
-            unset($pass);
-
-            // Go to dashboard
-            header('location: dashboard.php');
-            exit;
-        } else {
-            $error = true;
-        }
-    } else {
-        $error = true;
-    }
 }
 ?>
 <!DOCTYPE html>
