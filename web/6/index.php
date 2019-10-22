@@ -38,8 +38,10 @@ try {
         foreach($db->query('Select name FROM topic', PDO::FETCH_ASSOC) as $row){
             echo "<label> " . $row['name'] . " <input type='checkbox' name='topic[]' value='" . $row['name'] . "'> </label>";
         }
-
 ?>
+
+        <input type="checkbox" name="newTopic" id="newTopic">
+        <input type="text" name="topicText" id="topicText" placeholder="New Topic"
 
         <input type="submit" value="submit">
 
@@ -51,6 +53,24 @@ try {
         $verse = $_POST["verse"];
         $content = $_POST["content"];
         $topic = $_POST["topic"];
+        $newTopic = $_POST["newTopic"];
+
+        if(isset($_POST['newTopic'])){
+            $topicText = $_POST["topicText"];
+
+            if(trim($topicText) != "")
+            {
+                $db->query("INSERT INTO topic (name) VALUES ($topicText)");
+
+
+                $db->query("INSERT INTO links (topic, scripture) VALUES
+                ( currval('topic_id_seq')
+                , currval('scriptures_id_seq'))"
+                );
+
+            }
+
+        }
 
         $db->query("INSERT INTO scriptures (book, chapter, verse, content) VALUES
         ( '$book'
