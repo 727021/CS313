@@ -16,13 +16,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <html lang="en">
 <head>
     <?php include 'inc/head.inc.php'; ?>
-    <title>Log In - Survey Project</title>
+    <title>Create Account - Survey Project</title>
 </head>
 <body class="bg-info">
     <div class="container">
         <div class="vertical-center">
             <div>
-                <h1 class="display-3 text-white no-select">Log In</h1>
+                <h1 class="display-3 text-white no-select">Create Account</h1>
                 <br />
                 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
                 <!-- TODO form error handling -->
@@ -30,8 +30,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <div class="col">
                             <input class="form-control" type="text" name="username" id="reg-username" placeholder="Username" value="<?php echo $user; ?>">
                         </div>
-                    </div>
-                    <div class="form-group row">
                         <div class="col">
                             <input class="form-control" type="email" name="email" id="reg-email" placeholder="user@example.com" value="<?php echo $email; ?>">
                         </div>
