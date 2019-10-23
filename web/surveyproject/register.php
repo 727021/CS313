@@ -28,18 +28,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <!-- TODO form error handling -->
                     <div class="form-group row">
                         <div class="col">
-                            <label for="reg-username">Username:</label>
                             <input class="form-control" type="text" name="username" id="reg-username" placeholder="Username" value="<?php echo $user; ?>">
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col">
-                            <label for="reg-email">Email:</label>
                             <input class="form-control" type="email" name="email" id="reg-email" placeholder="user@example.com" value="<?php echo $email; ?>">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label>Name:</label><br>
                         <div class="col"><input class="form-control" type="text" name="fname" id="reg-fname" placeholder="First name" value="<?php echo $fname; ?>"></div>
                         <div class="col"><input class="form-control" type="text" name="lname" id="reg-lname" placeholder="Last name" value="<?php echo $lname; ?>"></div>
                     </div>
