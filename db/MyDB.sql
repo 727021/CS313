@@ -22,7 +22,6 @@ CREATE TABLE users
 , username 	VARCHAR(30) 	NOT NULL UNIQUE
 , email 	VARCHAR(255) 	NOT NULL UNIQUE
 , first 	VARCHAR(30) 	NOT NULL
-, middle 	VARCHAR(30)
 , last 		VARCHAR(30) 	NOT NULL
 , hash		VARCHAR(255) 	NOT NULL -- Generated in php with hash_password()
 , type 		INT 			NOT NULL REFERENCES common_lookup(common_lookup_id))

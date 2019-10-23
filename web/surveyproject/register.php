@@ -39,19 +39,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label>Name:</label>
-                        <div class="col"><input class="form-control" type="text" name="fname" id="reg-fname" placeholder="First" value="<?php echo $fname; ?>"></div>
-                        <div class="col"><input class="form-control" type="text" name="mname" id="reg-mname" placeholder="Middle" value="<?php echo $mname; ?>"></div>
-                        <div class="col"><input class="form-control" type="text" name="lname" id="reg-lname" placeholder="Last" value="<?php echo $lname; ?>"></div>
+                        <label>Name:</label><br>
+                        <div class="col"><input class="form-control" type="text" name="fname" id="reg-fname" placeholder="First name" value="<?php echo $fname; ?>"></div>
+                        <div class="col"><input class="form-control" type="text" name="lname" id="reg-lname" placeholder="Last name" value="<?php echo $lname; ?>"></div>
                     </div>
                     <div class="form-group row">
                         <div class="col">
-                            <label for="reg-password">Password:</label>
                             <input class="form-control" type="password" name="password" id="reg-password" placeholder="Password">
                         </div>
                         <div class="col">
-                            <label for="reg-cpassword">Confirm Password:</label>
-                            <input class="form-control" type="password" name="cpassword" id="reg-cpassword" placeholder="Password">
+                            <input class="form-control" type="password" name="cpassword" id="reg-cpassword" placeholder="Confirm password">
                         </div>
                     </div>
                     <div class="form-group row">
