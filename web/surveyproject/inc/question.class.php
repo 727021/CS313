@@ -96,7 +96,7 @@ class QCheck extends Question {
         $i = 0;
         foreach ($this->choices as $choice) {
             $html .= "<div class='custom-control custom-" . ($this->multiple ? "checkbox" : "radio") . "'>"
-                   . "    <input class='custom-control-input" . ($error ? " is-invalid" : "") . "' type='" . ($this->multiple ? "checkbox" : "radio") . "' id='$id-$i' name='$id" . ($this->multiple ? "-$i" : "") . "' value='" . strtolower(trim(str_replace(" ", "_", $choice))) . "'>"
+                   . "    <input class='custom-control-input" . ($error ? " is-invalid" : "") . "' type='" . ($this->multiple ? "checkbox" : "radio") . "' id='$id-$i' name='$id" . ($this->multiple ? "[]" : "") . "' value='" . strtolower(trim(str_replace(" ", "_", $choice))) . "'>"
                    . "    <label class='custom-control-label' for='$id-$i'>$choice</label>"
                    . "</div>";
             $i++;
@@ -125,7 +125,8 @@ class QDrop extends Question {
     public function toHTML($id, $error = false): string {
         $html  = "<div class='form-group'>"
                . "    <label for='$id'>$this->content</label>"
-               . "    <select class='custom-select" . ($error ? " is-invalid" : "") . "' id='$id' name='$id'" . ($this->multiple ? " multiple" : "") . ">";
+               . "    <select class='custom-select" . ($error ? " is-invalid" : "") . "' id='$id' name='$id'" . ($this->multiple ? " multiple" : "") . ">"
+               . "<option value=''>Choose One</option>";
         foreach ($this->choices as $choice) {
             $html .= "<option value='" . strtolower(trim(str_replace(" ", "_", $choice))) . "'>$choice</option>";
         }
