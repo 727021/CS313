@@ -101,7 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div>
                 <h1 class="display-3 text-white no-select">Create Account</h1>
                 <br />
-                <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
+                <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" novalidate>
                     <div class="row">
                         <div class="form-group col-sm-12 col-md-6">
                             <input class="form-control<?php if ($posted) { echo (($euser === "") ? ' is-valid' : ' is-invalid'); } ?>" type="text" name="username" id="reg-username" placeholder="Username" value="<?php echo $user; ?>">
