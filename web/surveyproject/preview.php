@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // A page has been submitted
     foreach ($_POST as $key => $val) {
         if (!is_array($val)) { $val = trim(htmlspecialchars($val)); }
         if ($val === "" || (is_array($val) && count($val == 0))) {
-            if (is_array($var)) { echo 'COUNT(' . count($val) . ')'; }
+            if (is_array($val)) { echo 'COUNT(' . count($val) . ')'; }
             array_push($invalid_inputs, $key);
         }
     }
