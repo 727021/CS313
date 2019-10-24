@@ -49,7 +49,7 @@ if ($sid != 0) {
                 $_SESSION['response'] = array();
             }
 
-            $_SESSION['response'] = array_merge($_SESSION['response'], $_POST);
+            $_SESSION['response'] = $_SESSION['response'] + $_POST;
         }
         var_dump($_SESSION);
         if ($pid > $pageCount) { // The survey is finished, record the data.
@@ -104,7 +104,7 @@ if ($sid != 0) {
                 if ($q == null) { continue; }
 
                 // Actually display the question as HTML
-                echo $q->toHTML($qid);
+                echo $q->toHTML($qid, in_array($qid, $invalid_inputs));
             }
         ?>
         <div class="form-group text-center">
