@@ -32,8 +32,29 @@ if ($sid != 0) {
     $stmt2->execute();
     $pageCount = $stmt2->fetch(PDO::FETCH_ASSOC)['count'];
 
+    $invalid_inputs = array();
     if ($_SERVER['REQUEST_METHOD'] == 'POST') { // A page has been submitted
         // Do form validation and store answers in $_SESSION['response']
+        foreach ($_POST as $key => $val) {
+            if (is_string($val)) { $val = trim(htmlspecialchars($val)); }
+            if ((is_string($val) && strlen($val) == 0)) {
+                array_push($invalid_inputs, $key);
+            }
+        }
+
+        if (count($invalid_inputs) > 0) {
+            $pid--; // There was a problem, go back to the previous page
+        } else {
+            if (!isset($_SESSION['response'])) {
+                $_SESSION['response'] = array();
+            }
+
+            $_SESSION['response'] = array_merge($_SESSION['response'], $_POST);
+        }
+        var_dump($_SESSION);
+        if ($pid > $pageCount) { // The survey is finished, record the data.
+
+        }
     }
 }
 

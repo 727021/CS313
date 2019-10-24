@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // A page has been submitted
     }
 
     if (count($invalid_inputs) > 0) {
-        $pid--;
+        $pid--; // There was a problem, go back to the previous page
     }
 }
 
