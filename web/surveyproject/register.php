@@ -91,11 +91,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt_reg->bindValue(':fname', $fname, PDO::PARAM_STR);
         $stmt_reg->bindValue(':lname', $lname, PDO::PARAM_STR);
         $stmt_reg->bindValue(':hash', password_hash($pass, PASSWORD_DEFAULT), PDO::PARAM_STR);
-        if ($stmt_reg->execute()) {
-            header('location: login.php?reg');
-        } else {
+        $stmt_reg->execute();
 
-        }
+        header('location: login.php?reg');
     }
 }
 ?>

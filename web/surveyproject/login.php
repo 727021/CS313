@@ -68,7 +68,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <div class="row">
                         <div class="d-none d-sm-block col-sm-2 col-lg-4"></div>
                         <div class="col">
-                            <div class="alert alert-info">Registration successful.</div>
+                            <div class="alert alert-info alert-dismissable fade show" role="alert">
+                                Registration successful.
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
                         </div>
                         <div class="d-none d-sm-block col-sm-2 col-lg-4"></div>
                     </div>
