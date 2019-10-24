@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($user === "") { // Empty username
         $error = true;
         $euser = "Enter a username.";
-    } elseif (!preg_match('/[A-Za-z0-9]+\w*/', $user) || preg_match('/\s+/', $user)) { // Invalid username
+    } elseif (!preg_match('/\w+/', $user) || preg_match('/\s+/', $user)) { // Invalid username
         $error = true;
         $euser = "Username is invalid. (Must contain only letters, numbers, and _)";
     } else { // Taken username
@@ -73,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // Check password
-    if (strlen($pass < 8)) { // Invalid password
+    if (strlen($pass) < 8) { // Invalid password
         $error = true;
         $epass = "Password must be at least 8 characters long.";
     }
@@ -82,6 +82,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($cpass !== $pass) { // Password's don't match
         $error = true;
         $ecpass = "Password doesn't match.";
+    }
+
+    if (!$error) { // No errors, actually create the account
+
     }
 }
 ?>
