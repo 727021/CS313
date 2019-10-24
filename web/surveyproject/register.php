@@ -105,27 +105,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         </div>
                         <div class="form-group col-sm-12 col-md-6">
                             <input class="form-control<?php if ($posted) { echo (($eemail === "") ? ' is-valid' : ' is-invalid'); } ?>" type="email" name="email" id="reg-email" placeholder="user@example.com" value="<?php echo $email; ?>">
-                            <?php if ($posted && $eemail !== "") { echo "<div class=\"invalid-feedback\">$euser</div>"; } ?>
+                            <?php if ($posted && $eemail !== "") { echo "<div class=\"invalid-feedback\">$eemail</div>"; } ?>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-sm-12 col-md-6">
                             <input class="form-control<?php if ($posted) { echo (($efname === "") ? ' is-valid' : ' is-invalid'); } ?>" type="text" name="fname" id="reg-fname" placeholder="First name" value="<?php echo $fname; ?>">
-                            <?php if ($posted && $efname !== "") { echo "<div class=\"invalid-feedback\">$euser</div>"; } ?>
+                            <?php if ($posted && $efname !== "") { echo "<div class=\"invalid-feedback\">$efname</div>"; } ?>
                         </div>
                         <div class="form-group col-sm-12 col-md-6">
                             <input class="form-control<?php if ($posted) { echo (($elname === "") ? ' is-valid' : ' is-invalid'); } ?>" type="text" name="lname" id="reg-lname" placeholder="Last name" value="<?php echo $lname; ?>">
-                            <?php if ($posted && $elname !== "") { echo "<div class=\"invalid-feedback\">$euser</div>"; } ?>
+                            <?php if ($posted && $elname !== "") { echo "<div class=\"invalid-feedback\">$elname</div>"; } ?>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-sm-12 col-md-6">
                             <input class="form-control<?php if ($posted && $epass !== "") { echo ' is-invalid'; } ?>" type="password" name="password" id="reg-password" placeholder="Password">
-                            <?php if ($posted && $epass !== "") { echo "<div class=\"invalid-feedback\">$euser</div>"; } ?>
+                            <?php if ($posted && $epass !== "") { echo "<div class=\"invalid-feedback\">$epass</div>"; } ?>
                         </div>
                         <div class="form-group col-sm-12 col-md-6">
                             <input class="form-control<?php if ($posted && $ecpass !== "") { echo ' is-invalid'; } ?>" type="password" name="cpassword" id="reg-cpassword" placeholder="Confirm password">
-                            <?php if ($posted && $ecpass !== "") { echo "<div class=\"invalid-feedback\">$euser</div>"; } ?>
+                            <?php if ($posted && $ecpass !== "") { echo "<div class=\"invalid-feedback\">$ecpass</div>"; } ?>
                         </div>
                     </div>
                     <div class="form-group row">
