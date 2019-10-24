@@ -35,15 +35,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <input class="form-control" type="email" name="email" id="reg-email" placeholder="user@example.com" value="<?php echo $email; ?>">
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <div class="col-sm-12 col-md-6"><input class="form-control" type="text" name="fname" id="reg-fname" placeholder="First name" value="<?php echo $fname; ?>"></div>
-                        <div class="col-sm-12 col-md-6"><input class="form-control" type="text" name="lname" id="reg-lname" placeholder="Last name" value="<?php echo $lname; ?>"></div>
+                    <div class="row">
+                        <div class="form-group col-sm-12 col-md-6">
+                            <input class="form-control" type="text" name="fname" id="reg-fname" placeholder="First name" value="<?php echo $fname; ?>">
+                        </div>
+                        <div class="form-group col-sm-12 col-md-6">
+                            <input class="form-control" type="text" name="lname" id="reg-lname" placeholder="Last name" value="<?php echo $lname; ?>">
+                        </div>
                     </div>
-                    <div class="form-group row">
-                        <div class="col-sm-12 col-md-6">
+                    <div class="row">
+                        <div class="form-group col-sm-12 col-md-6">
                             <input class="form-control" type="password" name="password" id="reg-password" placeholder="Password">
                         </div>
-                        <div class="col-sm-12 col-md-6">
+                        <div class="form-group col-sm-12 col-md-6">
                             <input class="form-control" type="password" name="cpassword" id="reg-cpassword" placeholder="Confirm password">
                         </div>
                     </div>
