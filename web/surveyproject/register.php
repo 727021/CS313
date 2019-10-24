@@ -6,13 +6,83 @@ if (isset($_SESSION['user'])) {
     exit;
 }
 
-$error = false;
 $user = $email = $fname = $lname = $pass = $cpass = "";   // Form data
-$euser = $eemail = $efname = $elname = $epass = $ecpass = "";   // Form data
-$posted = false;
+$euser = $eemail = $efname = $elname = $epass = $ecpass = "";   // Form errors
+$error = false; // Whether there were any errors in the form (easier to set this than to check every error string)
+$posted = false; // Was the form submitted? Used for validation styles.
+
+// Validation only happens on the server. I might add client validation later,
+// but I don't have time to now.
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $posted = true;
+    $user = trim(htmlspecialchars($_POST['username']));
+    $email = trim(htmlspecialchars($_POST['email']));
+    $fname = trim(htmlspecialchars($_POST['fname']));
+    $lname = trim(htmlspecialchars($_POST['lname']));
+    $pass = trim(htmlspecialchars($_POST['password']));
+    $cpass = trim(htmlspecialchars($_POST['cpassword']));
 
+    require_once 'inc/db.inc.php';
+
+    // Check username
+    if ($user === "") { // Empty username
+        $error = true;
+        $euser = "Enter a username.";
+    } elseif (false) { // Invalid username
+        $error = true;
+        $euser = "Username is invalid."; // TODO Add a description of what a 'valid' username is
+    } else { // Taken username
+        $stmt_user = $db->prepare('SELECT user_id FROM surveys.users WHERE username=:user LIMIT 1');
+        $stmt_user->bindValue(':user', $user, PDO::PARAM_STR);
+        $stmt_user->execute();
+
+        if (count($stmt_user->fetchAll(PDO::FETCH_COLUMN, 0)) > 0) {
+            $error = true;
+            $euser = "That username is taken.";
+        }
+    }
+
+    // Check email
+    if ($email === "") { // Empty email
+        $error = true;
+        $eemail = "Enter an email address.";
+    } elseif (false) { // Invalid email
+        $error = true;
+        $eemail = "Email address is invalid.";
+    } else { // Taken email
+        $stmt_email = $db->prepare('SELECT user_id FROM surveys.users WHERE email=:email LIMIT 1');
+        $stmt_email->bindValue(':email', $email, PDO::PARAM_STR);
+        $stmt_email->execute();
+
+        if (count($stmt_email->fetchAll(PDO::FETCH_COLUMN, 0)) > 0) {
+            $error = true;
+            $eemail = "There is already an account with that email address.";
+        }
+    }
+
+    // Check first name
+    if ($fname === "") { // Empty first name
+        $error = true;
+        $efname = "Enter your first name.";
+    }
+
+    // Check last name
+    if ($lname === "") { // Empty last name
+        $error = true;
+        $elname = "Enter your last name.";
+    }
+
+    // Check password
+    if (false) { // Invalid password
+        $error = true;
+        $epass = "Password is invalid."; // TODO Add a description of what a 'valid' password is
+    }
+
+    // Check confirm password
+    if ($cpass !== $pass) { // Password's don't match
+        $error = true;
+        $ecpass = "Password doesn't match.";
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -28,7 +98,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <h1 class="display-3 text-white no-select">Create Account</h1>
                 <br />
                 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
-                <!-- TODO form error handling -->
                     <div class="row">
                         <div class="form-group col-sm-12 col-md-6">
                             <input class="form-control<?php if ($posted) { echo (($euser === "") ? ' is-valid' : ' is-invalid'); } ?>" type="text" name="username" id="reg-username" placeholder="Username" value="<?php echo $user; ?>">
@@ -51,11 +120,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                     <div class="row">
                         <div class="form-group col-sm-12 col-md-6">
-                            <input class="form-control<?php if ($posted) { echo (($epass === "") ? ' is-valid' : ' is-invalid'); } ?>" type="password" name="password" id="reg-password" placeholder="Password">
+                            <input class="form-control<?php if ($posted && $epass !== "") { echo ' is-invalid'; } ?>" type="password" name="password" id="reg-password" placeholder="Password">
                             <?php if ($posted && $epass !== "") { echo "<div class=\"invalid-feedback\">$euser</div>"; } ?>
                         </div>
                         <div class="form-group col-sm-12 col-md-6">
-                            <input class="form-control<?php if ($posted) { echo (($ecpass === "") ? ' is-valid' : ' is-invalid'); } ?>" type="password" name="cpassword" id="reg-cpassword" placeholder="Confirm password">
+                            <input class="form-control<?php if ($posted && $ecpass !== "") { echo ' is-invalid'; } ?>" type="password" name="cpassword" id="reg-cpassword" placeholder="Confirm password">
                             <?php if ($posted && $ecpass !== "") { echo "<div class=\"invalid-feedback\">$euser</div>"; } ?>
                         </div>
                     </div>
