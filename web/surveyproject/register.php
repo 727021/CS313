@@ -8,6 +8,7 @@ if (isset($_SESSION['user'])) {
 
 $error = false;
 $user = $email = $fname = $mname = $lname = $pass = $cpass = "";   // Form data
+$euser = $eemail = $efname = $emname = $elname = $epass = $ecpass = "";   // Form data
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 }
@@ -30,6 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <div class="col-sm-12 col-md-6">
                             <input class="form-control" type="text" name="username" id="reg-username" placeholder="Username" value="<?php echo $user; ?>">
                         </div>
+                        <br class="d-md-none" />
                         <div class="col-sm-12 col-md-6">
                             <input class="form-control" type="email" name="email" id="reg-email" placeholder="user@example.com" value="<?php echo $email; ?>">
                         </div>
