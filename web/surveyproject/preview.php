@@ -35,8 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // A page has been submitted
     // Do form validation and store answers in $_SESSION['response']
     var_dump($_POST);
     foreach ($_POST as $key => $val) {
-        $val = trim(htmlspecialchars($val));
-        if (count($val) == 0) {
+        if (is_string($val)) { $val = trim(htmlspecialchars($val)); }
+        if ((is_string($val) && strlen($val) == 0) || count($val) == 0) {
             echo "($key => $val)";
             array_push($invalid_inputs, $key);
         }
