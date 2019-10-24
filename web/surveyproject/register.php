@@ -28,9 +28,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($user === "") { // Empty username
         $error = true;
         $euser = "Enter a username.";
-    } elseif (false) { // Invalid username
+    } elseif (!preg_match('/[A-Za-z0-9]+\w*/', $user) || preg_match('/\s+/', $user)) { // Invalid username
         $error = true;
-        $euser = "Username is invalid."; // TODO Add a description of what a 'valid' username is
+        $euser = "Username is invalid. (Must contain only letters, numbers, and _)";
     } else { // Taken username
         $stmt_user = $db->prepare('SELECT user_id FROM surveys.users WHERE username=:user LIMIT 1');
         $stmt_user->bindValue(':user', $user, PDO::PARAM_STR);
@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($email === "") { // Empty email
         $error = true;
         $eemail = "Enter an email address.";
-    } elseif (false) { // Invalid email
+    } elseif (preg_match('/\s+/', $email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) { // Invalid email
         $error = true;
         $eemail = "Email address is invalid.";
     } else { // Taken email
@@ -73,9 +73,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // Check password
-    if (false) { // Invalid password
+    if (strlen($pass < 8)) { // Invalid password
         $error = true;
-        $epass = "Password is invalid."; // TODO Add a description of what a 'valid' password is
+        $epass = "Password must be at least 8 characters long.";
     }
 
     // Check confirm password
