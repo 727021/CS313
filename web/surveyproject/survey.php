@@ -24,75 +24,76 @@ if ($sid != 0) {
     $stmt_check->bindValue(':ip', get_ip_address(), PDO::PARAM_STR);
     $stmt_check->execute();
     $taken = false;
+
     if (count($stmt_check->fetchAll(PDO::FETCH_COLUMN, 0)) > 0) {
         $taken = true;
-    } else {
-        $pid = isset($_GET['p']) ? intval($_GET['p']) : 1;
+    }
 
-        $stmt = $db->prepare('SELECT s.title, u.username AS owner FROM surveys.survey s, surveys.users u WHERE s.survey_id=:sid AND u.user_id=s.user_id');
-        $stmt->bindValue(':sid', $sid, PDO::PARAM_INT);
-        $stmt->execute();
+    $pid = isset($_GET['p']) ? intval($_GET['p']) : 1;
 
-        $survey = $stmt->fetch(PDO::FETCH_ASSOC);
-        $title = $survey['title'];
-        $owner = $survey['owner'];
+    $stmt = $db->prepare('SELECT s.title, u.username AS owner FROM surveys.survey s, surveys.users u WHERE s.survey_id=:sid AND u.user_id=s.user_id');
+    $stmt->bindValue(':sid', $sid, PDO::PARAM_INT);
+    $stmt->execute();
 
-        $stmt2 = $db->prepare('SELECT COUNT(page_id) FROM surveys.page WHERE survey_id=:sid');
-        $stmt2->bindValue(':sid', $sid, PDO::PARAM_INT);
-        $stmt2->execute();
-        $pageCount = $stmt2->fetch(PDO::FETCH_ASSOC)['count'];
+    $survey = $stmt->fetch(PDO::FETCH_ASSOC);
+    $title = $survey['title'];
+    $owner = $survey['owner'];
 
-        $invalid_inputs = array();
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') { // A page has been submitted
-            // Do form validation and store answers in $_SESSION['response']
-            foreach ($_POST as $key => $val) {
-                if (is_string($val)) { $val = trim(htmlspecialchars($val)); }
-                if ((is_string($val) && strlen($val) == 0)) {
-                    array_push($invalid_inputs, $key);
-                }
+    $stmt2 = $db->prepare('SELECT COUNT(page_id) FROM surveys.page WHERE survey_id=:sid');
+    $stmt2->bindValue(':sid', $sid, PDO::PARAM_INT);
+    $stmt2->execute();
+    $pageCount = $stmt2->fetch(PDO::FETCH_ASSOC)['count'];
+
+    $invalid_inputs = array();
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') { // A page has been submitted
+        // Do form validation and store answers in $_SESSION['response']
+        foreach ($_POST as $key => $val) {
+            if (is_string($val)) { $val = trim(htmlspecialchars($val)); }
+            if ((is_string($val) && strlen($val) == 0)) {
+                array_push($invalid_inputs, $key);
+            }
+        }
+
+        if (count($invalid_inputs) > 0) {
+            $pid--; // There was a problem, go back to the previous page
+        } else {
+            if (!isset($_SESSION['response'])) {
+                $_SESSION['response'] = array();
             }
 
-            if (count($invalid_inputs) > 0) {
-                $pid--; // There was a problem, go back to the previous page
-            } else {
-                if (!isset($_SESSION['response'])) {
-                    $_SESSION['response'] = array();
-                }
+            $_SESSION['response'] = $_SESSION['response'] + $_POST;
+        }
 
-                $_SESSION['response'] = $_SESSION['response'] + $_POST;
-            }
-
-            if ($pid > $pageCount) { // The survey is finished, record the data.
-                $json = '[';
-                $firstAnswer = true;
-                foreach ($_SESSION['response'] as $qid => $answer) {
-                    if (!$firstAnswer) { $json .= ','; }
-                    $firstAnswer = false;
-                    $json .= "{\"qid\":$qid,\"answer\":";
-                    if (is_array($answer)) {
-                        $firstA = true;
-                        $json .= '[';
-                        foreach ($answer as $a) {
-                            if (!$firstA) { $json .= ","; }
-                            $firstA = false;
-                            $json .= "\"$a\"";
-                        }
-                        $json .= ']';
-                    } else {
-                        $json .= "\"$answer\"";
+        if ($pid > $pageCount) { // The survey is finished, record the data.
+            $json = '[';
+            $firstAnswer = true;
+            foreach ($_SESSION['response'] as $qid => $answer) {
+                if (!$firstAnswer) { $json .= ','; }
+                $firstAnswer = false;
+                $json .= "{\"qid\":$qid,\"answer\":";
+                if (is_array($answer)) {
+                    $firstA = true;
+                    $json .= '[';
+                    foreach ($answer as $a) {
+                        if (!$firstA) { $json .= ","; }
+                        $firstA = false;
+                        $json .= "\"$a\"";
                     }
-                    $json .= "}";
+                    $json .= ']';
+                } else {
+                    $json .= "\"$answer\"";
                 }
-                $json .= ']';
-
-                $ip = get_ip_address();
-
-                $stmt_ins = $db->prepare('INSERT INTO surveys.response (survey_id,ip_address,response_data) VALUES (:sid,:ip,:json)');
-                $stmt_ins->bindValue(':sid', $sid, PDO::PARAM_INT);
-                $stmt_ins->bindValue(':ip', $ip, PDO::PARAM_STR);
-                $stmt_ins->bindValue(':json', $json, PDO::PARAM_STR);
-                $stmt_ins->execute();
+                $json .= "}";
             }
+            $json .= ']';
+
+            $ip = get_ip_address();
+
+            $stmt_ins = $db->prepare('INSERT INTO surveys.response (survey_id,ip_address,response_data) VALUES (:sid,:ip,:json)');
+            $stmt_ins->bindValue(':sid', $sid, PDO::PARAM_INT);
+            $stmt_ins->bindValue(':ip', $ip, PDO::PARAM_STR);
+            $stmt_ins->bindValue(':json', $json, PDO::PARAM_STR);
+            $stmt_ins->execute();
         }
     }
 }
