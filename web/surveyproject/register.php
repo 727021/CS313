@@ -27,22 +27,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
                 <!-- TODO form error handling -->
                     <div class="form-group row">
-                        <div class="col">
+                        <div class="col-sm-12 col-md-6">
                             <input class="form-control" type="text" name="username" id="reg-username" placeholder="Username" value="<?php echo $user; ?>">
                         </div>
-                        <div class="col">
+                        <div class="col-sm-12 col-md-6">
                             <input class="form-control" type="email" name="email" id="reg-email" placeholder="user@example.com" value="<?php echo $email; ?>">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <div class="col"><input class="form-control" type="text" name="fname" id="reg-fname" placeholder="First name" value="<?php echo $fname; ?>"></div>
-                        <div class="col"><input class="form-control" type="text" name="lname" id="reg-lname" placeholder="Last name" value="<?php echo $lname; ?>"></div>
+                        <div class="col-sm-12 col-md-6"><input class="form-control" type="text" name="fname" id="reg-fname" placeholder="First name" value="<?php echo $fname; ?>"></div>
+                        <div class="col-sm-12 col-md-6"><input class="form-control" type="text" name="lname" id="reg-lname" placeholder="Last name" value="<?php echo $lname; ?>"></div>
                     </div>
                     <div class="form-group row">
-                        <div class="col">
+                        <div class="col-sm-12 col-md-6">
                             <input class="form-control" type="password" name="password" id="reg-password" placeholder="Password">
                         </div>
-                        <div class="col">
+                        <div class="col-sm-12 col-md-6">
                             <input class="form-control" type="password" name="cpassword" id="reg-cpassword" placeholder="Confirm password">
                         </div>
                     </div>
