@@ -68,7 +68,7 @@ class QText extends Question {
             $html .= "    <input type='text' class='form-control" . ($error ? " is-invalid" : "") . "' id='$id' name='$id' placeholder='$this->placeholder'>";
         }
 
-        $html .= "</div>";
+        $html .= "</div><hr />";
 
         return $html;
     }
@@ -101,7 +101,7 @@ class QCheck extends Question {
                    . "</div>";
             $i++;
         }
-        $html .= "</div>";
+        $html .= "</div><hr />";
         return $html;
     }
 }
@@ -130,7 +130,7 @@ class QDrop extends Question {
             $html .= "<option value='" . strtolower(trim(str_replace(" ", "_", $choice))) . "'>$choice</option>";
         }
         $html .= "    </select>"
-               . "</div>";
+               . "</div><hr />";
         return $html;
     }
 }
@@ -172,7 +172,7 @@ class QSlider extends Question {
 
         $html .= "</div>"
               . "    <input type='range' class='custom-range" . ($error ? " is-invalid" : "") . "' id='$id' name='$id' min='$this->start' max='$this->end' step='$this->interval' value='$this->start'>"
-              . "</div>";
+              . "</div><hr />";
 
         return $html;
     }
