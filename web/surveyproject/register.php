@@ -27,12 +27,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <br />
                 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
                 <!-- TODO form error handling -->
-                    <div class="form-group row">
-                        <div class="col-sm-12 col-md-6">
+                    <div class="row">
+                        <div class="form-group col-sm-12 col-md-6">
                             <input class="form-control" type="text" name="username" id="reg-username" placeholder="Username" value="<?php echo $user; ?>">
                         </div>
-                        <br class="d-md-none" />
-                        <div class="col-sm-12 col-md-6">
+                        <div class="form-group col-sm-12 col-md-6">
                             <input class="form-control" type="email" name="email" id="reg-email" placeholder="user@example.com" value="<?php echo $email; ?>">
                         </div>
                     </div>
