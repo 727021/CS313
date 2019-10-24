@@ -125,8 +125,8 @@ class QDrop extends Question {
     public function toHTML($id, $error = false): string {
         $html  = "<div class='form-group'>"
                . "    <label for='$id'>$this->content</label>"
-               . "    <select class='custom-select" . ($error ? " is-invalid" : "") . "' id='$id' name='$id'" . ($this->multiple ? " multiple" : "") . ">"
-               . "<option value=''>Choose One</option>";
+               . "    <select class='custom-select" . ($error ? " is-invalid" : "") . "' id='$id' name='$id'" . ($this->multiple ? " multiple" : "") . ">";
+        if (!$this->multiple) { $html .= "<option value=''>Choose One</option>"; }
         foreach ($this->choices as $choice) {
             $html .= "<option value='" . strtolower(trim(str_replace(" ", "_", $choice))) . "'>$choice</option>";
         }
