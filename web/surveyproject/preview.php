@@ -33,10 +33,10 @@ $pageCount = $stmt2->fetch(PDO::FETCH_ASSOC)['count'];
 $invalid_inputs = array();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') { // A page has been submitted
     // Do form validation and store answers in $_SESSION['response']
-    var_dump($_POST);
     foreach ($_POST as $key => $val) {
         $val = trim(htmlspecialchars($val));
         if ($val === "") {
+            echo "($key => $val)";
             array_push($invalid_inputs, $key);
         }
     }
