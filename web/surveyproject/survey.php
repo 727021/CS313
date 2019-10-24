@@ -53,7 +53,28 @@ if ($sid != 0) {
         }
         var_dump($_SESSION);
         if ($pid > $pageCount) { // The survey is finished, record the data.
-
+            $json = '[';
+            $firstAnswer = true;
+            foreach ($_SESSION['response'] as $qid => $answer) {
+                if (!$firstAnswer) { $json .= ','; }
+                $firstAnswer = false;
+                $json .= "{\"qid\":$qid,\"answer\":";
+                if (is_array($answer)) {
+                    $firstA = true;
+                    $json .= '[';
+                    foreach ($answer as $a) {
+                        if (!$firstA) { $json .= ","; }
+                        $firstA = false;
+                        $json .= "\"$a\"";
+                    }
+                    $json .= ']';
+                } else {
+                    $json .= "\"$answer\"";
+                }
+                $json .= "}";
+            }
+            $json .= ']';
+            echo $json;
         }
     }
 }
