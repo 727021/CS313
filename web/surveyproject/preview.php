@@ -30,8 +30,20 @@ $stmt2->bindValue(':sid', $sid, PDO::PARAM_INT);
 $stmt2->execute();
 $pageCount = $stmt2->fetch(PDO::FETCH_ASSOC)['count'];
 
+$invalid_inputs = array();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') { // A page has been submitted
     // Do form validation and store answers in $_SESSION['response']
+
+    foreach ($_POST as $key => $val) {
+        $val = trim(htmlspecialchars($val));
+        if ($val === "") {
+            array_push($invalid_inputs, $key);
+        }
+    }
+
+    if (count($invalid_inputs) > 0) {
+        $pid--;
+    }
 }
 
 ?>
@@ -79,7 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // A page has been submitted
                 if ($q == null) { continue; }
 
                 // Actually display the question as HTML
-                echo $q->toHTML($qid);
+                echo $q->toHTML($qid, in_array($qid, $invalid_inputs));
             }
         ?>
         <div class="form-group text-center">
