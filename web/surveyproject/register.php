@@ -85,7 +85,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     if (!$error) { // No errors, actually create the account
+        $stmt_reg = $db->prepare("INSERT INTO surveys.users ( username, email, first, last, hash, type ) VALUES ( :user, :email, :fname, :lname, :hash, (SELECT common_lookup_id FROM surveys.common_lookup WHERE context = 'USER.TYPE' AND value = 'DEFAULT'))");
+        $stmt_reg->bindValue(':user', $user, PDO::PARAM_STR);
+        $stmt_reg->bindValue(':email', $email, PDO::PARAM_STR);
+        $stmt_reg->bindValue(':fname', $fname, PDO::PARAM_STR);
+        $stmt_reg->bindValue(':lname', $lname, PDO::PARAM_STR);
+        $stmt_reg->bindValue(':hash', password_hash($pass, PASSWORD_DEFAULT), PDO::PARAM_STR);
+        if ($stmt_reg->execute()) {
 
+        } else {
+
+        }
     }
 }
 ?>
