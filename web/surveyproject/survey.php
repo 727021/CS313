@@ -107,13 +107,13 @@ if ($sid != 0) {
     <div class="container bg-light mt-2 rounded">
     <?php if ($sid == 0) { ?>
         <p class="text-center">No survey was found.</p>
-    <?php } elseif ($taken) { ?>
-        <p class="text-center">You've already responded to this survey.</p>
     <?php } else { ?>
     <h3 class="border-bottom text-center display-4"><?php echo empty($title) ? 'Survey' : $title; ?> <small><small class="text-muted">by <?php echo $owner; ?></small></small></h3>
     <form method="POST" action="survey.php?p=<?php echo $pid + 1; ?>&s=<?php echo $shortcode; ?>">
         <?php
-        if ($pid > $pageCount) {
+        if ($taken) {
+            echo '<p class="text-center">You\'ve already responded to this survey.</p>';
+        } elseif ($pid > $pageCount) {
             echo '<p class="text-center">Thank you for your response.</p>';
         }  else {
             $stmt1 = $db->prepare('SELECT q.question_id AS id, q.content FROM surveys.question q, surveys.page p WHERE q.page_id = p.page_id AND p.survey_id=:sid AND p.page_index=:pid');
