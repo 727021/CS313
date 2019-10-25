@@ -57,7 +57,7 @@ $title = $survey['title'];
 
             echo array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec')[$m - 1] . ' ' . ltrim($d, '0') . ', ' . $y;
 
-            if ($response['ip']) { echo '(' . $response['ip'] . ')'; }
+            if ($response['ip']) { echo ' <small class="text-muted">(' . $response['ip'] . ')</small>'; }
              ?></th></tr>
             <?php
             foreach (json_decode($response['data']) as $answer) {
