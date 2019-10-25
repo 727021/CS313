@@ -6,6 +6,7 @@ if (!isset($_SESSION['user'])) {
     exit;
 }
 require_once 'inc/db.inc.php';
+try {
 if (isset($_GET['publish'])) {
     $stmt_publish = $db->prepare('SELECT LOWER(cl.value) AS status, s.title FROM surveys.common_lookup cl, surveys.survey s WHERE s.status = cl.common_lookup_id AND s.survey_id = :id');
     $stmt_publish->bindValue(':id', $_GET['publish'], PDO::PARAM_INT);
@@ -22,9 +23,13 @@ if (isset($_GET['publish'])) {
             $stmt_create_shc->bindValue(':id', $_GET['publish'], PDO::PARAM_INT);
             $stmt_create_shc->bindValue(':code', md5(uniqid($_GET['publish'] . $row['title']), true), PDO::PARAM_STR);
             $stmt_create_shc->execute();
+
+            // Redirect so the GET data doesn't stay in the url
+            header('location: dashboard.php');
         }
     }
 }
+} catch (PDOException $ex) { die($ex->getMessage()); }
 
 if (isset($_GET['close'])) {
     $stmt_close = $db->prepare('SELECT LOWER(cl.value) AS status FROM surveys.common_lookup cl, surveys.survey s WHERE s.status = cl.common_lookup_id AND s.survey_id = :id');
@@ -36,10 +41,13 @@ if (isset($_GET['close'])) {
             $stmt_close_upd = $db->prepare("UPDATE surveys.survey SET status = (SELECT common_lookup_id FROM surveys.common_lookup WHERE context = 'SURVEY.STATUS' AND value = 'CLOSED') WHERE survey_id = :id");
             $stmt_close_upd->bindValue(':id', $_GET['close'], PDO::PARAM_INT);
             $stmt_close_upd->execute();
+
+            // Redirect so the GET data doesn't stay in the url
+            header('location: dashboard.php');
         }
     }
 }
-try {
+
 if (isset($_GET['delete'])) {
     $stmt_delete = $db->prepare('SELECT LOWER(cl.value) AS status FROM surveys.common_lookup cl, surveys.survey s WHERE s.status = cl.common_lookup_id AND s.survey_id = :id');
     $stmt_delete->bindValue(':id', $_GET['delete'], PDO::PARAM_INT);
@@ -50,10 +58,12 @@ if (isset($_GET['delete'])) {
             $stmt_delete_upd = $db->prepare("DELETE FROM surveys.survey WHERE survey_id = :id");
             $stmt_delete_upd->bindValue(':id', $_GET['delete'], PDO::PARAM_INT);
             $stmt_delete_upd->execute();
+
+            // Redirect so the GET data doesn't stay in the url
+            header('location: dashboard.php');
         }
     }
 }
-} catch (PDOException $ex) { die($ex->getMessage()); }
 
 ?>
 <!DOCTYPE html>

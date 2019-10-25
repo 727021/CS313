@@ -34,24 +34,24 @@ CREATE TABLE survey
 
 CREATE TABLE page
 ( page_id 		SERIAL 	NOT NULL PRIMARY KEY
-, survey_id 	INT 	NOT NULL REFERENCES survey(survey_id)
+, survey_id 	INT 	NOT NULL REFERENCES survey(survey_id) ON DELETE CASCADE
 , page_index 	INT 	NOT NULL)
 
 CREATE TABLE question
 ( question_id 	SERIAL 	NOT NULL PRIMARY KEY
-, page_id 		INT 	NOT NULL REFERENCES page(page_id)
+, page_id 		INT 	NOT NULL REFERENCES page(page_id) ON DELETE CASCADE
 , content 		TEXT 	NOT NULL)
 
 CREATE TABLE response
 ( response_id 	SERIAL 		NOT NULL PRIMARY KEY
-, survey_id 	INT 		NOT NULL REFERENCES survey(survey_id)
+, survey_id 	INT 		NOT NULL REFERENCES survey(survey_id) ON DELETE CASCADE
 , ip_address 	VARCHAR(45)
 , response_data TEXT 		NOT NULL
 , responded_on 	TIMESTAMP 	NOT NULL DEFAULT NOW())
 
 CREATE TABLE shortcode -- For survey URLs
 ( shortcode_id 	SERIAL 		NOT NULL PRIMARY KEY
-, survey_id 	INT 		NOT NULL REFERENCES survey(survey_id)
+, survey_id 	INT 		NOT NULL REFERENCES survey(survey_id) ON DELETE CASCADE
 , code 			VARCHAR(32) NOT NULL) -- Generated in php with md5(uniqid($survey['id'] . $survey['title']), true)
 
 -- Create a view for easy access to user info
