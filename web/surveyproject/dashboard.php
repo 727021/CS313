@@ -186,6 +186,7 @@ if (isset($_GET['delete'])) {
                                                 <input class="form-control" type="text" id="copy-link-<?php echo $survey['id']; ?>" readonly value="<?php echo ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/survey.php?s=' . $survey['shortcode']; ?>">
                                             </div>
                                             <div class="modal-footer">
+                                                <span data-copy="#copy-link-<?php echo $survey['id']; ?>">Link copied.</span>
                                                 <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
                                                 <button type="button" class="btn btn-success" data-action="copy" data-target="#copy-link-<?php echo $survey['id']; ?>">Copy Link</button>
                                             </div>
