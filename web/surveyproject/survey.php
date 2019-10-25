@@ -102,7 +102,7 @@ if ($sid != 0) {
 <html lang="en">
 <head>
     <?php include 'inc/head.inc.php'; ?>
-    <title>Preview - <?php echo empty($title) ? : $title . ' - '; ?>Survey Project</title>
+    <title><?php echo empty($title) ? 'Survey' : $title; ?> - Survey Project</title>
 </head>
 <body class="bg-info">
     <div class="container bg-light mt-2 rounded">
