@@ -7,6 +7,8 @@ $(function() {
             copyText[0].setSelectionRange(0, 99999);
 
             document.execCommand("copy");
+
+            copyText.selectionStart = copyText.selectionEnd;
         });
     });
 });
