@@ -39,7 +39,7 @@ if (isset($_GET['close'])) {
         }
     }
 }
-
+try {
 if (isset($_GET['delete'])) {
     $stmt_delete = $db->prepare('SELECT LOWER(cl.value) AS status FROM surveys.common_lookup cl, surveys.survey s WHERE s.status = cl.common_lookup_id AND s.survey_id = :id');
     $stmt_delete->bindValue(':id', $_GET['delete'], PDO::PARAM_INT);
@@ -53,6 +53,7 @@ if (isset($_GET['delete'])) {
         }
     }
 }
+} catch (PDOException $ex) { die($ex->getMessage()); }
 
 ?>
 <!DOCTYPE html>
