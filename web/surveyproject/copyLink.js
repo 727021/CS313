@@ -8,7 +8,7 @@ $(function() {
 
             document.execCommand("copy");
 
-            copyText.selectionStart = copyText.selectionEnd;
+            copyText.val(copyText.val());
         });
     });
 });
