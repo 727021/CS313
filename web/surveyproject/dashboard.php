@@ -183,7 +183,7 @@ if (isset($_GET['delete'])) {
                                             </div>
                                             <div class="modal-body">
                                                 <p>Share this link so people can take your survey:</p>
-                                                <input class="form-control" type="text" id="copy-link-<?php echo $survey['id']; ?>" readonly value="<?php ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . 'survey.php?s=' . $survey['shortcode']; ?>">
+                                                <input class="form-control" type="text" id="copy-link-<?php echo $survey['id']; ?>" readonly value="<?php echo ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . 'survey.php?s=' . $survey['shortcode']; ?>">
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
