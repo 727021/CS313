@@ -147,7 +147,7 @@ if (isset($_GET['delete'])) {
                                 ?>
                                 <a href="dashboard.php?publish=<?php echo $survey['id']; ?>" class="btn btn-success">Publish</a>
                                 <a href="edit.php?id=<?php echo $survey['id']; ?>" class="btn btn-info">Edit</a>
-                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="delete-modal-<?php echo $survey['id']; ?>">Delete</button>
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete-modal-<?php echo $survey['id']; ?>">Delete</button>
                                 <div class="modal fade" id="delete-modal-<?php echo $survey['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="delete-modal-<?php echo $survey['id']; ?>-label" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
@@ -155,8 +155,7 @@ if (isset($_GET['delete'])) {
                                                 <h5 class="modal-title" id="delete-modal-<?php echo $survey['id']; ?>-label">Delete Survey</h5>
                                             </div>
                                             <div class="modal-body">
-                                                <p>Are you sure you want to delete this survey?</p>
-                                                <p>This action <b>cannot</b> be undone.</p>
+                                                <p>Are you sure you want to delete this survey?<br />This action <b>cannot</b> be undone.</p>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
@@ -182,7 +181,7 @@ if (isset($_GET['delete'])) {
                                 case "closed":
                                 ?>
                                 <a href="results.php?id=<?php echo $survey['id']; ?>" class="btn btn-info">Results</a>
-                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="delete-modal-<?php echo $survey['id']; ?>">Delete</button>
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete-modal-<?php echo $survey['id']; ?>">Delete</button>
                                 <div class="modal fade" id="delete-modal-<?php echo $survey['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="delete-modal-<?php echo $survey['id']; ?>-label" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
@@ -190,8 +189,7 @@ if (isset($_GET['delete'])) {
                                                 <h5 class="modal-title" id="delete-modal-<?php echo $survey['id']; ?>-label">Delete Survey</h5>
                                             </div>
                                             <div class="modal-body">
-                                                <p>Are you sure you want to delete this survey?</p>
-                                                <p>This action <b>cannot</b> be undone.</p>
+                                                <p>Are you sure you want to delete this survey?<br />This action <b>cannot</b> be undone.</p>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
