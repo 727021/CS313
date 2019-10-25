@@ -72,7 +72,7 @@ if (isset($_GET['delete'])) {
     <?php include 'inc/head.inc.php'; ?>
     <title>Dashboard - Survey Project</title>
 </head>
-<body class="bg-info">
+<body class="bg-info no-select">
     <nav class="navbar navbar-expand-md navbar-dark bg-primary">
         <div class="container">
             <span class="navbar-brand">Dashboard</span>
@@ -125,9 +125,9 @@ if (isset($_GET['delete'])) {
                         <td class="align-middle">
                             <?php
                                 if (strtolower($survey['status']) == 'closed') {
-                                    echo '<p class="text-primary mb-0">' . $survey['title'] . '</p>';
+                                    echo '<p class="text-primary mb-0">' . ($survey['title'] ? $survey['title'] : 'Survey') . '</p>';
                                 } else {
-                                    echo '<a href="preview.php?id=' . $survey['id'] . '">' . $survey['title'] . '</a>';
+                                    echo '<a href="preview.php?id=' . $survey['id'] . '">' . ($survey['title'] ? $survey['title'] : 'Survey') . '</a>';
                                 }
                             ?>
                         </td>
@@ -152,7 +152,7 @@ if (isset($_GET['delete'])) {
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="delete-modal-<?php echo $survey['id']; ?>-label">Delete Survey</h5>
+                                                <h5 class="modal-title" id="delete-modal-<?php echo $survey['id']; ?>-label">Delete <?php echo ($survey['title'] ? $survey['title'] : 'Survey'); ?></h5>
                                             </div>
                                             <div class="modal-body">
                                                 <p>Are you sure you want to delete this survey?<br />This action <b>cannot</b> be undone.</p>
@@ -179,7 +179,7 @@ if (isset($_GET['delete'])) {
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="share-modal-<?php echo $survey['id']; ?>-label">Share Survey</h5>
+                                                <h5 class="modal-title" id="share-modal-<?php echo $survey['id']; ?>-label">Share <?php echo ($survey['title'] ? $survey['title'] : 'Survey'); ?></h5>
                                             </div>
                                             <div class="modal-body">
                                                 <p>Share this link so people can take your survey:</p>
@@ -187,7 +187,7 @@ if (isset($_GET['delete'])) {
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
-                                                <button type="button" class="btn btn-primary" data-action="copy" data-target="#copy-link-<?php echo $survey['id']; ?>">Copy Link</button>
+                                                <button type="button" class="btn btn-success" data-action="copy" data-target="#copy-link-<?php echo $survey['id']; ?>">Copy Link</button>
                                             </div>
                                         </div>
                                     </div>
@@ -203,7 +203,7 @@ if (isset($_GET['delete'])) {
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="delete-modal-<?php echo $survey['id']; ?>-label">Delete Survey</h5>
+                                                <h5 class="modal-title" id="delete-modal-<?php echo $survey['id']; ?>-label">Delete <?php echo ($survey['title'] ? $survey['title'] : 'Survey'); ?></h5>
                                             </div>
                                             <div class="modal-body">
                                                 <p>Are you sure you want to delete this survey?<br />This action <b>cannot</b> be undone.</p>
