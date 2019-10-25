@@ -211,7 +211,7 @@ if (isset($_GET['delete'])) {
                                                 <h5 class="modal-title" id="delete-modal-<?php echo $survey['id']; ?>-label">Delete <?php echo ($survey['title'] ? $survey['title'] : 'Survey'); ?></h5>
                                             </div>
                                             <div class="modal-body">
-                                                <p>Are you sure you want to delete this survey and all its results?<br />This action <b>cannot</b> be undone.</p>
+                                                <p>Are you sure you want to delete this survey?<br />This action <b>cannot</b> be undone.</p>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
