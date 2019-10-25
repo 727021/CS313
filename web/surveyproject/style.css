@@ -17,7 +17,7 @@ a.no-underline:hover {
     text-decoration: none;
 }
 
-.no-select {
+.no-select, .modal {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
