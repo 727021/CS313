@@ -9,7 +9,7 @@ $(function() {
 
             document.execCommand("copy");
 
-            $(`[data-copy='${target}']`).fadeIn().next().fadeOut();
+            $(`[data-copy='${target}']`).fadeIn().fadeOut();
         });
     });
 });
