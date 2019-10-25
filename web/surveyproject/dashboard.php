@@ -21,9 +21,7 @@ if (isset($_GET['publish'])) {
             // Survey shortcode is created when the survey is published
             $stmt_create_shc = $db->prepare('INSERT INTO surveys.shortcode (survey_id,code) VALUES (:id, :code)');
             $stmt_create_shc->bindValue(':id', $_GET['publish'], PDO::PARAM_INT);
-            $newCode = md5(uniqid($_GET['publish'] . $row['title']), true);
-            echo $newCode;
-            $stmt_create_shc->bindValue(':code', $newCode, PDO::PARAM_STR);
+            $stmt_create_shc->bindValue(':code', md5(uniqid($_GET['publish'] . $row['title'])), PDO::PARAM_STR);
             $stmt_create_shc->execute();
 
             // Redirect so the GET data doesn't stay in the url
