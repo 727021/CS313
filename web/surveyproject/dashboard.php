@@ -94,7 +94,7 @@ if (isset($_GET['delete'])) {
                     <?php
                     require_once 'inc/db.inc.php';
 
-                    $stmt = $db->prepare('SELECT s.survey_id AS id, s.title, c.value AS status FROM surveys.survey s, surveys.common_lookup c WHERE s.status = c.common_lookup_id AND s.user_id=:userid');
+                    $stmt = $db->prepare('SELECT s.survey_id AS id, s.title, c.value AS status FROM surveys.survey s, surveys.common_lookup c WHERE s.status = c.common_lookup_id AND s.user_id=:userid ORDER BY cl.common_lookup_id, id');
                     $stmt->bindValue(':userid', $_SESSION['user']['id'], PDO::PARAM_INT);
                     $stmt->execute();
 
