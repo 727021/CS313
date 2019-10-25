@@ -5,6 +5,49 @@ if (!isset($_SESSION['user'])) {
     header('location: index.php');
     exit;
 }
+require_once 'inc/db.inc.php';
+if (isset($_GET['publish'])) {
+    $stmt_publish = $db->prepare('SELECT LOWER(cl.value) AS status FROM surveys.common_lookup cl, surveys.survey s WHERE s.status = cl.common_lookup_id AND s.survey_id = :id');
+    $stmt_publish->bindValue(':id', $_GET['publish'], PDO::PARAM_INT);
+    $stmt_publish->execute();
+
+    if ($row = $stmt_publish->fetch(PDO::FETCH_ASSOC)) {
+        if ($row['status'] === "unpublished") {
+            $stmt_publish_upd = $db->prepare("UPDATE surveys.survey SET status = (SELECT common_lookup_id FROM surveys.common_lookup WHERE context = 'SURVEY.STATUS' AND value = 'PUBLISHED') WHERE survey_id = :id");
+            $stmt_publish_upd->bindValue(':id', $_GET['publish'], PDO::PARAM_INT);
+            $stmt_publish_upd->execute();
+        }
+    }
+}
+
+if (isset($_GET['close'])) {
+    $stmt_close = $db->prepare('SELECT LOWER(cl.value) AS status FROM surveys.common_lookup cl, surveys.survey s WHERE s.status = cl.common_lookup_id AND s.survey_id = :id');
+    $stmt_close->bindValue(':id', $_GET['close'], PDO::PARAM_INT);
+    $stmt_close->execute();
+
+    if ($row = $stmt_close->fetch(PDO::FETCH_ASSOC)) {
+        if ($row['status'] === "published") {
+            $stmt_close_upd = $db->prepare("UPDATE surveys.survey SET status = (SELECT common_lookup_id FROM surveys.common_lookup WHERE context = 'SURVEY.STATUS' AND value = 'CLOSED') WHERE survey_id = :id");
+            $stmt_close_upd->bindValue(':id', $_GET['close'], PDO::PARAM_INT);
+            $stmt_close_upd->execute();
+        }
+    }
+}
+
+if (isset($_GET['delete'])) {
+    $stmt_delete = $db->prepare('SELECT LOWER(cl.value) AS status FROM surveys.common_lookup cl, surveys.survey s WHERE s.status = cl.common_lookup_id AND s.survey_id = :id');
+    $stmt_delete->bindValue(':id', $_GET['delete'], PDO::PARAM_INT);
+    $stmt_delete->execute();
+
+    if ($row = $stmt_delete->fetch(PDO::FETCH_ASSOC)) {
+        if ($row['status'] === "unpublished" || $row['status'] === "closed") {
+            $stmt_delete_upd = $db->prepare("DELETE FROM surveys.survey WHERE survey_id = :id");
+            $stmt_delete_upd->bindValue(':id', $_GET['delete'], PDO::PARAM_INT);
+            $stmt_delete_upd->execute();
+        }
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
