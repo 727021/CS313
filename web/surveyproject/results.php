@@ -34,7 +34,7 @@ $title = $survey['title'];
     <div class="container bg-light mt-2 mb-2 rounded">
     <h3 class="border-bottom text-center display-4"><?php echo empty($title) ? 'Survey' : $title; ?> <small><small class="text-muted">Results</small></small></h3>
     <?php
-        $stmt1 = $db->prepare('SELECT response_data AS data, responded_on FROM surveys.response WHERE survey_id=:sid');
+        $stmt1 = $db->prepare('SELECT response_data AS data, responded_on, ip_address AS ip FROM surveys.response WHERE survey_id=:sid');
         $stmt1->bindValue(':sid', $sid, PDO::PARAM_INT);
         $stmt1->execute();
 
@@ -57,6 +57,7 @@ $title = $survey['title'];
 
             echo array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec')[$m - 1] . ' ' . ltrim($d, '0') . ', ' . $y;
 
+            if ($response['ip']) { echo '(' . $response['ip'] . ')'; }
              ?></th></tr>
             <?php
             foreach (json_decode($response['data']) as $answer) {
