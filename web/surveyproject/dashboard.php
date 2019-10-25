@@ -174,7 +174,24 @@ if (isset($_GET['delete'])) {
                                     $stmt2->execute();
                                     $survey['shortcode'] = $stmt2->fetch(PDO::FETCH_ASSOC)['code'];
                                 ?>
-                                <button class="btn btn-info copyLink" data-shortcode="<?php echo $survey['shortcode']; ?>">Copy Link</button>
+                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#share-modal-<?php echo $survey['id']; ?>">Share</button>
+                                <div class="modal fade" id="share-modal-<?php echo $survey['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="share-modal-<?php echo $survey['id']; ?>-label" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="share-modal-<?php echo $survey['id']; ?>-label">Share Survey</h5>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Share this link so people can take your survey:</p>
+                                                <input class="form-control" type="text" id="copy-link-<?php echo $survey['id']; ?>" readonly value="<?php ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . 'survey.php?s=' . $survey['shortcode']; ?>">
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+                                                <button type="button" class="btn btn-primary" data-action="copy" data-target="#copy-link-<?php echo $survey['id']; ?>"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <a href="dashboard.php?close=<?php echo $survey['id']; ?>" class="btn btn-danger">Close</a>
                                 <?php
                                 break;
