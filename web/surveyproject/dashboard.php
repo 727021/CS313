@@ -42,6 +42,10 @@ if (isset($_GET['close'])) {
             $stmt_close_upd->bindValue(':id', $_GET['close'], PDO::PARAM_INT);
             $stmt_close_upd->execute();
 
+            $stmt_close_shc = $db->prepare('DELETE FROM surveys.shortcode WHERE survey_id = :id');
+            $stmt_close_shc->bindValue(':id', $_GET['close'], PDO::PARAM_INT);
+            $stmt->execute();
+
             // Redirect so the GET data doesn't stay in the url
             header('location: dashboard.php');
         }
