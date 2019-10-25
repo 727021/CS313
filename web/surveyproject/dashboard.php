@@ -7,7 +7,7 @@ if (!isset($_SESSION['user'])) {
 }
 require_once 'inc/db.inc.php';
 if (isset($_GET['publish'])) {
-    $stmt_publish = $db->prepare('SELECT LOWER(cl.value) AS status FROM surveys.common_lookup cl, surveys.survey s WHERE s.status = cl.common_lookup_id AND s.survey_id = :id');
+    $stmt_publish = $db->prepare('SELECT LOWER(cl.value) AS status, s.title FROM surveys.common_lookup cl, surveys.survey s WHERE s.status = cl.common_lookup_id AND s.survey_id = :id');
     $stmt_publish->bindValue(':id', $_GET['publish'], PDO::PARAM_INT);
     $stmt_publish->execute();
 
@@ -16,6 +16,12 @@ if (isset($_GET['publish'])) {
             $stmt_publish_upd = $db->prepare("UPDATE surveys.survey SET status = (SELECT common_lookup_id FROM surveys.common_lookup WHERE context = 'SURVEY.STATUS' AND value = 'PUBLISHED') WHERE survey_id = :id");
             $stmt_publish_upd->bindValue(':id', $_GET['publish'], PDO::PARAM_INT);
             $stmt_publish_upd->execute();
+
+            // Survey shortcode is created when the survey is published
+            $stmt_create_shc = $db->prepare('INSERT INTO surveys.shortcode (survey_id,code) VALUES (:id, :code)');
+            $stmt_create_shc->bindValue(':id', $_GET['publish'], PDO::PARAM_INT);
+            $stmt_create_shc->bindValue(':code', md5(uniqid($_GET['publish'] . $row['title']), true), PDO::PARAM_STR);
+            $stmt_create_shc->execute();
         }
     }
 }
