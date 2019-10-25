@@ -147,7 +147,7 @@ if (isset($_GET['delete'])) {
                                 ?>
                                 <a href="dashboard.php?publish=<?php echo $survey['id']; ?>" class="btn btn-success">Publish</a>
                                 <a href="edit.php?id=<?php echo $survey['id']; ?>" class="btn btn-info">Edit</a>
-                                <a href="dashboard.php?delete=<?php echo $survey['id']; ?>" class="btn btn-danger">Delete</a>
+                                <a href="dashboard.php?delete=<?php echo $survey['id']; ?>" class="btn btn-danger deletebtn">Delete</a>
                                 <?php
                                 break;
                                 case "published":
@@ -165,7 +165,7 @@ if (isset($_GET['delete'])) {
                                 case "closed":
                                 ?>
                                 <a href="results.php?id=<?php echo $survey['id']; ?>" class="btn btn-info">Results</a>
-                                <a href="dashboard.php?delete=<?php echo $survey['id']; ?>" class="btn btn-danger">Delete</a>
+                                <a href="dashboard.php?delete=<?php echo $survey['id']; ?>" class="btn btn-danger deletebtn">Delete</a>
                                 <?php
                                 break;
                                 default:
