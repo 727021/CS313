@@ -28,6 +28,7 @@ $(function() {
     // Delete a page
     $("button.delete-page").each(function() {
         $(this).click(function() {
+            console.log(`.delete-page:click bound [deletePage(${this})]`);
             deletePage(this);
         });
     });
@@ -112,6 +113,7 @@ $(function() {
 });
 
 function deletePage(btn) {
+    console.log(`deletePage(${btn})`);
     if (btn == null) { return; }
     if (pageCount <= 1) {
         return; // Don't delete the last page
