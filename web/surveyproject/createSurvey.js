@@ -1,3 +1,5 @@
+var pageCount = 0;
+
 $(function() {
     // Initialize tooltips
     $('[data-toggle="tooltip"]').tooltip();
@@ -5,6 +7,7 @@ $(function() {
     $("button#save-title").hide();
     $("#edit-title-input").hide();
 
+    // Edit survey title
     $("button#edit-title").click(function() {
         $("#edit-title-input").val($("#survey-title").text());
         $("#survey-title").hide();
@@ -13,6 +16,7 @@ $(function() {
         $("button#save-title").show();
     });
 
+    // Save survey title
     $("button#save-title").click(function() {
         $("#survey-title").text(String($("#edit-title-input").val()).trim() == "" ? $("#survey-title").text() : $("#edit-title-input").val());
         $("#edit-title-input").hide();
@@ -20,24 +24,160 @@ $(function() {
         $("button#save-title").hide();
         $("button#edit-title").show();
     });
+
+    // Delete a page
+    $("button.delete-page").each(function() {
+        $(this).click(function() {
+            deletePage(this);
+        });
+    });
+
+    // Add a question
+    $("button.add-question").each(function() {
+        $(this).click(function() {
+            addQuestion(this);
+        });
+    });
+
+    // Delete a question
+    $("button.delete-question").each(function() {
+        $(this).click(function() {
+            deleteQuestion(this);
+        });
+    });
+
+    // Edit a question
+    $("button.edit-question").each(function() {
+        $(this).click(function() {
+            editQuestion(this);
+        });
+    });
+
+    // Save a question
+    $("button.save-question").each(function() {
+        $(this).click(function() {
+            saveQuestion(this);
+        });
+    });
+
+    // Discard question changes
+    $("button.discard-question").each(function() {
+        $(this).click(function() {
+            discardQuestion(this);
+        });
+    });
+
+    // Change question type
+    $("select.question-type").each(function() {
+        $(this).change(function() {
+            questionType(this);
+        });
+    });
+
+    // Add an option
+    $("button.add-option").each(function() {
+        $(this).click(function() {
+            addOption(this);
+        });
+    });
+
+    // Delete an option
+    $("button.delete-option").each(function() {
+        $(this).click(function() {
+            deleteOption(this);
+        });
+    });
+
+    // Change slider type
+    $("input.slider-type").each(function() {
+        $(this).change(function() {
+            sliderType(this);
+        });
+    });
+
+    // Change slider min
+    $("select.slider-min").each(function() {
+        $(this).change(function() {
+            sliderMin(this);
+        });
+    });
+
+    // Change slider max
+    $("select.slider-max").each(function() {
+        $(this).change(function() {
+            sliderMax(this);
+        });
+    });
+
 });
 
-var pageCount = 0;
+function deletePage(btn) {
+    if (pageCount <= 1) {
+        return; // Don't delete the last page
+    }
+    if (Number($(btn).attr("data-page")) != pageCount) {
+        // This isn't the last page; there will be some renumbering to do
+        let start = Number($(btn).attr("data-page")) + 1;
+        $(btn).parent().parent().parent().parent().parent().remove();
+        for (let i = start; i <= pageCount; i++) {
+            $(`.page-title[data-page="${i}"]`).text(`Page ${i}`);
+            $(`[data-page="${i}"]`).each(function() {
+                $(this).attr("data-page", i - 1);
+            });
+        }
+    } else {
+        $(btn).parent().parent().parent().parent().parent().remove();
+    }
+    pageCount--;
+    if (pageCount = 1) {
+        $("button.delete-page").attr("disabled");
+    }
+}
 
-var pages = [];
-
-function addPage() {
+function addQuestion(btn) {
 
 }
 
-function removePage() {
+function deleteQuestion(btn) {
 
 }
 
-function addQuestion(page) {
+function editQuestion(btn) {
 
 }
 
-function removeQuestion(page, question) {
+function saveQuestion(btn) {
+
+}
+
+function discardQuestion(btn) {
+
+}
+
+function questionType(sel) {
+
+}
+
+function addOption(btn) {
+
+}
+
+function deleteOption(btn) {
+
+}
+
+function sliderType(chk) {
+    if (chk.checked) {
+
+    } else {
+
+    }
+}
+
+function sliderMin(sel) {
+
+}
+
+function sliderMax(sel) {
 
 }

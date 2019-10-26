@@ -50,7 +50,6 @@ if (!isset($_SESSION['user'])) {
                                 </div>
                             </div>
                         </div>
-
                         <button role="button" class="btn btn-success" id="save-survey"><i class="far fa-save"></i> Save</button>
                     </div>
                 </div>
@@ -66,7 +65,7 @@ if (!isset($_SESSION['user'])) {
                         <h3 class="page-title" data-page="1">Page 1</h3>
                     </div>
                     <div class="col text-right">
-                        <button id="delete-page" data-page="1" class="btn btn-danger" role="button" data-toggle="tooltip" data-placement="left" title="Delete Page"><i class="far fa-trash-alt"></i></button>
+                        <button data-page="1" class="delete-page btn btn-danger" role="button" data-toggle="tooltip" data-placement="left" title="Delete Page"><i class="far fa-trash-alt"></i></button>
                     </div>
                 </div>
             </div>
@@ -75,7 +74,53 @@ if (!isset($_SESSION['user'])) {
                     <div class="col">Questions go here<hr /></div>
                 </div>
                 <div class="row">
-                    <div class="col text-center"><button id="add-question" data-page="1" role="button" class="btn btn-info"><i class="fas fa-plus"></i> Add Question</button></div>
+                    <div class="col text-center"><button data-page="1" role="button" class="add-question btn btn-info"><i class="fas fa-plus"></i> Add Question</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-2">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col">
+                        <h3 class="page-title" data-page="2">Page 2</h3>
+                    </div>
+                    <div class="col text-right">
+                        <button data-page="2" class="delete-page btn btn-danger" role="button" data-toggle="tooltip" data-placement="left" title="Delete Page"><i class="far fa-trash-alt"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body" data-page="2">
+                <div class="row">
+                    <div class="col">Questions go here<hr /></div>
+                </div>
+                <div class="row">
+                    <div class="col text-center"><button data-page="2" role="button" class="add-question btn btn-info"><i class="fas fa-plus"></i> Add Question</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-2">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col">
+                        <h3 class="page-title" data-page="3">Page 3</h3>
+                    </div>
+                    <div class="col text-right">
+                        <button data-page="3" class="delete-page btn btn-danger" role="button" data-toggle="tooltip" data-placement="left" title="Delete Page"><i class="far fa-trash-alt"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body" data-page="3">
+                <div class="row">
+                    <div class="col">Questions go here<hr /></div>
+                </div>
+                <div class="row">
+                    <div class="col text-center"><button data-page="3" role="button" class="add-question btn btn-info"><i class="fas fa-plus"></i> Add Question</button></div>
                 </div>
             </div>
         </div>
