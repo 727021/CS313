@@ -28,9 +28,9 @@ $(function() {
     // Delete a page
     $("button.delete-page").each(function() {
         $(this).click(function() {
-            console.log(`.delete-page:click bound [deletePage(${this})]`);
             deletePage(this);
         });
+        console.log(`.delete-page:click bound [deletePage(${this})]`);
     });
 
     // Add a question
