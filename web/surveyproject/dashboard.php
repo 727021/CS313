@@ -106,9 +106,9 @@ if (isset($_GET['delete'])) {
                     if ($stmt->rowCount() == 0) {
                         ?>
 
-                        <td>
-                            <tr class="text-center align-middle" colspan="5">You don't have any surveys yet!</tr>
-                        </td>
+                        <tr>
+                            <td class="text-center align-middle" colspan="5">You don't have any surveys yet!</td>
+                        </tr>
 
                         <?php
                     }
