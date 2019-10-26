@@ -8,7 +8,7 @@ $(function() {
     $("#edit-title-input").hide();
 
     // Edit survey title
-    $("button#edit-title").click(function() {
+    $("button#edit-title").unbind('click').click(function() {
         $("#edit-title-input").val($("#survey-title").text());
         $("#survey-title").hide();
         $("button#edit-title").hide();
@@ -17,7 +17,7 @@ $(function() {
     });
 
     // Save survey title
-    $("button#save-title").click(function() {
+    $("button#save-title").unbind('click').click(function() {
         $("#survey-title").text(String($("#edit-title-input").val()).trim() == "" ? $("#survey-title").text() : $("#edit-title-input").val());
         $("#edit-title-input").hide();
         $("#survey-title").show();
@@ -34,77 +34,77 @@ $(function() {
 
     // Add a question
     $("button.add-question").each(function() {
-        $(this).click(function() {
+        $(this).unbind('click').click(function() {
             addQuestion(this);
         });
     });
 
     // Delete a question
     $("button.delete-question").each(function() {
-        $(this).click(function() {
+        $(this).unbind('click').click(function() {
             deleteQuestion(this);
         });
     });
 
     // Edit a question
     $("button.edit-question").each(function() {
-        $(this).click(function() {
+        $(this).unbind('click').click(function() {
             editQuestion(this);
         });
     });
 
     // Save a question
     $("button.save-question").each(function() {
-        $(this).click(function() {
+        $(this).unbind('click').click(function() {
             saveQuestion(this);
         });
     });
 
     // Discard question changes
     $("button.discard-question").each(function() {
-        $(this).click(function() {
+        $(this).unbind('click').click(function() {
             discardQuestion(this);
         });
     });
 
     // Change question type
     $("select.question-type").each(function() {
-        $(this).change(function() {
+        $(this).unbind('change').change(function() {
             questionType(this);
         });
     });
 
     // Add an option
     $("button.add-option").each(function() {
-        $(this).click(function() {
+        $(this).unbind('click').click(function() {
             addOption(this);
         });
     });
 
     // Delete an option
     $("button.delete-option").each(function() {
-        $(this).click(function() {
+        $(this).unbind('click').click(function() {
             deleteOption(this);
         });
     });
 
     // Change slider type
     $("input.slider-type").each(function() {
-        $(this).change(function() {
+        $(this).unbind('change').change(function() {
             sliderType(this);
         });
     });
 
     // Change slider min
     $("select.slider-min").each(function() {
-        $(this).change(function() {
+        $(this).unbind('change').change(function() {
             sliderMin(this);
         });
     });
 
     // Change slider max
     $("select.slider-max").each(function() {
-        $(this).change(function() {
+        $(this).unbind('change').change(function() {
             sliderMax(this);
         });
     });
