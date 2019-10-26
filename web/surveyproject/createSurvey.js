@@ -112,6 +112,7 @@ $(function() {
 });
 
 function deletePage(btn) {
+    if (btn == null) { return; }
     if (pageCount <= 1) {
         return; // Don't delete the last page
     }
