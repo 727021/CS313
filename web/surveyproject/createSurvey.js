@@ -6,8 +6,10 @@ $(function() {
     $("#edit-title-input").hide();
 
     $("button#edit-title").click(function() {
-        $("#edit-title-input").val($("#survey-title").text().hide()).show();
+        $("#edit-title-input").val($("#survey-title").text());
+        $("#survey-title").hide();
         $("button#edit-title").hide();
+        $("#edit-title-input").show();
         $("button#save-title").show();
     });
 
