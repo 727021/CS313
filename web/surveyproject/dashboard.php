@@ -80,7 +80,7 @@ if (isset($_GET['delete'])) {
     <nav class="navbar navbar-expand-md navbar-dark bg-primary">
         <div class="container">
             <span class="navbar-brand">Dashboard</span>
-            <span class="navbar-text text-light">Welcome, <a href="user.php"><?php echo $_SESSION['user']['name']; ?></a>!  <a class="btn btn-sm btn-info" role="button" href="logout.php">Log Out</a></span>
+            <span class="navbar-text text-light">Welcome, <!--<a href="user.php">--><?php echo $_SESSION['user']['name']; ?><!--</a>-->!  <a class="btn btn-sm btn-info" role="button" href="logout.php">Log Out</a></span>
         </div>
     </nav>
     <div class="container bg-light mt-2 rounded">
@@ -102,16 +102,14 @@ if (isset($_GET['delete'])) {
                     $stmt->bindValue(':userid', $_SESSION['user']['id'], PDO::PARAM_INT);
                     $stmt->execute();
 
-                    // Insert a row for each survey on the account
-                    if ($stmt->rowCount() == 0) {
+                    if ($stmt->rowCount() == 0) { // If there are no surveys on the account
                         ?>
-
                         <tr>
                             <td class="text-center align-middle" colspan="5">You don't have any surveys yet!</td>
                         </tr>
-
                         <?php
                     }
+                    // Insert a row for each survey on the account
                     while ($survey = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     ?>
                     <tr>
