@@ -73,7 +73,7 @@ if (!isset($_SESSION['user'])) {
                     <div class="col">Questions go here<hr /></div>
                 </div>
                 <div class="row">
-                    <div class="col text-center"><button id="add-question" data-page="1" role="button" class="btn btn-info"><i class="far fa-plus-square"></i> Add Question</button></div>
+                    <div class="col text-center"><button id="add-question" data-page="1" role="button" class="btn btn-info"><i class="fas fa-plus"></i> Add Question</button></div>
                 </div>
             </div>
         </div>
@@ -82,7 +82,7 @@ if (!isset($_SESSION['user'])) {
     <div class="container mt-2">
         <div class="card">
             <div class="card-body text-center">
-                <button role="button" id="add-page" class="btn btn-info"><i class="far fa-plus-square"></i> Add Page</button>
+                <button role="button" id="add-page" class="btn btn-info"><i class="fas fa-plus"></i> Add Page</button>
             </div>
         </div>
     </div>
