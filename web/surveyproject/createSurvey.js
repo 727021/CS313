@@ -123,7 +123,7 @@ function deletePage(btn) {
         let start = Number($(btn).attr("data-page")) + 1;
         $(btn).parent().parent().parent().parent().parent().remove();
         for (let i = start; i <= pageCount; i++) {
-            $(`.page-title`)[i - 1].text(`Page ${i}`);
+            $(`.page-title`)[i - 1].textContent = `Page ${i}`;
             $(`[data-page="${i}"]`).each(function() {
                 $(this).attr("data-page", i - 1);
             });
