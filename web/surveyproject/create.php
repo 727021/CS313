@@ -47,7 +47,7 @@ if (!isset($_SESSION['user'])) {
                         <h3 class="page-title" data-page="1">Page 1</h3>
                     </div>
                     <div class="col text-right">
-                        <button id="delete-page" data-page="1" class="btn btn-danger" role="button" data-toggle="tooltip" title="Delete Page"><i class="far fa-trash-alt"></i></button>
+                        <button id="delete-page" data-page="1" class="btn btn-danger" role="button" data-toggle="tooltip" data-placement="left" title="Delete Page"><i class="far fa-trash-alt"></i></button>
                     </div>
                 </div>
             </div>
@@ -58,6 +58,14 @@ if (!isset($_SESSION['user'])) {
                 <div class="row">
                     <div class="col text-center"><button id="add-question" data-page="1" role="button" class="btn btn-info"><i class="far fa-plus-square"></i> Add Question</button></div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-2">
+        <div class="card">
+            <div class="card-body text-center">
+                <button role="button" id="add-page" class="btn btn-info"><i class="far fa-plus-square"></i> Add Page</button>
             </div>
         </div>
     </div>
