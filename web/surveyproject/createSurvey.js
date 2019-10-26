@@ -120,11 +120,11 @@ function deletePage(btn) {
     }
     if (Number($(btn).attr("data-page")) != pageCount) {
         // This isn't the last page; there will be some renumbering to do
-        let start = Number($(btn).attr("data-page")) + 1;
+        let start = Number($(btn).attr("data-page"));
         $(btn).parent().parent().parent().parent().parent().remove();
         for (let i = start; i <= pageCount; i++) {
             console.log(i);
-            $(`.page-title`)[i - 2].textContent = `Page ${i}`;
+            $(`.page-title`)[i - 1].textContent = `Page ${i}`;
             $(`[data-page="${i}"]`).each(function() {
                 $(this).attr("data-page", i - 1);
             });
