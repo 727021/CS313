@@ -113,7 +113,6 @@ $(function() {
 });
 
 function deletePage(btn) {
-    console.log(`deletePage(${btn})`);
     if (btn == null) { return; }
     if (pageCount <= 1) {
         return; // Don't delete the last page
@@ -123,7 +122,6 @@ function deletePage(btn) {
         let start = Number($(btn).attr("data-page"));
         $(btn).parent().parent().parent().parent().parent().remove();
         for (let i = start; i < pageCount; i++) {
-            console.log(i);
             $(`.page-title`)[i - 1].textContent = `Page ${i}`;
             $(`[data-page="${i + 1}"]`).each(function() {
                 $(this).attr("data-page", i);
@@ -132,10 +130,8 @@ function deletePage(btn) {
     } else {
         $(btn).parent().parent().parent().parent().parent().remove();
     }
-    console.log(`pageCount = ${pageCount}`);
     pageCount--;
-    console.log(`new pageCount = ${pageCount}`);
-    if (pageCount = 1) {
+    if (pageCount == 1) {
         $("button.delete-page")[0].setAttribute("disabled", "");
     }
 }
