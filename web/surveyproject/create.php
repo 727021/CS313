@@ -25,10 +25,12 @@ if (!isset($_SESSION['user'])) {
             <div class="card-body">
                 <div class="row">
                     <div class="col-1">
-                        <button role="button" class="btn btn-info text-center" title="Edit Title" id="edit-title" data-toggle="tooltip" data-placement="left"><i class="far fa-edit"></i></button>
+                        <button role="button" class="btn btn-info" title="Edit Title" id="edit-title" data-toggle="tooltip" data-placement="left"><i class="far fa-edit"></i></button>
+                        <button role="button" class="btn btn-success" title="Save Title" id="save-title" data-toggle="tooltip" data-placement="left"><i class="far fa-save"></i></button>
                     </div>
                     <div class="col-6">
                         <h3 class="d-inline mb-0" id="survey-title">Survey Title</h3>
+                        <input class="form-control-lg" type="text" value="Survey Title" id="edit-title-input">
                     </div>
                     <div class="col-5 text-right">
                         <button role="button" class="btn btn-danger" id="discard-survey" data-toggle="modal" data-target="#discard-survey-modal"><i class="far fa-trash-alt"></i> Discard</button>
