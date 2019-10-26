@@ -31,7 +31,24 @@ if (!isset($_SESSION['user'])) {
                         <h3 class="d-inline mb-0" id="survey-title">Survey Title</h3>
                     </div>
                     <div class="col-5 text-right">
-                        <button role="button" class="btn btn-danger" id="discard-survey"><i class="far fa-trash-alt"></i> Discard</button>
+                        <button role="button" class="btn btn-danger" id="discard-survey" data-toggle="modal" data-target="#discard-survey-modal"><i class="far fa-trash-alt"></i> Discard</button>
+                        <div class="modal fade" id="discard-survey-modal" tabindex="-1" role="dialog" aria-labelledby="discard-survey-modal-label" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="discard-survey-modal-label">Discard Survey</h5>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Are you sure you want to discard this survey?<br />Any unsaved work will be lost!</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+                                        <a href="dashboard.php" role="button" class="btn btn-danger">Discard</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <button role="button" class="btn btn-success" id="save-survey"><i class="far fa-save"></i> Save</button>
                     </div>
                 </div>
