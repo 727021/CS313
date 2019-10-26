@@ -103,6 +103,15 @@ if (isset($_GET['delete'])) {
                     $stmt->execute();
 
                     // Insert a row for each survey on the account
+                    if ($stmt->rowCount() == 0) {
+                        ?>
+
+                        <td>
+                            <tr class="text-center align-middle" colspan="5">You don't have any surveys yet!</tr>
+                        </td>
+
+                        <?php
+                    }
                     while ($survey = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     ?>
                     <tr>
