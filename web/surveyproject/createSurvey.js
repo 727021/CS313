@@ -132,6 +132,7 @@ function deletePage(btn) {
     } else {
         $(btn).parent().parent().parent().parent().parent().remove();
     }
+    console.log(`pageCount = ${pageCount}`);
     pageCount--;
     if (pageCount = 1) {
         $("button.delete-page")[0].setAttribute("disabled", "");
