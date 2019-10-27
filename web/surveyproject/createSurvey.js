@@ -128,7 +128,7 @@ function deletePage(btn) {
             });
         }
     } else {
-
+        $(btn).tooltip('dispose');
         $(btn).parent().parent().parent().parent().parent().remove();
     }
     pageCount--;
