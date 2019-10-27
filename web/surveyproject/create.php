@@ -153,9 +153,11 @@ if (!isset($_SESSION['user'])) {
                                     </div>
                                     <div class="question-details">
                                         <div class="options">
-                                            <div class="row form-group">
-                                                <div class="col-4">
-                                                    <input class="form-control" type="text" data-page="1" data-question="2" data-option="1">
+                                            <div class="row form-group option">
+                                                <div class="col-5">
+                                                    <input class="form-control" type="text" data-page="1" data-question="2" data-option="1" value="Choice 1">
+                                                </div>
+                                                <div class="col">
                                                     <button role="button" class="btn btn-danger delete-option" data-toggle="tooltip" data-placement="right" title="Delete Option"><i class="fas fa-minus"></i></button>
                                                 </div>
                                             </div>
