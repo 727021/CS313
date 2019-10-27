@@ -29,7 +29,7 @@ if (!isset($_SESSION['user'])) {
                         <button role="button" class="btn btn-success" title="Save Title" id="save-title" data-toggle="tooltip" data-placement="left"><i class="far fa-save"></i></button>
                     </div>
                     <div class="col-6">
-                        <h3 class="d-inline mb-0" id="survey-title">Survey Title</h3>
+                        <h3 class="mb-0" id="survey-title">Survey Title</h3>
                         <input class="form-control-lg" type="text" value="Survey Title" id="edit-title-input">
                     </div>
                     <div class="col-5 text-right">
