@@ -117,8 +117,8 @@ if (!isset($_SESSION['user'])) {
                                 <div class="form-group">
                                     <label>What is your choice?</label>
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input">
-                                        <label class="custom-control-label">Choice 1</label>
+                                        <input type="checkbox" class="custom-control-input" id="chk-p1-q2-o1">
+                                        <label class="custom-control-label" for="chk-p1-q2-o1">Choice 1</label>
                                     </div>
                                 </div>
                             </div>
@@ -152,8 +152,10 @@ if (!isset($_SESSION['user'])) {
                                     <div class="question-details">
                                         <div class="options">
                                             <div class="row">
-                                                <div class="col-10"><input type="text" data-page="1" data-question="2" data-option="1"></div>
-                                                <div class="col-2"><button role="button" class="btn btn-danger delete-option" data-toggle="tooltip" data-placement="right" title="Delete Option"><i class="fas fa-minus"></i></button></div>
+                                                <div class="col">
+                                                    <input type="text" data-page="1" data-question="2" data-option="1">
+                                                    <button role="button" class="btn btn-danger delete-option" data-toggle="tooltip" data-placement="right" title="Delete Option"><i class="fas fa-minus"></i></button>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="row">
