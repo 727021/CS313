@@ -78,8 +78,8 @@ if (!isset($_SESSION['user'])) {
                             </div>
                         </div>
                         <div class="col-2 text-right">
-                            <button role="button" class="btn btn-info edit-question" data-toggle="tooltip" data-placement="top" title="Edit Question"><i class="far fa-edit"></i></button>
-                            <button role="button" class="btn btn-danger delete-question" data-toggle="tooltip" data-placement="top" title="Delete Question"><i class="far fa-trash-alt"></i></button>
+                            <button role="button" class="btn btn-info edit-question" data-toggle="tooltip" data-placement="top" title="Edit Question" data-page="1" data-question="1"><i class="far fa-edit"></i></button>
+                            <button role="button" class="btn btn-danger delete-question" data-toggle="tooltip" data-placement="top" title="Delete Question" data-page="1" data-question="1"><i class="far fa-trash-alt"></i></button>
                         </div>
                     </div>
                     <div class="question-editor">
@@ -97,8 +97,8 @@ if (!isset($_SESSION['user'])) {
                             </div>
                             <div class="col-6"></div>
                             <div class="col-2 text-right">
-                                <button role="button" class="btn btn-success save-question" data-toggle="tooltip" data-placement="top" title="Save Question"><i class="far fa-save"></i></button>
-                                <button role="button" class="btn btn-danger discard-question" data-toggle="tooltip" data-placement="top" title="Discard Changes"><i class="fas fa-times"></i></button>
+                                <button role="button" class="btn btn-success save-question" data-toggle="tooltip" data-placement="top" title="Save Question" data-page="1" data-question="1"><i class="far fa-save"></i></button>
+                                <button role="button" class="btn btn-danger discard-question" data-toggle="tooltip" data-placement="top" title="Discard Changes" data-page="1" data-question="1"><i class="fas fa-times"></i></button>
                             </div>
                         </div>
                         <div class="row form-group">
