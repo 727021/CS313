@@ -12,9 +12,9 @@ $(function() {
     $("button#edit-title").unbind('click').click(function() {
         $("#edit-title-input").val($("#survey-title").text());
         $("#survey-title").hide();
-        $("button#edit-title").hide();
+        $("button#edit-title").hide().tooltip('hide');
         $("#edit-title-input").show();
-        $("button#save-title").show();
+        $("button#save-title").show().tooltip('show');
     });
 
     // Save survey title
@@ -22,8 +22,8 @@ $(function() {
         $("#survey-title").text(String($("#edit-title-input").val()).trim() == "" ? $("#survey-title").text() : $("#edit-title-input").val());
         $("#edit-title-input").hide();
         $("#survey-title").show();
-        $("button#save-title").hide();
-        $("button#edit-title").show();
+        $("button#save-title").hide().tooltip('hide');
+        $("button#edit-title").show().tooltip('show');
     });
 
     // Delete a page
