@@ -30,7 +30,7 @@ if (!isset($_SESSION['user'])) {
                     </div>
                     <div class="col-6">
                         <h3 class="mb-0" id="survey-title">Survey Title</h3>
-                        <input class="form-control-lg" type="text" value="Survey Title" id="edit-title-input">
+                        <input class="form-control font-weight-bold" type="text" value="Survey Title" id="edit-title-input">
                     </div>
                     <div class="col-5 text-right">
                         <button role="button" class="btn btn-danger" id="discard-survey" data-toggle="modal" data-target="#discard-survey-modal"><i class="far fa-trash-alt"></i> Discard</button>

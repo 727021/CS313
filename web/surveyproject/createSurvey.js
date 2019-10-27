@@ -1,4 +1,5 @@
 var pageCount = 1;
+var questionCount = [1];
 
 $(function() {
     // Initialize tooltips
