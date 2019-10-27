@@ -119,7 +119,7 @@ function deletePage(btn) {
     if (Number($(btn).attr("data-page")) != pageCount) {
         // This isn't the last page; there will be some renumbering to do
         let start = Number($(btn).attr("data-page"));
-
+        $(btn).tooltip('dispose');
         $(btn).parent().parent().parent().parent().parent().remove();
         for (let i = start; i < pageCount; i++) {
             $(`.page-title`)[i - 1].textContent = `Page ${i}`;
