@@ -69,9 +69,27 @@ if (!isset($_SESSION['user'])) {
                     </div>
                 </div>
             </div>
-            <div class="card-body" data-page="1">
+            <div class="card-body border-top border-bottom" data-page="1" data-question="1">
+                <div class="row question-display">
+                    <div class="col-10">
+                        <div class="form-group">
+                            <label>What is your answer?</label>
+                            <input class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <button role="button" class="btn btn-danger" data-toggle="tooltip" data-placement="right" title="Delete Question"><i class="far fa-trash-alt"></i></button>
+                        <br />
+                        <button role="button" class="btn btn-info" data-toggle="tooltip" data-placement="right" title="Edit Question"><i class="far fa-edit"></i></button>
+                    </div>
+                </div>
+                <div class="row question-editor">
+                    <div class="col">Editor goes here</div>
+                </div>
+            </div>
+            <div class="card-body border-top border-bottom" data-page="1" data-question="2">
                 <div class="row">
-                    <div class="col">Questions go here<hr /></div>
+                    <div class="col">Questions go here</div>
                 </div>
             </div>
             <div class="card-footer" data-page="1">
@@ -84,7 +102,7 @@ if (!isset($_SESSION['user'])) {
 
     <div class="container mt-2 mb-2">
         <div class="card">
-            <div class="card-body text-center">
+            <div class="card-footer text-center">
                 <button role="button" id="add-page" class="btn btn-info"><i class="fas fa-plus"></i> Add Page</button>
             </div>
         </div>
