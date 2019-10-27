@@ -83,7 +83,7 @@ if (!isset($_SESSION['user'])) {
                         </div>
                     </div>
                     <div class="question-editor">
-                        <div class="row question-editor">
+                        <div class="row form-group">
                             <div class="col-4">
                                 <select class="custom-select question-type">
                                     <option value="0">Textbox</option>
@@ -101,7 +101,7 @@ if (!isset($_SESSION['user'])) {
                                 <button role="button" class="btn btn-danger discard-question" data-toggle="tooltip" data-placement="top" title="Discard Changes"><i class="fas fa-times"></i></button>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row form-group">
                             <div class="col">
                                 <input type="text" class="form-control question-content" value="What is your answer?" placeholder="Question">
                                 <div class="question-details"></div><!-- Not used for textbox/textarea questions -->
