@@ -161,7 +161,7 @@ if (!isset($_SESSION['user'])) {
                                                     <button role="button" class="btn btn-danger delete-option" data-toggle="tooltip" data-placement="right" title="Delete Option"><i class="fas fa-minus"></i></button>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div><!-- .options -->
                                         <div class="row form-group">
                                             <div class="col"><button role="button" class="btn btn-info add-option"><i class="fas fa-plus"></i> Add Option</button></div>
                                         </div>
@@ -170,7 +170,7 @@ if (!isset($_SESSION['user'])) {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div><!-- .questions -->
                 <div class="card-footer" data-page="1">
                     <div class="row">
                         <div class="col text-center"><button data-page="1" role="button" class="add-question btn btn-info"><i class="fas fa-plus"></i> Add Question</button></div>
