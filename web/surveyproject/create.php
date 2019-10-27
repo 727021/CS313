@@ -77,16 +77,31 @@ if (!isset($_SESSION['user'])) {
                             <input class="form-control" type="text">
                         </div>
                     </div>
-                    <div class="col-2">
-                        <button role="button" class="btn btn-danger" data-toggle="tooltip" data-placement="right" title="Delete Question"><i class="far fa-trash-alt"></i></button>
-                        <br />
-                        <button role="button" class="btn btn-info" data-toggle="tooltip" data-placement="right" title="Edit Question"><i class="far fa-edit"></i></button>
+                    <div class="col-2 text-right">
+                        <button role="button" class="btn btn-info edit-question" data-toggle="tooltip" data-placement="right" title="Edit Question"><i class="far fa-edit"></i></button>
+                        <button role="button" class="btn btn-danger delete-question" data-toggle="tooltip" data-placement="right" title="Delete Question"><i class="far fa-trash-alt"></i></button>
                     </div>
                 </div>
                 <div class="row question-editor">
-                    <div class="col">Editor goes here</div>
+                    <div class="col-10">
+                        <select class="custom-select question-type">
+                            <option value="0">Textbox</option>
+                            <option value="0m">Textarea</option>
+                            <option value="1m">Checkboxes</option>
+                            <option value="1">Radio Buttons</option>
+                            <option value="2">Dropdown</option>
+                            <option value="2m">Select Menu</option>
+                            <option value="3">Slider</option>
+                        </select>
+                        <input type="text" class="form-control question-content" value="What is your answer?">
+                    </div>
+                    <div class="col-2">
+                        <button role="button" class="btn btn-success save-question" data-toggle="tooltip" data-placement="right" title="Save Question"><i class="far fa-save"></i></button>
+                        <button role="button" class="btn btn-danger discard-question" data-toggle="tooltip" data-placement="right" title="Discard Changes"><i class="far fa-trash-alt"></i></button>
+                    </div>
                 </div>
             </div>
+
             <div class="card-body border-top border-bottom" data-page="1" data-question="2">
                 <div class="row">
                     <div class="col">Questions go here</div>
