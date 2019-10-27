@@ -1,4 +1,4 @@
-var pageCount = 0;
+var pageCount = 1;
 
 $(function() {
     // Initialize tooltips
