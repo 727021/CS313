@@ -69,50 +69,100 @@ if (!isset($_SESSION['user'])) {
                         </div>
                     </div>
                 </div>
-                <div class="card-body border-top border-bottom" data-page="1" data-question="1">
-                    <div class="row question-display">
-                        <div class="col-10">
-                            <div class="form-group">
-                                <label>What is your answer?</label>
-                                <input class="form-control" type="text">
+                <div class="questions" data-page="1">
+                    <div class="card-body border-top border-bottom" data-page="1" data-question="1">
+                        <div class="row question-display">
+                            <div class="col-10">
+                                <div class="form-group">
+                                    <label>What is your answer?</label>
+                                    <input class="form-control" type="text">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-2 text-right">
-                            <button role="button" class="btn btn-info edit-question" data-toggle="tooltip" data-placement="top" title="Edit Question" data-page="1" data-question="1"><i class="far fa-edit"></i></button>
-                            <button role="button" class="btn btn-danger delete-question" data-toggle="tooltip" data-placement="top" title="Delete Question" data-page="1" data-question="1"><i class="far fa-trash-alt"></i></button>
-                        </div>
-                    </div>
-                    <div class="question-editor">
-                        <div class="row form-group">
-                            <div class="col-4">
-                                <select class="custom-select question-type">
-                                    <option value="0">Textbox</option>
-                                    <option value="0m">Textarea</option>
-                                    <option value="1m">Checkboxes</option>
-                                    <option value="1">Radio Buttons</option>
-                                    <option value="2">Dropdown</option>
-                                    <option value="2m">Select Menu</option>
-                                    <option value="3">Slider</option>
-                                </select>
-                            </div>
-                            <div class="col-6"></div>
                             <div class="col-2 text-right">
-                                <button role="button" class="btn btn-success save-question" data-toggle="tooltip" data-placement="top" title="Save Question" data-page="1" data-question="1"><i class="far fa-save"></i></button>
-                                <button role="button" class="btn btn-danger discard-question" data-toggle="tooltip" data-placement="top" title="Discard Changes" data-page="1" data-question="1"><i class="fas fa-times"></i></button>
+                                <button role="button" class="btn btn-info edit-question" data-toggle="tooltip" data-placement="top" title="Edit Question" data-page="1" data-question="1"><i class="far fa-edit"></i></button>
+                                <button role="button" class="btn btn-danger delete-question" data-toggle="tooltip" data-placement="top" title="Delete Question" data-page="1" data-question="1"><i class="far fa-trash-alt"></i></button>
                             </div>
                         </div>
-                        <div class="row form-group">
-                            <div class="col">
-                                <input type="text" class="form-control question-content" value="What is your answer?" placeholder="Question">
-                                <div class="question-details"></div><!-- Not used for textbox/textarea questions -->
+                        <div class="question-editor">
+                            <div class="row form-group">
+                                <div class="col-4">
+                                    <select class="custom-select question-type">
+                                        <option value="0" selected>Textbox</option>
+                                        <option value="0m">Textarea</option>
+                                        <option value="1m">Checkboxes</option>
+                                        <option value="1">Radio Buttons</option>
+                                        <option value="2">Dropdown</option>
+                                        <option value="2m">Select Menu</option>
+                                        <option value="3">Slider</option>
+                                    </select>
+                                </div>
+                                <div class="col-6"></div>
+                                <div class="col-2 text-right">
+                                    <button role="button" class="btn btn-success save-question" data-toggle="tooltip" data-placement="top" title="Save Question" data-page="1" data-question="1"><i class="far fa-save"></i></button>
+                                    <button role="button" class="btn btn-danger discard-question" data-toggle="tooltip" data-placement="top" title="Discard Changes" data-page="1" data-question="1"><i class="fas fa-times"></i></button>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col">
+                                    <input type="text" class="form-control question-content" value="What is your answer?" placeholder="Question">
+                                    <div class="question-details"></div><!-- Not used for textbox/textarea questions -->
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="card-body border-top border-bottom" data-page="1" data-question="2">
-                    <div class="row">
-                        <div class="col">Questions go here</div>
+                    <div class="card-body border-top border-bottom" data-page="1" data-question="2">
+                        <div class="row question-display">
+                            <div class="col-10">
+                                <div class="form-group">
+                                    <label>What is your choice?</label>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input">
+                                        <label class="custom-control-label">Choice 1</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-2 text-right">
+                                <button role="button" class="btn btn-info edit-question" data-toggle="tooltip" data-placement="top" title="Edit Question" data-page="1" data-question="2"><i class="far fa-edit"></i></button>
+                                <button role="button" class="btn btn-danger delete-question" data-toggle="tooltip" data-placement="top" title="Delete Question" data-page="1" data-question="2"><i class="far fa-trash-alt"></i></button>
+                            </div>
+                        </div>
+                        <div class="question-editor">
+                            <div class="row form-group">
+                                <div class="col-4">
+                                    <select class="custom-select question-type">
+                                        <option value="0">Textbox</option>
+                                        <option value="0m">Textarea</option>
+                                        <option value="1m" selected>Checkboxes</option>
+                                        <option value="1">Radio Buttons</option>
+                                        <option value="2">Dropdown</option>
+                                        <option value="2m">Select Menu</option>
+                                        <option value="3">Slider</option>
+                                    </select>
+                                </div>
+                                <div class="col-6"></div>
+                                <div class="col-2 text-right">
+                                    <button role="button" class="btn btn-success save-question" data-toggle="tooltip" data-placement="top" title="Save Question" data-page="1" data-question="2"><i class="far fa-save"></i></button>
+                                    <button role="button" class="btn btn-danger discard-question" data-toggle="tooltip" data-placement="top" title="Discard Changes" data-page="1" data-question="2"><i class="fas fa-times"></i></button>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col">
+                                    <input type="text" class="form-control question-content" value="What is your choice?" placeholder="Question">
+                                    <div class="question-details">
+                                        <div class="options">
+                                            <div class="row">
+                                                <div class="col-10"><input type="text" data-page="1" data-question="2" data-option="1"></div>
+                                                <div class="col-2"><button role="button" class="btn btn-danger delete-option" data-toggle="tooltip" data-placement="right" title="Delete Option"><i class="fas fa-minus"></i></button></div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col"><button role="button" class="btn btn-info add-option"><i class="fas fa-plus"></i> Add Option</button></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="card-footer" data-page="1">
