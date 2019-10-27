@@ -151,14 +151,14 @@ if (!isset($_SESSION['user'])) {
                                     <input type="text" class="form-control question-content" value="What is your choice?" placeholder="Question">
                                     <div class="question-details">
                                         <div class="options">
-                                            <div class="row">
+                                            <div class="row form-group">
                                                 <div class="col">
                                                     <input type="text" data-page="1" data-question="2" data-option="1">
                                                     <button role="button" class="btn btn-danger delete-option" data-toggle="tooltip" data-placement="right" title="Delete Option"><i class="fas fa-minus"></i></button>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row">
+                                        <div class="row form-group">
                                             <div class="col"><button role="button" class="btn btn-info add-option"><i class="fas fa-plus"></i> Add Option</button></div>
                                         </div>
                                     </div>
