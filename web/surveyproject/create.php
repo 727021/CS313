@@ -73,6 +73,8 @@ if (!isset($_SESSION['user'])) {
                 <div class="row">
                     <div class="col">Questions go here<hr /></div>
                 </div>
+            </div>
+            <div class="card-footer" data-page="1">
                 <div class="row">
                     <div class="col text-center"><button data-page="1" role="button" class="add-question btn btn-info"><i class="fas fa-plus"></i> Add Question</button></div>
                 </div>
