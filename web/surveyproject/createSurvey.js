@@ -1,5 +1,5 @@
 var pageCount = 1;
-var questionCount = [1];
+var questionCount = [2];
 
 $(function() {
     // Initialize tooltips
@@ -143,7 +143,26 @@ function addQuestion(btn) {
 }
 
 function deleteQuestion(btn) {
-
+    if (btn == null) { return; }
+    page = Number($(btn).attr('data-page'));
+    question = Number($(btn).attr('data-question'));
+    if (questionCount[page - 1] <= 1) { return; }
+    if (question != questionCount[page - 1]) {
+        try { $(`.card-body[data-page="${page}"][data-question="${question}"]`).tooltip('dispose'); } catch (ex) {}
+        $(btn).parent().parent().parent().remove();
+        for (let i = question; i < questionCount[page - 1]; i++) {
+            $(`[data-page="${page}"][data-question="${i + 1}"]`).each(function() {
+                $(this).attr('data-question', i);
+            });
+        }
+    } else {
+        try { $(`.card-body[data-page="${page}"][data-question="${question}"]`).tooltip('dispose'); } catch (ex) {}
+        $(btn).parent().parent().parent().remove();
+    }
+    questionCount[page - 1]--;
+    if (questionCount[page - 1] == 1) {
+        $(`button.delete-question[data-page="${page}"]`)[0].setAttribute("disabled", "");
+    }
 }
 
 function editQuestion(btn) {
