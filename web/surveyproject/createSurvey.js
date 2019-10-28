@@ -205,28 +205,30 @@ function saveQuestion(btn) {
         });
             break;
         case '1': // input:radio
-        let i = 1;
+        let j = 1;
         $editor.find('.options').first().children().each(function() {
             html += `<div class="custom-control custom-radio">
-                    <input type="radio" class="custom-control-input" id="rad-p${page}-q${question}-o${i}">
-                    <label class="custom-control-label" for="rad-p${page}-q${question}-o${i}">${$editor.find(`[data-page="${page}"][data-question="${question}"]`).eq(i - 1).val()}</label>
+                    <input type="radio" class="custom-control-input" id="rad-p${page}-q${question}-o${j}">
+                    <label class="custom-control-label" for="rad-p${page}-q${question}-o${j}">${$editor.find(`[data-page="${page}"][data-question="${question}"]`).eq(j - 1).val()}</label>
                     </div>`;
-                    i++;
+                    j++;
         });
             break;
         case '2': // select
+        let k = 1;
         html += '<select class="custom-select">';
         $editor.find('.options').first().children().each(function() {
-            html += `<option>${$editor.find(`[data-page="${page}"][data-question="${question}"]`).eq(i - 1).val()}</option>`;
-            i++;
+            html += `<option>${$editor.find(`[data-page="${page}"][data-question="${question}"]`).eq(k - 1).val()}</option>`;
+            k++;
         });
         html += '</select>';
             break;
         case '2m': // select[multiple]
+        let l = 1;
         html += '<select class="custom-select" multiple>';
         $editor.find('.options').first().children().each(function() {
-            html += `<option>${$editor.find(`[data-page="${page}"][data-question="${question}"]`).eq(i - 1).val()}</option>`;
-            i++;
+            html += `<option>${$editor.find(`[data-page="${page}"][data-question="${question}"]`).eq(l - 1).val()}</option>`;
+            l++;
         });
         html += '</select>';
             break;
