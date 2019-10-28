@@ -188,7 +188,11 @@ function addOption(btn) {
 }
 
 function deleteOption(btn) {
-
+    if (btn == null) return;
+    page = Number($(btn).parent().parent().parent().attr('data-page'));
+    question = Number($(btn).parent().parent().parent().attr('data-question'));
+    optionsCount = $(btn).parent().parent().parent().children().length;
+    console.log(`p${page} q${question} opt${optionsCount}`);
 }
 
 function sliderType(chk) {

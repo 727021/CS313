@@ -152,7 +152,7 @@ if (!isset($_SESSION['user'])) {
                                         <input type="text" class="form-control question-content" value="What is your choice?" placeholder="Question">
                                     </div>
                                     <div class="question-details">
-                                        <div class="options">
+                                        <div class="options" data-page="1" data-question="2">
                                             <div class="row form-group option">
                                                 <div class="col-5">
                                                     <input class="form-control" type="text" data-page="1" data-question="2" data-option="1" value="Choice 1">
