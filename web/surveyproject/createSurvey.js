@@ -7,6 +7,9 @@ $(function() {
 
     $("button#save-title").hide();
     $("#edit-title-input").hide();
+    $(".question-editor").each(function() {
+        $(this).hide();
+    });
 
     // Edit survey title
     $("button#edit-title").unbind('click').click(function() {
@@ -120,8 +123,9 @@ function deletePage(btn) {
     if (Number($(btn).attr("data-page")) != pageCount) {
         // This isn't the last page; there will be some renumbering to do
         let start = Number($(btn).attr("data-page"));
-        $(btn).tooltip('dispose');
+        $('[data-toggle="tooltip"]').tooltip('dispose');
         $(btn).parent().parent().parent().parent().parent().remove();
+        $('[data-toggle="tooltip"]').tooltip();
         for (let i = start; i < pageCount; i++) {
             $(`.page-title`)[i - 1].textContent = `Page ${i}`;
             $(`[data-page="${i + 1}"]`).each(function() {
@@ -129,8 +133,9 @@ function deletePage(btn) {
             });
         }
     } else {
-        $(btn).tooltip('dispose');
+        $('[data-toggle="tooltip"]').tooltip('dispose');
         $(btn).parent().parent().parent().parent().parent().remove();
+        $('[data-toggle="tooltip"]').tooltip();
     }
     pageCount--;
     if (pageCount == 1) {
@@ -168,11 +173,72 @@ function deleteQuestion(btn) {
 }
 
 function editQuestion(btn) {
-
+    let $card = $(btn).parent().parent().parent();
+    $card.children().first().hide().next().show();
+    $(btn).tooltip('hide');
+    $card.find('.save-question').first().tooltip('show');
 }
 
 function saveQuestion(btn) {
+    let $card = $(btn).parent().parent().parent().parent();
+    let page = Number($card.attr('data-page'));
+    let question = Number($card.attr('data-question'));
+    let $display = $card.children().first();
+    let $editor = $card.children().last();
 
+    let html = `<label>${$editor.find('.question-content').first().val()}</label>`;
+    switch ($editor.find('.question-type').first().val()) {
+        case '0': // input:text
+        html += `<input type="text" class="form-control">`;
+            break;
+        case '0m':// textarea
+        html += `<textarea class="form-control" rows="3"></textarea>`;
+            break;
+        case '1m': // input:checkbox
+        let i = 1;
+        $editor.find('.options').first().children().each(function() {
+            html += `<div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="chk-p${page}-q${question}-o${i}">
+                    <label class="custom-control-label" for="chk-p${page}-q${question}-o${i}">${$editor.find(`[data-page="${page}"][data-question="${question}"]`).eq(i - 1).val()}</label>
+                    </div>`;
+                    i++;
+        });
+            break;
+        case '1': // input:radio
+        let i = 1;
+        $editor.find('.options').first().children().each(function() {
+            html += `<div class="custom-control custom-radio">
+                    <input type="radio" class="custom-control-input" id="rad-p${page}-q${question}-o${i}">
+                    <label class="custom-control-label" for="rad-p${page}-q${question}-o${i}">${$editor.find(`[data-page="${page}"][data-question="${question}"]`).eq(i - 1).val()}</label>
+                    </div>`;
+                    i++;
+        });
+            break;
+        case '2': // select
+        html += '<select class="custom-select">';
+        $editor.find('.options').first().children().each(function() {
+            html += `<option>${$editor.find(`[data-page="${page}"][data-question="${question}"]`).eq(i - 1).val()}</option>`;
+            i++;
+        });
+        html += '</select>';
+            break;
+        case '2m': // select[multiple]
+        html += '<select class="custom-select" multiple>';
+        $editor.find('.options').first().children().each(function() {
+            html += `<option>${$editor.find(`[data-page="${page}"][data-question="${question}"]`).eq(i - 1).val()}</option>`;
+            i++;
+        });
+        html += '</select>';
+            break;
+        case '3': // input:range
+            break;
+        default:
+            break;
+    }
+
+    $display.find('.form-group').first().html(html);
+
+    $card.children().last().hide().prev().show();
 }
 
 function discardQuestion(btn) {
