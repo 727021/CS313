@@ -104,7 +104,9 @@ if (!isset($_SESSION['user'])) {
                             </div>
                             <div class="row form-group">
                                 <div class="col">
-                                    <input type="text" class="form-control question-content" value="What is your answer?" placeholder="Question">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control question-content" value="What is your answer?" placeholder="Question">
+                                    </div>
                                     <div class="question-details"><!-- Not used for textbox/textarea questions -->
                                     </div>
                                 </div>
