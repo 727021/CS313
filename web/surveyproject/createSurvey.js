@@ -289,9 +289,13 @@ function discardQuestion(btn) {
 
 function questionType(sel) {
     // Check selected type
-
+    let type = Number($(sel).val()[0]);
     // Create/remove (or show/hide?) options depending on type
-
+    if (type == 0) {
+        $(sel).parent().prent().next().find('.options').first().hide();
+    } else if (type < 3) {
+        $(sel).parent().prent().next().find('.options').first().show();
+    }
 }
 
 function addOption(btn) {
