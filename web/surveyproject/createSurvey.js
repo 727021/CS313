@@ -288,13 +288,15 @@ function discardQuestion(btn) {
 }
 
 function questionType(sel) {
+    let page = Number($(sel).parent().parent().parent().parent().attr('data-page'));
+    let question = Number($(sel).parent().parent().parent().parent().attr('data-question'));
     // Check selected type
     let type = Number($(sel).val()[0]);
-    // Create/remove (or show/hide?) options depending on type
+    // Create/remove options depending on type
     if (type == 0) {
-        $(sel).parent().parent().next().find('.options').first().hide();
+        $(sel).parent().parent().next().find('.question-details').first().html("");
     } else if (type < 3) {
-        $(sel).parent().parent().next().find('.options').first().show();
+        $(sel).parent().parent().next().find('.question-details').first().html(`<div class="options" data-page="${page}" data-question="${question}"><div class="row form-group option"><div class="col-5"><input class="form-control" type="text" data-page="${page}" data-question="${question}" value="Choice 1"></div><div class="col"><button role="button" class="btn btn-danger delete-option" data-toggle="tooltip" data-placement="right" title="Delete Option"><i class="fas fa-minus"></i></button></div></div><div class="row form-group option"><div class="col-5"><input class="form-control" type="text" data-page="${page}" data-question="${question}" value="Choice 2"></div><div class="col"><button role="button" class="btn btn-danger delete-option" data-toggle="tooltip" data-placement="right" title="Delete Option"><i class="fas fa-minus"></i></button></div></div><div class="row form-group option"><div class="col-5"><input class="form-control" type="text" data-page="${page}" data-question="${question}" value="Choice 3"></div><div class="col"><button role="button" class="btn btn-danger delete-option" data-toggle="tooltip" data-placement="right" title="Delete Option"><i class="fas fa-minus"></i></button></div></div></div><!-- .options --><div class="row form-group"><div class="col"><button role="button" class="btn btn-info add-option"><i class="fas fa-plus"></i> Add Option</button></div></div>`);
     }
 }
 
