@@ -269,11 +269,23 @@ function discardQuestion(btn) {
     // Update editor with previous data
     $editor.find('.question-content').first().val($display.children().first().children().first().children().first().text());
     $editor.find('.question-type').first().val($display.find('[data-qtype]').first().attr('data-qtype'));
-    if (Number($editor.find('.question-type').first().val()[0]) == 1 || Number($editor.find('.question-type').first().val()[0]) == 2) { // check/radio/select
+    if (Number($editor.find('.question-type').first().val()[0]) == 1) { // check/radio
         html = "";
 
         $display.children().first().children().first().children('.custom-control').each(function() {
             html += `<div class="row form-group option"><div class="col-5"><input class="form-control" type="text" data-page="${page}" data-question="${question}" value="${$(this).children().last().text()}"></div><div class="col"><button role="button" class="btn btn-danger delete-option" data-toggle="tooltip" data-placement="right" title="Delete Option"><i class="fas fa-minus"></i></button></div></div>`;
+        });
+
+        $editor.find('.options').first().html(html);
+
+        $editor.find('.options').first().children().each(function() {
+            $(this).find('button.delete-option').first().click(function() { deleteOption(this); }).tooltip();
+        });
+    } else if (Number($editor.find('.question-type').first().val()[0]) == 2) { // select
+        html = "";
+
+        $display.children().first().children().first().children('option').each(function() {
+            html += `<div class="row form-group option"><div class="col-5"><input class="form-control" type="text" data-page="${page}" data-question="${question}" value="${$(this).text()}"></div><div class="col"><button role="button" class="btn btn-danger delete-option" data-toggle="tooltip" data-placement="right" title="Delete Option"><i class="fas fa-minus"></i></button></div></div>`;
         });
 
         $editor.find('.options').first().html(html);
@@ -304,7 +316,6 @@ function deleteOption(btn) {
     page = Number($(btn).parent().parent().parent().attr('data-page'));
     question = Number($(btn).parent().parent().parent().attr('data-question'));
     optionsCount = $(btn).parent().parent().parent().children().length;
-    console.log(`p${page} q${question} opt${optionsCount}`);
     if (optionsCount <= 1) return;
     $('[data-toggle="tooltip"]').tooltip('dispose');
     $(btn).parent().parent().remove();
