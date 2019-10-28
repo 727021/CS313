@@ -161,6 +161,22 @@ if (!isset($_SESSION['user'])) {
                                                     <button role="button" class="btn btn-danger delete-option" data-toggle="tooltip" data-placement="right" title="Delete Option"><i class="fas fa-minus"></i></button>
                                                 </div>
                                             </div>
+                                            <div class="row form-group option">
+                                                <div class="col-5">
+                                                    <input class="form-control" type="text" data-page="1" data-question="2" data-option="1" value="Choice 2">
+                                                </div>
+                                                <div class="col">
+                                                    <button role="button" class="btn btn-danger delete-option" data-toggle="tooltip" data-placement="right" title="Delete Option"><i class="fas fa-minus"></i></button>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group option">
+                                                <div class="col-5">
+                                                    <input class="form-control" type="text" data-page="1" data-question="2" data-option="1" value="Choice 3">
+                                                </div>
+                                                <div class="col">
+                                                    <button role="button" class="btn btn-danger delete-option" data-toggle="tooltip" data-placement="right" title="Delete Option"><i class="fas fa-minus"></i></button>
+                                                </div>
+                                            </div>
                                         </div><!-- .options -->
                                         <div class="row form-group">
                                             <div class="col"><button role="button" class="btn btn-info add-option"><i class="fas fa-plus"></i> Add Option</button></div>
