@@ -199,7 +199,7 @@ function saveQuestion(btn) {
     let $display = $card.children().first();
     let $editor = $card.children().last();
 
-    let html = `<label>${escapeHTML($editor.find('.question-content').first().val())}</label>`;
+    let html = `<label>${escapeHtml($editor.find('.question-content').first().val())}</label>`;
     switch ($editor.find('.question-type').first().val()) {
         case '0': // input:text
         html += `<input type="text" class="form-control">`;
@@ -212,7 +212,7 @@ function saveQuestion(btn) {
         $editor.find('.options').first().children().each(function() {
             html += `<div class="custom-control custom-checkbox">
                     <input type="checkbox" class="custom-control-input" id="chk-p${page}-q${question}-o${i}">
-                    <label class="custom-control-label" for="chk-p${page}-q${question}-o${i}">${escapeHTML($editor.find(`.options [data-page="${page}"][data-question="${question}"]`).eq(i - 1).val())}</label>
+                    <label class="custom-control-label" for="chk-p${page}-q${question}-o${i}">${escapeHtml($editor.find(`.options [data-page="${page}"][data-question="${question}"]`).eq(i - 1).val())}</label>
                     </div>`;
                     i++;
         });
@@ -222,7 +222,7 @@ function saveQuestion(btn) {
         $editor.find('.options').first().children().each(function() {
             html += `<div class="custom-control custom-radio">
                     <input type="radio" class="custom-control-input" id="rad-p${page}-q${question}-o${j}" name="rad-p${page}-q${question}">
-                    <label class="custom-control-label" for="rad-p${page}-q${question}-o${j}">${escapeHTML($editor.find(`.options [data-page="${page}"][data-question="${question}"]`).eq(j - 1).val())}</label>
+                    <label class="custom-control-label" for="rad-p${page}-q${question}-o${j}">${escapeHtml($editor.find(`.options [data-page="${page}"][data-question="${question}"]`).eq(j - 1).val())}</label>
                     </div>`;
                     j++;
         });
@@ -231,7 +231,7 @@ function saveQuestion(btn) {
         let k = 1;
         html += '<select class="custom-select">';
         $editor.find('.options').first().children().each(function() {
-            html += `<option>${escapeHTML($editor.find(`.options [data-page="${page}"][data-question="${question}"]`).eq(k - 1).val())}</option>`;
+            html += `<option>${escapeHtml($editor.find(`.options [data-page="${page}"][data-question="${question}"]`).eq(k - 1).val())}</option>`;
             k++;
         });
         html += '</select>';
@@ -240,7 +240,7 @@ function saveQuestion(btn) {
         let l = 1;
         html += '<select class="custom-select" multiple>';
         $editor.find('.options').first().children().each(function() {
-            html += `<option>${escapeHTML($editor.find(`.options [data-page="${page}"][data-question="${question}"]`).eq(l - 1).val())}</option>`;
+            html += `<option>${escapeHtml($editor.find(`.options [data-page="${page}"][data-question="${question}"]`).eq(l - 1).val()}</option>`;
             l++;
         });
         html += '</select>';
