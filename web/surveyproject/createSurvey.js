@@ -212,7 +212,7 @@ function saveQuestion(btn) {
         $editor.find('.options').first().children().each(function() {
             html += `<div class="custom-control custom-checkbox">
                     <input type="checkbox" class="custom-control-input" id="chk-p${page}-q${question}-o${i}">
-                    <label class="custom-control-label" for="chk-p${page}-q${question}-o${i}">${escapeHtml($editor.find(`.options [data-page="${page}"][data-question="${question}"]`).eq(i - 1).val())}</label>
+                    <label class="custom-control-label" for="chk-p${page}-q${question}-o${i}">${escapeHtml(($editor.find(`.options [data-page="${page}"][data-question="${question}"]`).eq(i - 1).val() == null ? "Option" : $editor.find(`.options [data-page="${page}"][data-question="${question}"]`).eq(i - 1).val()))}</label>
                     </div>`;
                     i++;
         });
