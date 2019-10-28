@@ -120,6 +120,14 @@ if (!isset($_SESSION['user'])) {
                                         <input type="checkbox" class="custom-control-input" id="chk-p1-q2-o1">
                                         <label class="custom-control-label" for="chk-p1-q2-o1">Choice 1</label>
                                     </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="chk-p1-q2-o2">
+                                        <label class="custom-control-label" for="chk-p1-q2-o2">Choice 2</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="chk-p1-q2-o3">
+                                        <label class="custom-control-label" for="chk-p1-q2-o3">Choice 3</label>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-2 text-right">

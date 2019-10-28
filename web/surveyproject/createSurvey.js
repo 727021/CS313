@@ -244,10 +244,18 @@ function saveQuestion(btn) {
 }
 
 function discardQuestion(btn) {
+    // Hide editor
+
+    // Show display
+
+    // Update editor with previous data
 
 }
 
 function questionType(sel) {
+    // Check selected type
+
+    // Create/remove (or show/hide?) options depending on type
 
 }
 
