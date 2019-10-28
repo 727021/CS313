@@ -194,9 +194,9 @@ function deleteOption(btn) {
     optionsCount = $(btn).parent().parent().parent().children().length;
     console.log(`p${page} q${question} opt${optionsCount}`);
     if (optionsCount <= 1) return;
-
+    $('[data-toggle="tooltip"]').tooltip('dispose');
     $(btn).parent().parent().remove();
-
+    $('[data-toggle="tooltip"]').tooltip();
     if (optionsCount - 1 == 1) {
         $(`[data-page="${page}"][data-question="${question}"] button.delete-option`)[0].setAttribute("disabled", "");
     }
