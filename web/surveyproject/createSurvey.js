@@ -30,16 +30,14 @@ $(function() {
         $("#survey-title").hide();
         $("button#edit-title").hide().tooltip('hide');
         $("#edit-title-input").show();
-        $("button#save-title").show().tooltip('show');
     });
 
     // Save survey title
     $("button#save-title").unbind('click').click(function() {
         $("#survey-title").text(String($("#edit-title-input").val()).trim() == "" ? $("#survey-title").text() : $("#edit-title-input").val());
         $("#edit-title-input").hide();
-        $("#survey-title").show();
         $("button#save-title").hide().tooltip('hide');
-        $("button#edit-title").show().tooltip('show');
+        $("#survey-title").show();
     });
 
     // Delete a page
@@ -189,7 +187,6 @@ function editQuestion(btn) {
     let $card = $(btn).parent().parent().parent();
     $card.children().first().hide().next().show();
     $(btn).tooltip('hide');
-    $card.find('.save-question').first().tooltip('show');
 }
 
 function saveQuestion(btn) {
@@ -265,32 +262,25 @@ function discardQuestion(btn) {
     // Hide editor
     $editor.hide().find('button.discard-question').first().tooltip('hide');
     // Show display
-    $display.show().find('button.delete-question').first().tooltip('show');
+    $display.show().find('button.delete-question').first();
     // Update editor with previous data
     $editor.find('.question-content').first().val($display.children().first().children().first().children().first().text());
     $editor.find('.question-type').first().val($display.find('[data-qtype]').first().attr('data-qtype'));
     if (Number($editor.find('.question-type').first().val()[0]) == 1) { // check/radio
         html = "";
-
         $display.children().first().children().first().children('.custom-control').each(function() {
             html += `<div class="row form-group option"><div class="col-5"><input class="form-control" type="text" data-page="${page}" data-question="${question}" value="${$(this).children().last().text()}"></div><div class="col"><button role="button" class="btn btn-danger delete-option" data-toggle="tooltip" data-placement="right" title="Delete Option"><i class="fas fa-minus"></i></button></div></div>`;
         });
-
         $editor.find('.options').first().html(html);
-
         $editor.find('.options').first().children().each(function() {
             $(this).find('button.delete-option').first().click(function() { deleteOption(this); }).tooltip();
         });
     } else if (Number($editor.find('.question-type').first().val()[0]) == 2) { // select
         html = "";
-        console.log('populate select editor');
         $display.find('option').each(function() {
-            console.log('create option');
             html += `<div class="row form-group option"><div class="col-5"><input class="form-control" type="text" data-page="${page}" data-question="${question}" value="${$(this).text()}"></div><div class="col"><button role="button" class="btn btn-danger delete-option" data-toggle="tooltip" data-placement="right" title="Delete Option"><i class="fas fa-minus"></i></button></div></div>`;
         });
-
         $editor.find('.options').first().html(html);
-
         $editor.find('.options').first().children().each(function() {
             $(this).find('button.delete-option').first().click(function() { deleteOption(this); }).tooltip();
         });
