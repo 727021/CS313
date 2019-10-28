@@ -30,6 +30,8 @@ $(function() {
         $("#survey-title").hide();
         $("button#edit-title").hide().tooltip('hide');
         $("#edit-title-input").show();
+        $("button#save-title").show();
+
     });
 
     // Save survey title
@@ -38,6 +40,7 @@ $(function() {
         $("#edit-title-input").hide();
         $("button#save-title").hide().tooltip('hide');
         $("#survey-title").show();
+        $("button#edit-title").show();
     });
 
     // Delete a page
