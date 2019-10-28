@@ -272,7 +272,7 @@ function discardQuestion(btn) {
     if (Number($editor.find('.question-type').first().val()[0]) == 1 || Number($editor.find('.question-type').first().val()[0]) == 2) { // check/radio/select
         html = "";
 
-        $display.children().first().children().first().children().first().children('.custom-control').each(function() {
+        $display.children().first().children().first().children('.custom-control').each(function() {
             html += `<div class="row form-group option"><div class="col-5"><input class="form-control" type="text" data-page="${page}" data-question="${question}" value="${$(this).children().last().text()}"></div><div class="col"><button role="button" class="btn btn-danger delete-option" data-toggle="tooltip" data-placement="right" title="Delete Option"><i class="fas fa-minus"></i></button></div></div>`;
         });
 
