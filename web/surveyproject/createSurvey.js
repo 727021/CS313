@@ -193,6 +193,13 @@ function deleteOption(btn) {
     question = Number($(btn).parent().parent().parent().attr('data-question'));
     optionsCount = $(btn).parent().parent().parent().children().length;
     console.log(`p${page} q${question} opt${optionsCount}`);
+    if (optionsCount <= 1) return;
+
+    $(btn).parent().parent().remove();
+
+    if (optionsCount - 1 == 1) {
+        $(`[data-page="${page}"][data-question="${question}"] button.delete-option`)[0].setAttribute("disabled", "");
+    }
 }
 
 function sliderType(chk) {
