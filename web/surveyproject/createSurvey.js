@@ -240,7 +240,7 @@ function saveQuestion(btn) {
         let l = 1;
         html += '<select class="custom-select" multiple>';
         $editor.find('.options').first().children().each(function() {
-            html += `<option>${escapeHtml($editor.find(`.options [data-page="${page}"][data-question="${question}"]`).eq(l - 1).val()}</option>`;
+            html += `<option>${escapeHtml($editor.find(`.options [data-page="${page}"][data-question="${question}"]`).eq(l - 1).val())}</option>`;
             l++;
         });
         html += '</select>';
