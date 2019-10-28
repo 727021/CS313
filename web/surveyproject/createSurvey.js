@@ -208,7 +208,7 @@ function saveQuestion(btn) {
         let j = 1;
         $editor.find('.options').first().children().each(function() {
             html += `<div class="custom-control custom-radio">
-                    <input type="radio" class="custom-control-input" id="rad-p${page}-q${question}-o${j}">
+                    <input type="radio" class="custom-control-input" id="rad-p${page}-q${question}-o${j}" name="rad-p${page}-q${question}">
                     <label class="custom-control-label" for="rad-p${page}-q${question}-o${j}">${$editor.find(`.options [data-page="${page}"][data-question="${question}"]`).eq(j - 1).val()}</label>
                     </div>`;
                     j++;
