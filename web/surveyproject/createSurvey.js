@@ -292,9 +292,9 @@ function questionType(sel) {
     let type = Number($(sel).val()[0]);
     // Create/remove (or show/hide?) options depending on type
     if (type == 0) {
-        $(sel).parent().prent().next().find('.options').first().hide();
+        $(sel).parent().parent().next().find('.options').first().hide();
     } else if (type < 3) {
-        $(sel).parent().prent().next().find('.options').first().show();
+        $(sel).parent().parent().next().find('.options').first().show();
     }
 }
 
