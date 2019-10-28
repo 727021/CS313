@@ -74,7 +74,7 @@ if (!isset($_SESSION['user'])) {
                         <div class="row question-display">
                             <div class="col-10">
                                 <div class="form-group">
-                                    <label>What is your answer?</label>
+                                    <label data-qtype="0">What is your answer?</label>
                                     <input class="form-control" type="text">
                                 </div>
                             </div>
@@ -115,7 +115,7 @@ if (!isset($_SESSION['user'])) {
                         <div class="row question-display">
                             <div class="col-10">
                                 <div class="form-group">
-                                    <label>What is your choice?</label>
+                                    <label data-qtype="1m">What is your choice?</label>
                                     <div class="custom-control custom-checkbox">
                                         <input type="checkbox" class="custom-control-input" id="chk-p1-q2-o1">
                                         <label class="custom-control-label" for="chk-p1-q2-o1">Choice 1</label>

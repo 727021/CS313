@@ -199,7 +199,7 @@ function saveQuestion(btn) {
     let $display = $card.children().first();
     let $editor = $card.children().last();
 
-    let html = `<label>${escapeHtml($editor.find('.question-content').first().val())}</label>`;
+    let html = `<label data-qtype="${$editor.find('.question-type').first().val()}">${escapeHtml($editor.find('.question-content').first().val())}</label>`;
     switch ($editor.find('.question-type').first().val()) {
         case '0': // input:text
         html += `<input type="text" class="form-control">`;
@@ -257,12 +257,31 @@ function saveQuestion(btn) {
 }
 
 function discardQuestion(btn) {
+    let $card = $(btn).parent().parent().parent().parent();
+    let page = Number($card.attr('data-page'));
+    let question = Number($card.attr('data-question'));
+    let $display = $card.children().first();
+    let $editor = $card.children().last();
     // Hide editor
-
+    $editor.hide().find('button.discard-question').first().tooltip('hide');
     // Show display
-
+    $display.show().find('button.delete-question').first().tooltip('show');
     // Update editor with previous data
+    $editor.find('.question-content').first().val($display.children().first().children().first().children().first().text());
+    $editor.find('.question-type').first().val($display.find('[data-qtype]').first().attr('data-qtype'));
+    if (Number($editor.find('.question-type').first().val()[0]) == 1 || Number($editor.find('.question-type').first().val()[0]) == 2) { // check/radio/select
+        html = "";
 
+        $display.children().first().children().first().children().first().children('.custom-control').each(function() {
+            html += `<div class="row form-group option"><div class="col-5"><input class="form-control" type="text" data-page="${page}" data-question="${question}" value="${$(this).children().last().text()}"></div><div class="col"><button role="button" class="btn btn-danger delete-option" data-toggle="tooltip" data-placement="right" title="Delete Option"><i class="fas fa-minus"></i></button></div></div>`;
+        });
+
+        $editor.find('.options').first().html(html);
+
+        $editor.find('.options').first().children().each(function() {
+            $(this).find('button.delete-option').first().click(function() { deleteOption(this); }).tooltip();
+        });
+    }
 }
 
 function questionType(sel) {
