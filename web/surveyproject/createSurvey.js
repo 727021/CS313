@@ -148,17 +148,18 @@ function deleteQuestion(btn) {
     question = Number($(btn).attr('data-question'));
     if (questionCount[page - 1] <= 1) { return; }
     if (question != questionCount[page - 1]) {
-        try { $(`[data-toggle="tooltip"]`).tooltip('dispose'); } catch (ex) { console.log(ex); }
-        $('[data-toggle="tooltip"]').tooltip();
+        try { $(`[data-toggle="tooltip"]`).tooltip('dispose'); } catch (ex) {}
         $(btn).parent().parent().parent().remove();
+        $('[data-toggle="tooltip"]').tooltip();
         for (let i = question; i < questionCount[page - 1]; i++) {
             $(`[data-page="${page}"][data-question="${i + 1}"]`).each(function() {
                 $(this).attr('data-question', i);
             });
         }
     } else {
-        try { $(`.card-body[data-page="${page}"][data-question="${question}"]`).tooltip('dispose'); } catch (ex) {}
+        try { $('[data-toggle="tooltip"]').tooltip('dispose'); } catch (ex) {}
         $(btn).parent().parent().parent().remove();
+        $('[data-toggle="tooltip"]').tooltip();
     }
     questionCount[page - 1]--;
     if (questionCount[page - 1] == 1) {
