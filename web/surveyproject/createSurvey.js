@@ -283,8 +283,9 @@ function discardQuestion(btn) {
         });
     } else if (Number($editor.find('.question-type').first().val()[0]) == 2) { // select
         html = "";
-
-        $display.children().first().children().first().children('option').each(function() {
+        console.log('populate select editor');
+        $display.find('option').each(function() {
+            console.log('create option');
             html += `<div class="row form-group option"><div class="col-5"><input class="form-control" type="text" data-page="${page}" data-question="${question}" value="${$(this).text()}"></div><div class="col"><button role="button" class="btn btn-danger delete-option" data-toggle="tooltip" data-placement="right" title="Delete Option"><i class="fas fa-minus"></i></button></div></div>`;
         });
 
