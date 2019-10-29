@@ -278,7 +278,7 @@ function discardQuestion(btn) {
     if (Number($editor.find('.question-type').first().val()[0]) == 1) { // check/radio
         html = "";
         $display.children().first().children().first().children('.custom-control').each(function() {
-            html += `<div class="row form-group option"><div class="col-5"><input class="form-control" type="text" data-page="${page}" data-question="${question}" value="${$(this).children().last().text()}"></div><div class="col"><button role="button" class="btn btn-danger delete-option" data-toggle="tooltip" data-placement="right" title="Delete Option"><i class="fas fa-minus"></i></button></div></div>`;
+            html += `<div class="row form-group option"><div class="col-5 pr-2"><input class="form-control" type="text" data-page="${page}" data-question="${question}" value="${$(this).children().last().text()}"></div><div class="col pl-0"><button role="button" class="btn btn-danger delete-option" data-toggle="tooltip" data-placement="right" title="Delete Option"><i class="fas fa-minus"></i></button></div></div>`;
         });
         $editor.find('.options').first().html(html);
         $editor.find('.options').first().children().each(function() {
@@ -288,7 +288,7 @@ function discardQuestion(btn) {
     } else if (Number($editor.find('.question-type').first().val()[0]) == 2) { // select
         html = "";
         $display.find('option').each(function() {
-            html += `<div class="row form-group option"><div class="col-5"><input class="form-control" type="text" data-page="${page}" data-question="${question}" value="${$(this).text()}"></div><div class="col"><button role="button" class="btn btn-danger delete-option" data-toggle="tooltip" data-placement="right" title="Delete Option"><i class="fas fa-minus"></i></button></div></div>`;
+            html += `<div class="row form-group option"><div class="col-5 pr-2"><input class="form-control" type="text" data-page="${page}" data-question="${question}" value="${$(this).text()}"></div><div class="col pl-0"><button role="button" class="btn btn-danger delete-option" data-toggle="tooltip" data-placement="right" title="Delete Option"><i class="fas fa-minus"></i></button></div></div>`;
         });
         $editor.find('.options').first().html(html);
         $editor.find('.options').first().children().each(function() {
@@ -315,7 +315,7 @@ function questionType(sel) {
 
 function addOption(btn) {
     if (btn == null) return;
-    $(btn).parent().parent().prev().append('<div class="row form-group option"><div class="col-5"><input class="form-control" type="text" data-page="1" data-question="2" value="Option"></div><div class="col"><button role="button" class="btn btn-danger delete-option" data-toggle="tooltip" data-placement="right" title="Delete Option"><i class="fas fa-minus"></i></button></div></div>');
+    $(btn).parent().parent().prev().append('<div class="row form-group option"><div class="col-5 pr-2"><input class="form-control" type="text" data-page="1" data-question="2" value="Option"></div><div class="col pl-0"><button role="button" class="btn btn-danger delete-option" data-toggle="tooltip" data-placement="right" title="Delete Option"><i class="fas fa-minus"></i></button></div></div>');
     $(btn).parent().parent().prev().find('button.delete-option').last().click(function() { deleteOption(this); });
     $(btn).parent().parent().prev().find('button.delete-option').last().tooltip();
     $(btn).parent().parent().prev().children().first().find('button.delete-option').first().removeAttr('disabled');

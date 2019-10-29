@@ -110,26 +110,26 @@ if (!isset($_SESSION['user'])) {
                                     <div class="question-details" style="display: none;"><!-- Not used for textbox/textarea questions -->
                                         <div class="options" data-page="1" data-question="1">
                                             <div class="row form-group option">
-                                                <div class="col-5">
+                                                <div class="col-5 pr-2">
                                                     <input class="form-control" type="text" data-page="1" data-question="1" value="Choice 1">
                                                 </div>
-                                                <div class="col">
+                                                <div class="col pl-0">
                                                     <button role="button" class="btn btn-danger delete-option" data-toggle="tooltip" data-placement="right" title="Delete Option"><i class="fas fa-minus"></i></button>
                                                 </div>
                                             </div>
                                             <div class="row form-group option">
-                                                <div class="col-5">
+                                                <div class="col-5 pr-2">
                                                     <input class="form-control" type="text" data-page="1" data-question="1" value="Choice 2">
                                                 </div>
-                                                <div class="col">
+                                                <div class="col pl-0">
                                                     <button role="button" class="btn btn-danger delete-option" data-toggle="tooltip" data-placement="right" title="Delete Option"><i class="fas fa-minus"></i></button>
                                                 </div>
                                             </div>
                                             <div class="row form-group option">
-                                                <div class="col-5">
+                                                <div class="col-5 pr-2">
                                                     <input class="form-control" type="text" data-page="1" data-question="1" value="Choice 3">
                                                 </div>
-                                                <div class="col">
+                                                <div class="col pl-0">
                                                     <button role="button" class="btn btn-danger delete-option" data-toggle="tooltip" data-placement="right" title="Delete Option"><i class="fas fa-minus"></i></button>
                                                 </div>
                                             </div>
@@ -194,26 +194,26 @@ if (!isset($_SESSION['user'])) {
                                     <div class="question-details">
                                         <div class="options" data-page="1" data-question="2">
                                             <div class="row form-group option">
-                                                <div class="col-5">
+                                                <div class="col-5 pr-2">
                                                     <input class="form-control" type="text" data-page="1" data-question="2" value="Choice 1">
                                                 </div>
-                                                <div class="col">
+                                                <div class="col pl-0">
                                                     <button role="button" class="btn btn-danger delete-option" data-toggle="tooltip" data-placement="right" title="Delete Option"><i class="fas fa-minus"></i></button>
                                                 </div>
                                             </div>
                                             <div class="row form-group option">
-                                                <div class="col-5">
+                                                <div class="col-5 pr-2">
                                                     <input class="form-control" type="text" data-page="1" data-question="2" value="Choice 2">
                                                 </div>
-                                                <div class="col">
+                                                <div class="col pl-0">
                                                     <button role="button" class="btn btn-danger delete-option" data-toggle="tooltip" data-placement="right" title="Delete Option"><i class="fas fa-minus"></i></button>
                                                 </div>
                                             </div>
                                             <div class="row form-group option">
-                                                <div class="col-5">
+                                                <div class="col-5 pr-2">
                                                     <input class="form-control" type="text" data-page="1" data-question="2" value="Choice 3">
                                                 </div>
-                                                <div class="col">
+                                                <div class="col pl-0">
                                                     <button role="button" class="btn btn-danger delete-option" data-toggle="tooltip" data-placement="right" title="Delete Option"><i class="fas fa-minus"></i></button>
                                                 </div>
                                             </div>
