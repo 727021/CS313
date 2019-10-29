@@ -250,7 +250,8 @@ $card.find('button.delete-option').each(function() { $(this).click(function() { 
 $card.find('button.add-option').first().click(function() { addOption(this); });
 // Add select listener
 $card.find('select.question-type').first().change(function() { questionType(this); });
-// Initialize tooltips
+// Reload tooltips
+$('[data-toggle="tooltip"]').tooltip();
 }
 
 function deleteQuestion(btn) {
