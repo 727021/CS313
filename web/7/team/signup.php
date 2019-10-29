@@ -2,7 +2,8 @@
 
 require 'db.php';
 
-$errors = array();
+$errorMatch = false;
+$errorLength = false;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = htmlspecialchars(trim($_POST['username']));
@@ -10,12 +11,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $confirm = htmlspecialchars(trim($_POST['confirm']));
 
     if ($password !== $confirm) {
-        array_push($errors, "Passwords don't match!");
+        $errorMatch = true;
     }
     if (strlen($password) < 7 || !preg_match('/\d/', $password)) {
-        array_push($errors, "Password must be at least 7 characters and contain a number.");
+        $errorLength = true;
     }
-    if (count($errors) == 0) {
+    if (!($errorMatch || $errorLength)) {
         $hash = password_hash($password, PASSWORD_DEFAULT);
 
         try {
@@ -47,8 +48,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <input class="form-control<?php/* if (count($errors) > 0) echo ' is-invalid'; */?>" type="password" name="password" id="password" placeholder="Password">
             <input class="form-control<?php/* if (count($errors) > 0) echo ' is-invalid'; */?>" type="password" name="confirm" id="confirm" placeholder="Confirm Password">
             <div class="invalid-feedback">
-                <p style="display: none;" id="pass-match">Passwords don't match!</p>
-                <p style="display: none;" id="pass-length">Password must be at least 7 characters and contain a number!</p>
+                <p <?php if (!$errorMatch) echo 'style="display: none;"'; ?> id="pass-match">Passwords don't match!</p>
+                <p <?php if (!$errorLength) echo 'style="display: none;"'; ?> id="pass-length">Password must be at least 7 characters and contain a number!</p>
             </div>
             <button type="submit" class="btn btn-primary">Sign Up</button>
         </form>
