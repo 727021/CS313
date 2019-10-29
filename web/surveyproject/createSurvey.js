@@ -23,6 +23,8 @@ $(function() {
     $(".question-editor").each(function() {
         $(this).hide();
     });
+    // TODO add display:none; to these elements in the style attribute
+    //      instead of hiding them after the page loads
 
     $("button#save-survey").click(function() {
         /**
