@@ -93,7 +93,7 @@ if (!isset($_SESSION['user'])) {
                                         <option value="1">Radio Buttons</option>
                                         <option value="2">Dropdown</option>
                                         <option value="2m">Select Menu</option>
-                                        <option value="3">Slider</option>
+                                        <!-- <option value="3">Slider</option> -->
                                     </select>
                                 </div>
                                 <div class="col-6"></div>
@@ -177,7 +177,7 @@ if (!isset($_SESSION['user'])) {
                                         <option value="1">Radio Buttons</option>
                                         <option value="2">Dropdown</option>
                                         <option value="2m">Select Menu</option>
-                                        <option value="3">Slider</option>
+                                        <!-- <option value="3">Slider</option> -->
                                     </select>
                                 </div>
                                 <div class="col-6"></div>

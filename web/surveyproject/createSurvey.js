@@ -158,7 +158,98 @@ function deletePage(btn) {
 }
 
 function addQuestion(btn) {
-
+    if (btn == null) return;
+    let page = Number($(btn).attr('data-page'));
+    let question = questionCount[page - 1] + 1;
+    // Insert the question HTML
+    $(btn).parent().parent().parent().prev().append(`<div class="card-body border-top border-bottom" data-page="${page}" data-question="${question}">
+    <div class="row question-display">
+        <div class="col-10">
+            <div class="form-group">
+                <label data-qtype="0">Question ${question}</label>
+                <input class="form-control" type="text">
+            </div>
+        </div>
+        <div class="col-2 text-right">
+            <button role="button" class="btn btn-info edit-question" data-toggle="tooltip" data-placement="top" title="Edit Question" data-page="${page}" data-question="${question}"><i class="far fa-edit"></i></button>
+            <button role="button" class="btn btn-danger delete-question" data-toggle="tooltip" data-placement="top" title="Delete Question" data-page="${page}" data-question="${question}"><i class="far fa-trash-alt"></i></button>
+        </div>
+    </div>
+    <div class="question-editor">
+        <div class="row form-group">
+            <div class="col-4">
+                <select class="custom-select question-type">
+                    <option value="0" selected>Textbox</option>
+                    <option value="0m">Textarea</option>
+                    <option value="1m">Checkboxes</option>
+                    <option value="1">Radio Buttons</option>
+                    <option value="2">Dropdown</option>
+                    <option value="2m">Select Menu</option>
+                    <!-- <option value="3">Slider</option> -->
+                </select>
+            </div>
+            <div class="col-6"></div>
+            <div class="col-2 text-right">
+                <button role="button" class="btn btn-success save-question" data-toggle="tooltip" data-placement="top" title="Save Question" data-page="${page}" data-question="${question}"><i class="far fa-save"></i></button>
+                <button role="button" class="btn btn-danger discard-question" data-toggle="tooltip" data-placement="top" title="Discard Changes" data-page="${page}" data-question="${question}"><i class="fas fa-times"></i></button>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col">
+                <div class="form-group">
+                    <input type="text" class="form-control question-content" value="Question ${question}" placeholder="Question">
+                </div>
+                <div class="question-details" style="display: none;"><!-- Not used for textbox/textarea questions -->
+                    <div class="options" data-page="${page}" data-question="${question}">
+                        <div class="row form-group option">
+                            <div class="col-5 pr-2">
+                                <input class="form-control" type="text" data-page="${page}" data-question="${question}" value="Choice 1">
+                            </div>
+                            <div class="col pl-0">
+                                <button role="button" class="btn btn-danger delete-option" data-toggle="tooltip" data-placement="right" title="Delete Option"><i class="fas fa-minus"></i></button>
+                            </div>
+                        </div>
+                        <div class="row form-group option">
+                            <div class="col-5 pr-2">
+                                <input class="form-control" type="text" data-page="${page}" data-question="${question}" value="Choice 2">
+                            </div>
+                            <div class="col pl-0">
+                                <button role="button" class="btn btn-danger delete-option" data-toggle="tooltip" data-placement="right" title="Delete Option"><i class="fas fa-minus"></i></button>
+                            </div>
+                        </div>
+                        <div class="row form-group option">
+                            <div class="col-5 pr-2">
+                                <input class="form-control" type="text" data-page="${page}" data-question="${question}" value="Choice 3">
+                            </div>
+                            <div class="col pl-0">
+                                <button role="button" class="btn btn-danger delete-option" data-toggle="tooltip" data-placement="right" title="Delete Option"><i class="fas fa-minus"></i></button>
+                            </div>
+                        </div>
+                    </div><!-- .options -->
+                    <div class="row form-group">
+                        <div class="col"><button role="button" class="btn btn-info add-option"><i class="fas fa-plus"></i> Add Option</button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>`);
+// Increase questionCount
+questionCount[page - 1] += 1;
+// Re-enable button.delete-question if necesary
+if (questionCount[page - 1] == 2) {
+    $(`button.delete-question[data-page="${page}"]`).first().removeAttr('disabled');
+}
+// Add click listeners
+$card = $(`.card-body[data-page="${page}"][data-question="${question}"]`).first();
+$card.find('button.edit-question').first().click(function() { editQuestion(this); });
+$card.find('button.delete-question').first().click(function() { deleteQuestion(this); });
+$card.find('button.save-question').first().click(function() { saveQuestion(this); });
+$card.find('button.discard-question').first().click(function() { discardQuestion(this); });
+$card.find('button.delete-option').each(function() { $(this).click(function() { deleteOption(this); }); });
+$card.find('button.add-option').first().click(function() { addOption(this); });
+// Add select listener
+$card.find('select.question-type').first().change(function() { questionType(this); });
 }
 
 function deleteQuestion(btn) {
