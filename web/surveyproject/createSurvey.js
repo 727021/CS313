@@ -1,5 +1,8 @@
 var pageCount = 1;
 var questionCount = [2];
+var chkID = 0;
+var radID = 0;
+var radGrp = 0;
 
 // https://stackoverflow.com/a/4835406/2031203
 function escapeHtml(text) {
@@ -344,8 +347,8 @@ function saveQuestion(btn) {
         let i = 1;
         $editor.find('.options').first().children().each(function() {
             html += `<div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="chk-p${page}-q${question}-o${i}">
-                    <label class="custom-control-label" for="chk-p${page}-q${question}-o${i}">${escapeHtml(($editor.find(`.options [data-page="${page}"][data-question="${question}"]`).eq(i - 1).val() == null ? "Option" : $editor.find(`.options [data-page="${page}"][data-question="${question}"]`).eq(i - 1).val()))}</label>
+                    <input type="checkbox" class="custom-control-input" id="chk${chkID}">
+                    <label class="custom-control-label" for="chk${chkID++}">${escapeHtml(($editor.find(`.options [data-page="${page}"][data-question="${question}"]`).eq(i - 1).val() == null ? "Option" : $editor.find(`.options [data-page="${page}"][data-question="${question}"]`).eq(i - 1).val()))}</label>
                     </div>`;
                     i++;
         });
@@ -354,8 +357,8 @@ function saveQuestion(btn) {
         let j = 1;
         $editor.find('.options').first().children().each(function() {
             html += `<div class="custom-control custom-radio">
-                    <input type="radio" class="custom-control-input" id="rad-p${page}-q${question}-o${j}" name="rad-p${page}-q${question}">
-                    <label class="custom-control-label" for="rad-p${page}-q${question}-o${j}">${escapeHtml($editor.find(`.options [data-page="${page}"][data-question="${question}"]`).eq(j - 1).val())}</label>
+                    <input type="radio" class="custom-control-input" id="rad${radID}" name="rad${radGrp++}">
+                    <label class="custom-control-label" for="rad${radID++}">${escapeHtml($editor.find(`.options [data-page="${page}"][data-question="${question}"]`).eq(j - 1).val())}</label>
                     </div>`;
                     j++;
         });
