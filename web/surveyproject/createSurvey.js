@@ -163,7 +163,7 @@ function addQuestion(btn) {
     let question = questionCount[page - 1] + 1;
     // Insert the question HTML
     $(btn).parent().parent().parent().prev().append(`<div class="card-body border-top border-bottom" data-page="${page}" data-question="${question}">
-    <div class="row question-display">
+    <div class="row question-display" style="display: none;">
         <div class="col-10">
             <div class="form-group">
                 <label data-qtype="0">Question ${question}</label>
@@ -250,6 +250,7 @@ $card.find('button.delete-option').each(function() { $(this).click(function() { 
 $card.find('button.add-option').first().click(function() { addOption(this); });
 // Add select listener
 $card.find('select.question-type').first().change(function() { questionType(this); });
+// Initialize tooltips
 }
 
 function deleteQuestion(btn) {
