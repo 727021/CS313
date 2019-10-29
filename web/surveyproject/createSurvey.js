@@ -36,27 +36,28 @@ $(function() {
             json += '{"questions":[';
             let firstQ = true;
             $page.find('.questions').first().children().each(function() {
+                $question = $(this);
                 if (!firstQ) json += ",";
                 firstQ = false;
                 json += "{";
-                let type = Number($page.find('[data-qtype]').first().attr('data-qtype')[0]);
-                let multiple = (String($page.find('[data-qtype]').first().attr('data-qtype')).length == 2);
-                let content = $page.find('[data-qtype]').first().text();
+                let type = Number($question.find('[data-qtype]').first().attr('data-qtype')[0]);
+                let multiple = (String($question.find('[data-qtype]').first().attr('data-qtype')).length == 2);
+                let content = $question.find('[data-qtype]').first().text();
                 let choices = [];
 
                 if (type == 1) { // check/radio
-                    $page.find('.custom-control-label').each(function() {
+                    $question.find('.custom-control-label').each(function() {
                         choices.append($(this).text());
                     });
                 } else if (type == 2) { // select
-                    $page.find('.question-display').first().find('option').each(function() {
+                    $question.find('.question-display').first().find('option').each(function() {
                         choices.append($(this).text());
                     });
                 }
 
                 json += `"type":${type}, "content":{"content":"${content}",`;
                 if (type == 0) { // text
-                    json += `"placeholder"="","multiline"=${multiple},"required":true}`;
+                    json += `"placeholder":"","multiline":${multiple},"required":true}`;
                 } else if (type == 1) { // check/radio
                     json += `"radio":${!multiple},"required":true,"choices":[`;
                     let firstC = true;
