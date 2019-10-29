@@ -280,8 +280,8 @@ function deletePage(btn) {
         $('[data-toggle="tooltip"]').tooltip('dispose');
         $(btn).parent().parent().parent().parent().parent().remove();
         $('[data-toggle="tooltip"]').tooltip();
-        questionCount[pageCount - 1] = 0;
     }
+    questionCount[pageCount - 1] = 0;
     pageCount--;
     if (pageCount == 1) {
         $("button.delete-page")[0].setAttribute("disabled", "");
