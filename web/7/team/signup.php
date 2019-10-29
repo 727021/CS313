@@ -2,14 +2,20 @@
 
 require 'db.php';
 
-$passwordError = false;
+$errors = array();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = htmlspecialchars(trim($_POST['username']));
     $password = htmlspecialchars(trim($_POST['password']));
     $confirm = htmlspecialchars(trim($_POST['confirm']));
 
-    if ($password === $confirm) {
+    if ($password !== $confirm) {
+        array_push($errors, "Passwords don't match!");
+    }
+    if (strlen($password) < 7 || !preg_match('/\d/', $password)) {
+        array_push($errors, "Password must be at least 7 characters and contain a number.");
+    }
+    if (count($errors) == 0) {
         $hash = password_hash($password, PASSWORD_DEFAULT);
 
         try {
@@ -21,8 +27,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         header('location: login.php');
         die();
-    } else {
-        $passwordError = true;
     }
 }
 
@@ -40,9 +44,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="container">
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
             <input class="form-control" type="text" name="username" id="username" placeholder="Username">
-            <input class="form-control<?php if ($passwordError) echo ' is-invalid'; ?>" type="password" name="password" id="password" placeholder="Password">
-            <input class="form-control<?php if ($passwordError) echo ' is-invalid'; ?>" type="password" name="confirm" id="confirm" placeholder="Confirm Password">
-            <div class="invalid-feedback">Passwords don't match!</div>
+            <input class="form-control<?php if (count($errors) > 0) echo ' is-invalid'; ?>" type="password" name="password" id="password" placeholder="Password">
+            <input class="form-control<?php if (count($errors) > 0) echo ' is-invalid'; ?>" type="password" name="confirm" id="confirm" placeholder="Confirm Password">
+            <div class="invalid-feedback">
+                <?php
+                    foreach ($errors as $error) {
+                        echo "<p>$error</p>";
+                    }
+                ?>
+            </div>
             <button type="submit" class="btn btn-primary">Sign Up</button>
         </form>
     </div>
