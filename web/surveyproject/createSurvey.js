@@ -21,12 +21,8 @@ $(function() {
     $('[data-toggle="tooltip"]').tooltip();
 
     $("button#save-survey").click(function() {
-        /**
-         * For modal options:
-         * https://stackoverflow.com/a/22208662/2031203
-         */
         // Open a 'loading' modal
-        $('#save-modal-body').html('<div class="spinner-border" role="status"></div><p>Saving...</p>');
+        $('#save-modal-body').html('<div class="spinner-border text-primary" role="status"></div><p>Saving...</p>');
         $('#save-modal').modal({backdrop: 'static', keyboard: false}).modal('show');
         // Gather survey data
 
