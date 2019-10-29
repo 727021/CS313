@@ -278,6 +278,7 @@ function discardQuestion(btn) {
         $editor.find('.options').first().children().each(function() {
             $(this).find('button.delete-option').first().click(function() { deleteOption(this); }).tooltip();
         });
+        $editor.find('.question-details').first().hide();
     } else if (Number($editor.find('.question-type').first().val()[0]) == 2) { // select
         html = "";
         $display.find('option').each(function() {
@@ -287,6 +288,7 @@ function discardQuestion(btn) {
         $editor.find('.options').first().children().each(function() {
             $(this).find('button.delete-option').first().click(function() { deleteOption(this); }).tooltip();
         });
+        $editor.find('.question-details').first().show();
     }
 }
 
