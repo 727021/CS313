@@ -47,11 +47,11 @@ $(function() {
 
                 if (type == 1) { // check/radio
                     $question.find('.custom-control-label').each(function() {
-                        choices.append($(this).text());
+                        choices.push($(this).text());
                     });
                 } else if (type == 2) { // select
                     $question.find('.question-display').first().find('option').each(function() {
-                        choices.append($(this).text());
+                        choices.push($(this).text());
                     });
                 }
 
