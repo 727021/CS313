@@ -23,18 +23,18 @@ $('form').first().submit(function(e) {
     if ($('#password').val().length < 7 || $('#password').val().search(/[0-9]/) < 0) {
         $('#password').addClass('is-invalid');
         $('#pass-length').show();
+        valid = false;
     } else {
         $('#password').removeClass('is-invalid');
         $('#pass-length').hide();
-        valid = false;
     }
     if ($('#confirm').val() != $('#password').val()) {
         $('#confirm').addClass('is-invalid');
         $('#pass-match').show();
+        valid = false;
     } else {
         $('#confirm').removeClass('is-invalid');
         $('#pass-match').hide();
-        valid = false;
     }
     console.log(valid);
     if (!valid) e.preventDefault();
