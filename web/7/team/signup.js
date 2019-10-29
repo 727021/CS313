@@ -19,14 +19,14 @@ $('#confirm').blur(function() {
 });
 
 $('form').first().submit(function() {
-    let error = false;
+    let valid = true;
     if ($('#password').val().length < 7 || $('#password').val().search(/[0-9]/) < 0) {
         $('#password').addClass('is-invalid');
         $('#pass-length').show();
     } else {
         $('#password').removeClass('is-invalid');
         $('#pass-length').hide();
-        error = true;
+        valid = false;
     }
     if ($('#confirm').val() != $('#password').val()) {
         $('#confirm').addClass('is-invalid');
@@ -34,7 +34,8 @@ $('form').first().submit(function() {
     } else {
         $('#confirm').removeClass('is-invalid');
         $('#pass-match').hide();
-        error = true;
+        valid = false;
     }
-    return !error;
+    console.log(valid);
+    return valid;
 });
