@@ -44,8 +44,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="container">
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
             <input class="form-control" type="text" name="username" id="username" placeholder="Username">
-            <input class="form-control<?php if (count($errors) > 0) echo ' is-invalid'; ?>" type="password" name="password" id="password" placeholder="Password">
-            <input class="form-control<?php if (count($errors) > 0) echo ' is-invalid'; ?>" type="password" name="confirm" id="confirm" placeholder="Confirm Password">
+            <input class="form-control<?php/* if (count($errors) > 0) echo ' is-invalid'; */?>" type="password" name="password" id="password" placeholder="Password">
+            <input class="form-control<?php/* if (count($errors) > 0) echo ' is-invalid'; */?>" type="password" name="confirm" id="confirm" placeholder="Confirm Password">
             <div class="invalid-feedback">
                 <p style="display: none;" id="pass-match">Passwords don't match!</p>
                 <p style="display: none;" id="pass-length">Password must be at least 7 characters and contain a number!</p>
