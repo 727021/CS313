@@ -26,7 +26,8 @@ $(function() {
          * https://stackoverflow.com/a/22208662/2031203
          */
         // Open a 'loading' modal
-
+        $('#save-modal-body').html('<div class="spinner-border" role="status"></div><p>Saving...</p>');
+        $('#save-modal').modal({backdrop: 'static', keyboard: false}).modal('show');
         // Gather survey data
 
         // Format data as JSON string

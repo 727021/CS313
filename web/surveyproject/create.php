@@ -20,6 +20,21 @@ if (!isset($_SESSION['user'])) {
             <span class="navbar-text text-light">Welcome, <!--<a href="user.php">--><?php echo $_SESSION['user']['name']; ?><!--</a>-->!  <a class="btn btn-sm btn-info" role="button" href="logout.php">Log Out</a></span>
         </div>
     </nav>
+    <div class="modal" tabindex="-1" role="dialog" id="save-modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Save Survey</h5>
+                </div>
+                <div class="modal-body text-center" id="save-modal-body">
+                </div>
+                <div class="modal-footer" id="save-modal-footer" style="display: none;">
+                    <a href="dashboard.php" role="button" class="btn btn-primary">Dashboard</a>
+                    <a href="edit.php?s=0" type="button" class="btn btn-secondary">Continue Working</a><!-- TODO use js to set the href on this button -->
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="container mt-2">
         <div class="card">
             <div class="card-body">
