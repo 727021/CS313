@@ -18,7 +18,7 @@ $('#confirm').blur(function() {
     }
 });
 
-$('form').first().submit(function() {
+$('form').first().submit(function(e) {
     let valid = true;
     if ($('#password').val().length < 7 || $('#password').val().search(/[0-9]/) < 0) {
         $('#password').addClass('is-invalid');
@@ -37,5 +37,6 @@ $('form').first().submit(function() {
         valid = false;
     }
     console.log(valid);
+    if (!valid) e.preventDefault();
     return valid;
 });
