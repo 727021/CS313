@@ -24,6 +24,38 @@ $(function() {
         $(this).hide();
     });
 
+    $("button#save-survey").click(function() {
+        /**
+         * For modal options:
+         * https://stackoverflow.com/a/22208662/2031203
+         */
+        // Open a 'loading' modal
+
+        // Gather survey data
+
+        // Format data as JSON string
+
+        // Send AJAX
+
+        // Update modal with buttons to keep editing or go to dashboard
+
+    });
+
+    $("button#add-page").click(function() {
+        // Create a new page
+
+        // If necessary, enable first button.delete-page
+
+        // Add click listeners
+
+        // Add change listeners
+
+        // Reload tooltips
+
+        // Increase page count
+
+    });
+
     // Edit survey title
     $("button#edit-title").unbind('click').click(function() {
         $("#edit-title-input").val($("#survey-title").text());
