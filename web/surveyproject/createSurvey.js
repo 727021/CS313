@@ -190,6 +190,12 @@ function editQuestion(btn) {
     let $card = $(btn).parent().parent().parent();
     $card.children().first().hide().next().show();
     $(btn).tooltip('hide');
+    let type = Number($card.find('.question-type').first().val()[0]);
+    if (type == 0) {
+        $card.find('.question-details').first().hide();
+    } else {
+        $card.find('.question-details').first().show();
+    }
 }
 
 function saveQuestion(btn) {
