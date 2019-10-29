@@ -275,13 +275,14 @@ function deletePage(btn) {
                 $(this).attr("data-page", i);
             });
         }
+        questionCount[index - 1] = 0;
     } else {
         $('[data-toggle="tooltip"]').tooltip('dispose');
         $(btn).parent().parent().parent().parent().parent().remove();
         $('[data-toggle="tooltip"]').tooltip();
+        questionCount[pageCount - 1] = 0;
     }
     pageCount--;
-    questionCount[index - 1] = 0;
     if (pageCount == 1) {
         $("button.delete-page")[0].setAttribute("disabled", "");
     }
