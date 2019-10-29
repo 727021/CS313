@@ -26,11 +26,11 @@ if (!isset($_SESSION['user'])) {
                 <div class="row">
                     <div class="col-1">
                         <button role="button" class="btn btn-info" title="Edit Title" id="edit-title" data-toggle="tooltip" data-placement="left"><i class="far fa-edit"></i></button>
-                        <button role="button" class="btn btn-success" title="Save Title" id="save-title" data-toggle="tooltip" data-placement="left"><i class="far fa-save"></i></button>
+                        <button role="button" class="btn btn-success" title="Save Title" id="save-title" data-toggle="tooltip" data-placement="left" style="display: none;"><i class="far fa-save"></i></button>
                     </div>
                     <div class="col-6">
                         <h3 class="mb-0" id="survey-title">Survey Title</h3>
-                        <input class="form-control font-weight-bold" type="text" value="Survey Title" id="edit-title-input">
+                        <input class="form-control font-weight-bold" type="text" value="Survey Title" id="edit-title-input" style="display: none;">
                     </div>
                     <div class="col-5 text-right">
                         <button role="button" class="btn btn-danger" id="discard-survey" data-toggle="modal" data-target="#discard-survey-modal"><i class="far fa-trash-alt"></i> Discard</button>
@@ -83,7 +83,7 @@ if (!isset($_SESSION['user'])) {
                                 <button role="button" class="btn btn-danger delete-question" data-toggle="tooltip" data-placement="top" title="Delete Question" data-page="1" data-question="1"><i class="far fa-trash-alt"></i></button>
                             </div>
                         </div>
-                        <div class="question-editor">
+                        <div class="question-editor" style="display: none;">
                             <div class="row form-group">
                                 <div class="col-4">
                                     <select class="custom-select question-type">
@@ -167,7 +167,7 @@ if (!isset($_SESSION['user'])) {
                                 <button role="button" class="btn btn-danger delete-question" data-toggle="tooltip" data-placement="top" title="Delete Question" data-page="1" data-question="2"><i class="far fa-trash-alt"></i></button>
                             </div>
                         </div>
-                        <div class="question-editor">
+                        <div class="question-editor" style="display: none;">
                             <div class="row form-group">
                                 <div class="col-4">
                                     <select class="custom-select question-type">

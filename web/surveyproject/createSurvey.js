@@ -21,14 +21,6 @@ $(function() {
     // Initialize tooltips
     $('[data-toggle="tooltip"]').tooltip();
 
-    $("button#save-title").hide();
-    $("#edit-title-input").hide();
-    $(".question-editor").each(function() {
-        $(this).hide();
-    });
-    // TODO add display:none; to these elements in the style attribute
-    //      instead of hiding them after the page loads
-
     $("button#save-survey").click(function() {
         /**
          * For modal options:
