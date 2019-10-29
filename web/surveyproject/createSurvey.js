@@ -149,6 +149,7 @@ $(function() {
         // Reload tooltips
         $('[data-toggle="tooltip"]').tooltip();
         // Increase page count
+        questionCount[pageCount - 1] = 1;
         pageCount++;
     });
 
