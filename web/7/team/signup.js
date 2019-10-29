@@ -20,19 +20,19 @@ $('#confirm').blur(function() {
 
 $('form').first().submit(function() {
     let error = false;
-    if ($(this).val().length < 7 || $(this).val().search(/[0-9]/) < 0) {
-        $(this).addClass('is-invalid');
+    if ($('#password').val().length < 7 || $('#password').val().search(/[0-9]/) < 0) {
+        $('#password').addClass('is-invalid');
         $('#pass-length').show();
     } else {
-        $(this).removeClass('is-invalid');
+        $('#password').removeClass('is-invalid');
         $('#pass-length').hide();
         error = true;
     }
-    if ($(this).val() != $('#password').val()) {
-        $(this).addClass('is-invalid');
+    if ($('#confirm').val() != $('#password').val()) {
+        $('#confirm').addClass('is-invalid');
         $('#pass-match').show();
     } else {
-        $(this).removeClass('is-invalid');
+        $('#confirm').removeClass('is-invalid');
         $('#pass-match').hide();
         error = true;
     }
