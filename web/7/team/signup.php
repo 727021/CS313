@@ -8,10 +8,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $hash = password_hash($password, PASSWORD_DEFAULT);
 
+    try {
     $stmt = $db->prepare("INSERT into users (username, password) VALUES ( :user, :hash )");
     $stmt->bindValue(':user', $username, PDO::PARAM_STR);
     $stmt->bindValue(':hash', $hash, PDO::PARAM_STR);
     $stmt->execute();
+    } catch (PDOException $ex) { die($ex->getMessage()); }
 
     header('location: login.php');
     die();
