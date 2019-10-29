@@ -56,8 +56,8 @@ if (!isset($_SESSION['user'])) {
             </div>
         </div>
     </div>
-    <div class="pages">
-        <div class="container mt-2">
+    <div id="pages">
+        <div class="container mt-2 page" data-page="1">
             <div class="card">
                 <div class="card-header">
                     <div class="row">
@@ -234,7 +234,7 @@ if (!isset($_SESSION['user'])) {
                 </div>
             </div>
         </div>
-    </div><!-- .pages -->
+    </div><!-- #pages -->
 
     <div class="container mt-2 mb-2">
         <div class="card">
