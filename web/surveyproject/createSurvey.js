@@ -270,7 +270,7 @@ function deletePage(btn) {
         $(btn).parent().parent().parent().parent().parent().remove();
         $('[data-toggle="tooltip"]').tooltip();
         for (let i = start; i < pageCount; i++) {
-            questionCount[i - 2] = questionCount[i - 1];
+            questionCount[i - 1] = questionCount[i];
             $(`.page-title`)[i - 1].textContent = `Page ${i}`;
             $(`[data-page="${i + 1}"]`).each(function() {
                 $(this).attr("data-page", i);
