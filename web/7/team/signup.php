@@ -2,21 +2,28 @@
 
 require 'db.php';
 
+$passwordError = false;
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = htmlspecialchars(trim($_POST['username']));
     $password = htmlspecialchars(trim($_POST['password']));
+    $confirm = htmlspecialchars(trim($_POST['confirm']));
 
-    $hash = password_hash($password, PASSWORD_DEFAULT);
+    if ($password === $confirm) {
+        $hash = password_hash($password, PASSWORD_DEFAULT);
 
-    try {
-    $stmt = $db->prepare("INSERT into users (username, user_password) VALUES ( :user, :hash )");
-    $stmt->bindValue(':user', $username, PDO::PARAM_STR);
-    $stmt->bindValue(':hash', $hash, PDO::PARAM_STR);
-    $stmt->execute();
-    } catch (PDOException $ex) { die($ex->getMessage()); }
+        try {
+        $stmt = $db->prepare("INSERT into users (username, user_password) VALUES ( :user, :hash )");
+        $stmt->bindValue(':user', $username, PDO::PARAM_STR);
+        $stmt->bindValue(':hash', $hash, PDO::PARAM_STR);
+        $stmt->execute();
+        } catch (PDOException $ex) { die($ex->getMessage()); }
 
-    header('location: login.php');
-    die();
+        header('location: login.php');
+        die();
+    } else {
+        $passwordError = true;
+    }
 }
 
 ?>
@@ -33,7 +40,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="container">
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
             <input class="form-control" type="text" name="username" id="username" placeholder="Username">
-            <input class="form-control" type="password" name="password" id="password" placeholder="Password">
+            <input class="form-control<?php if ($passwordError) echo ' is-invalid'; ?>" type="password" name="password" id="password" placeholder="Password">
+            <input class="form-control<?php if ($passwordError) echo ' is-invalid'; ?>" type="password" name="confirm" id="confirm" placeholder="Confirm Password">
+            <div class="invalid-feedback">Passwords don't match!</div>
             <button type="submit" class="btn btn-primary">Sign Up</button>
         </form>
     </div>

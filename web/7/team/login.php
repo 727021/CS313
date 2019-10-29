@@ -33,8 +33,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
     <div class="container">
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
-            <input type="text" name="username" id="username" placeholder="Username">
-            <input type="password" name="password" id="password" placeholder="Password">
+            <input class="form-control" type="text" name="username" id="username" placeholder="Username">
+            <input class="form-control" type="password" name="password" id="password" placeholder="Password">
             <button type="submit" class="btn btn-primary">Sign In</button>
             <a href="signup.php" class="btn btn-outline-primary">Sign Up</a>
         </form>
