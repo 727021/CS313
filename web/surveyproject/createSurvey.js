@@ -24,12 +24,66 @@ $(function() {
         // Open a 'loading' modal
         $('#save-modal-body').html('<div class="spinner-border text-primary" role="status"></div><p>Saving...</p>');
         $('#save-modal').modal({backdrop: 'static', keyboard: false}).modal('show');
-        // Gather survey data
+        // Gather survey data as json string
+        let title = $('#survey-title').text();
 
-        // Format data as JSON string
+        let json = `{"title":"${title}","pages":[`;
+        let first = true;
+        $('.page').each(function() {
+            $page = $(this);
+            if (!first) json += ",";
+            first = false;
+            json += '{"questions":[';
+            let firstQ = true;
+            $page.find('.questions').first().children().each(function() {
+                if (!firstQ) json += ",";
+                firstQ = false;
+                json += "{";
+                let type = Number($page.find('[data-qtype]').first().attr('data-qtype')[0]);
+                let multiple = (String($page.find('[data-qtype]').first().attr('data-qtype')).length == 2);
+                let content = $page.find('[data-qtype]').first().text();
+                let choices = [];
 
+                if (type == 1) { // check/radio
+                    $page.find('.custom-control-label').each(function() {
+                        choices.append($(this).text());
+                    });
+                } else if (type == 2) { // select
+                    $page.find('.question-display').first().find('option').each(function() {
+                        choices.append($(this).text());
+                    });
+                }
+
+                json += `"type":${type}, "content":{"content":"${content}",`;
+                if (type == 0) { // text
+                    json += `"placeholder"="","multiline"=${multiple},"required":true}`;
+                } else if (type == 1) { // check/radio
+                    json += `"radio":${!multiple},"required":true,"choices":[`;
+                    let firstC = true;
+                    choices.forEach(choice => {
+                        if (!firstC) json += ",";
+                        firstC = false;
+                        json += `"${choice}"`;
+                    });
+                    json += "]}";
+                } else if (type == 2) { // select
+                    json += `"multiple":${multiple},"required":true,"choices":[`;
+                    let firstC = true;
+                    choices.forEach(choice => {
+                        if (!firstC) json += ",";
+                        firstC = false;
+                        json += `"${choice}"`;
+                    });
+                    json += "]}";
+                }
+
+                json += "}";
+            });//question
+            json += "]}";
+        });//page
+        json += "]}";
         // Send AJAX to action.php
-
+        console.log(json);
         // Update modal with buttons to keep editing or go to dashboard
 
     });
