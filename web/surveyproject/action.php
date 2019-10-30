@@ -30,7 +30,7 @@ try {
     $stmt_survey->execute();
     $rowCount += $stmt_survey->rowCount();
 
-    $id = $db->query("SELECT currval('surveys.survey_survey_id_seq') AS id", PDO::FETCH_ASSOC)['id'];
+    // $id = $db->query("SELECT currval('surveys.survey_survey_id_seq') AS id", PDO::FETCH_ASSOC)['id'];
 
     $pindex = 1;
     foreach ($survey->pages as $page) {
@@ -51,7 +51,7 @@ try {
         }
     }
 
-    die('{"status":"success","id":' . $id . '}');
+    die('{"status":"success","id":0}');
 } catch (PDOException $ex) { die('{"status":"fail","error":"PDOException","details":"' . $ex->getMessage() . '"}'); }
 
 ?>
