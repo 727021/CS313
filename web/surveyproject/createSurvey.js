@@ -85,6 +85,8 @@ $(function() {
         json += "]}";
         // Send AJAX to action.php
         console.log(json);
+        let obj = { data: json };
+        console.log(obj);
         $.post('action.php?a=new', {data:json}, function(data) {
             // Update modal with buttons to keep editing or go to dashboard
             console.log(data);
@@ -98,7 +100,7 @@ $(function() {
                 $('#save-modal-body').html('<p class="text-center"><span class="text-success"><i class="fas fa-check"></i></span> Saved</p>');
                 $('#save-modal-footer').show().html(`<a href="dashboard.php" role="button" class="btn btn-info">Dashboard</a><a href="edit.php?s=${data.id}" type="button" class="btn btn-primary">Continue Working</a>`);
             }
-        }, 'json');
+        });
     });
 
     $("button#add-page").click(function() {

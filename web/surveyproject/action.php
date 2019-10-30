@@ -52,6 +52,6 @@ try {
     }
 
     die('{"status":"success","id":' . $id . '}');
-} catch (PDOException $ex) { die('{"status":"fail","error":"PDOException","details":"' . str_replace('"', "'", $ex->getMessage()) . '"}'); }
+} catch (PDOException $ex) { die('{"status":"fail","error":"PDOException","details":"' . $ex->getMessage() . '"}'); }
 
 ?>
