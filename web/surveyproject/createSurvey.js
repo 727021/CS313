@@ -98,7 +98,7 @@ $(function() {
                 });
             } else if (data.status == "success") {
                 $('#save-modal-body').html('<p class="text-center"><span class="text-success"><i class="fas fa-check"></i></span> Saved</p>');
-                $('#save-modal-footer').show().html(`<a href="dashboard.php" role="button" class="btn btn-info">Dashboard</a><a href="edit.php?s=${data.id}" type="button" class="btn btn-primary">Continue Working</a>`);
+                $('#save-modal-footer').show().html(`<a href="dashboard.php" role="button" class="btn btn-info">Dashboard</a><a href="edit.php?s=${data.id}" role="button" class="btn btn-primary">Continue Working</a>`);
             }
         });
     });
