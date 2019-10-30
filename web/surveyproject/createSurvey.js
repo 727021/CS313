@@ -20,6 +20,10 @@ $(function() {
     // Initialize tooltips
     $('[data-toggle="tooltip"]').tooltip();
 
+    $('button#logout').click(function() {
+        $('#logout-modal').modal({backdrop: 'static', keyboard: false}).modal('show');
+    });
+
     $("button#save-survey").click(function() {
         // Open a 'loading' modal
         $('#save-modal-body').html('<div class="spinner-border text-primary" role="status"></div><p>Saving...</p>');

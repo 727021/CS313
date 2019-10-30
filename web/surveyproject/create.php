@@ -17,9 +17,25 @@ if (!isset($_SESSION['user'])) {
     <nav class="navbar navbar-expand-md navbar-dark bg-primary">
         <div class="container">
             <span class="navbar-brand">New Survey</span>
-            <span class="navbar-text text-light">Welcome, <!--<a href="user.php">--><?php echo $_SESSION['user']['name']; ?><!--</a>-->!  <a class="btn btn-sm btn-info" role="button" href="logout.php">Log Out</a></span>
+            <span class="navbar-text text-light">Welcome, <!--<a href="user.php">--><?php echo $_SESSION['user']['name']; ?><!--</a>-->!  <button class="btn btn-sm btn-info" type="button" id="logout-button">Log Out</button></span>
         </div>
     </nav>
+    <div class="modal" tabindex="-1" role="dialog" id="logout-modal">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Log Out</h5>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to log out?<br />Any unsaved changes will be lost!</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-info" data-dismiss="modal">Cancel</button>
+                    <a href="logout.php" class="btn btn-danger" role="button">Log Out</a>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="modal" tabindex="-1" role="dialog" id="save-modal">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
