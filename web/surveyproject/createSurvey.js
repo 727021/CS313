@@ -85,6 +85,7 @@ $(function() {
         json += "]}";
         // Send AJAX to action.php
         console.log(json);
+
         // Update modal with buttons to keep editing or go to dashboard
 
     });
