@@ -45,8 +45,6 @@ if (!isset($_SESSION['user'])) {
                 <div class="modal-body text-center" id="save-modal-body">
                 </div>
                 <div class="modal-footer" id="save-modal-footer" style="display: none;">
-                    <a href="dashboard.php" role="button" class="btn btn-primary">Dashboard</a>
-                    <a href="edit.php?s=0" type="button" class="btn btn-secondary">Continue Working</a><!-- TODO use js to set the href on this button -->
                 </div>
             </div>
         </div>
