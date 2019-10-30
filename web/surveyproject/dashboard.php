@@ -157,7 +157,7 @@ if (isset($_GET['delete'])) {
                                 case "unpublished":
                                 ?>
                                 <a href="dashboard.php?publish=<?php echo $survey['id']; ?>" class="btn btn-success">Publish</a>
-                                <a href="edit.php?id=<?php echo $survey['id']; ?>" class="btn btn-info">Edit</a>
+                                <a href="edit.php?s=<?php echo $survey['id']; ?>" class="btn btn-info">Edit</a>
                                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete-modal-<?php echo $survey['id']; ?>">Delete</button>
                                 <div class="modal fade" id="delete-modal-<?php echo $survey['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="delete-modal-<?php echo $survey['id']; ?>-label" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
