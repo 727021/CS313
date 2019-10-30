@@ -17,7 +17,7 @@ if (!isset($_SESSION['user'])) {
     <nav class="navbar navbar-expand-md navbar-dark bg-primary">
         <div class="container">
             <span class="navbar-brand">New Survey</span>
-            <span class="navbar-text text-light">Welcome, <!--<a href="user.php">--><?php echo $_SESSION['user']['name']; ?><!--</a>-->!  <button class="btn btn-sm btn-info" type="button" id="logout-button">Log Out</button></span>
+            <span class="navbar-text text-light">Welcome, <?php echo $_SESSION['user']['name']; ?>!  <button class="btn btn-sm btn-info" type="button" id="logout">Log Out</button></span>
         </div>
     </nav>
     <div class="modal" tabindex="-1" role="dialog" id="logout-modal">
