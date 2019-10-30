@@ -85,9 +85,20 @@ $(function() {
         json += "]}";
         // Send AJAX to action.php
         console.log(json);
-        $.post('action.php?a=new', {data:json}, function(data) { console.log(data); }, 'json');
-        // Update modal with buttons to keep editing or go to dashboard
-
+        $.post('action.php?a=new', {data:json}, function(data) {
+            // Update modal with buttons to keep editing or go to dashboard
+            console.log(data);
+            if (data.status == "fail") {
+                $('#save-modal-body').html('<p class="text-center"><span class="text-danger"><i class="fas fa-exclamation"></i></span> Save failed</p>');
+                $('#save-modal-footer').show().html('<a href="dashboard.php" role="button" class="btn btn-info">Dashboard</a><button id="close-save-modal" role="button" class="btn btn-primary">Continue Working</button>');
+                $('#close-save-modal').click(function() {
+                    $('#save-modal').modal('hide');
+                });
+            } else if (data.status == "success") {
+                $('#save-modal-body').html('<p class="text-center"><span class="text-success"><i class="fas fa-check"></i></span> Saved</p>');
+                $('#save-modal-footer').show().html(`<a href="dashboard.php" role="button" class="btn btn-info">Dashboard</a><a href="edit.php?s=${data.id}" type="button" class="btn btn-primary">Continue Working</a>`);
+            }
+        }, 'json');
     });
 
     $("button#add-page").click(function() {

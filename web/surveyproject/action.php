@@ -1,12 +1,11 @@
 <?php
 session_start();
 
-if ($_SERVER['REQUEST_METHOD'] != 'POST') {
-    header('location: dashboard.php');
-    die();
-}
-
 header('Content-Type: application/json');
+
+if ($_SERVER['REQUEST_METHOD'] != 'POST') {
+    die('{"status":"fail","error":"Must use POST"}');
+}
 
 if (!isset($_SESSION['user'])) {
     die('{"status":"fail","error":"User not logged in"}');
@@ -31,6 +30,8 @@ try {
     $stmt_survey->execute();
     $rowCount += $stmt_survey->rowCount();
 
+    $id = $db->query("SELECT currval('surveys.survey_survey_id_seq') AS id", PDO::FETCH_ASSOC)['id'];
+
     $pindex = 1;
     foreach ($survey->pages as $page) {
         $stmt_page = $db->prepare("INSERT INTO surveys.page (survey_id,page_index) VALUES (currval('surveys.survey_survey_id_seq'), :pindex)");
@@ -50,7 +51,7 @@ try {
         }
     }
 
-    die('{"status":"success"}');
+    die('{"status":"success","id":' . $id . '}');
 } catch (PDOException $ex) { die('{"status":"fail","error":"PDOException","details":"' . str_replace('"', "'", $ex->getMessage()) . '"}'); }
 
 ?>
