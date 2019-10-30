@@ -1,0 +1,48 @@
+{
+   "title":"Survey Title",
+   "pages":[
+      {
+         "questions":[
+            {
+               "type":0,
+               "content":{
+                  "content":"What is your answer?",
+                  "placeholder":"",
+                  "multiline":false,
+                  "required":true
+               }
+            },
+            {
+               "type":1,
+               "content":{
+                  "content":"What is your choice?",
+                  "radio":false,
+                  "required":true,
+                  "choices":[
+                     "Choice 1",
+                     "Choice 2",
+                     "Choice 3"
+                  ]
+               }
+            }
+         ]
+      },
+      {
+         "questions":[
+            {
+               "type":2,
+               "content":{
+                  "content":"Page 2",
+                  "multiple":false,
+                  "required":true,
+                  "choices":[
+                     "Choice 1",
+                     "Choice 2",
+                     "Choice 3"
+                  ]
+               }
+            }
+         ]
+      }
+   ]
+}
