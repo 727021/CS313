@@ -32,8 +32,16 @@ $title = $survey['title'];
 </head>
 <body class="bg-info">
     <div class="container bg-light mt-2 mb-2 rounded">
-    <h3 class="border-bottom text-center display-4"><?php echo empty($title) ? 'Survey' : $title; ?> <small><small class="text-muted">Results</small></small></h3>
-    <!-- TODO 'Download as CSV' link -->
+        <div class="row">
+            <div class="col">
+                <h3 class="border-bottom display-4"><?php echo empty($title) ? 'Survey' : $title; ?> <small><small class="text-muted">Results</small></small></h3>
+            </div>
+            <div class="col text-right">
+                <a href="dashboard.php" class="btn btn-primary" role="button">Dashboard</a>
+                <a href="csv.php?s=<?php echo $sid; ?>" class="btn btn-success" role="button"><i class="fas fa-cloud-download-alt">CSV</i></a>
+            </div>
+        </div>
+
     <?php
         $stmt1 = $db->prepare('SELECT response_data AS data, responded_on, ip_address AS ip FROM surveys.response WHERE survey_id=:sid');
         $stmt1->bindValue(':sid', $sid, PDO::PARAM_INT);
