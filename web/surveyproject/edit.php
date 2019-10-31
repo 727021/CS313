@@ -297,5 +297,6 @@ if ($stmt_survey->rowCount() == 0) { // Either the survey doesn't exist, or you 
         pageCount = <?php echo $pageCount; ?>;
         questionCount = <?php echo '[' . implode(", ", $questionCount) . ']'; ?>;
     </script>
+    <?php var_dump($questionCount); ?>
 </body>
 </html>
