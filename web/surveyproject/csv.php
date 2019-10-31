@@ -17,7 +17,7 @@ $stmt_response->bindValue(':sid', htmlspecialchars(trim($_GET['s'])), PDO::PARAM
 $stmt_response->execute();
 
 if ($stmt_response->rowCount() > 0) {
-    // header('Content-Type: text/csv');
+    header('Content-Type: text/csv');
     // header('Content-Disposition: attachment; filename="survey-results.csv"');
     // Generate CSV from survey results
     $stmt_question = $db->prepare('SELECT q.content FROM surveys.question q, surveys.page p WHERE q.page_id = p.page_id AND p.survey_id = :sid');
@@ -28,7 +28,7 @@ if ($stmt_response->rowCount() > 0) {
     while ($question = $stmt_question->fetch(PDO::FETCH_ASSOC)) {
         echo ',' . str_replace(',', '', json_decode($question['content'])->content->content);
     }
-    echo '\n';
+    echo "\n";
 
     while ($response = $stmt_response->fetch(PDO::FETCH_ASSOC)) {
         $date = explode('-', substr($response['date'], 0, strpos($response['date'], ' ')));
@@ -39,9 +39,14 @@ if ($stmt_response->rowCount() > 0) {
         echo $response['ip'] . ',' . array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec')[$m - 1] . ' ' . ltrim($d, '0') . ' ' . $y;
         $objs = json_decode($response['data']);
         foreach ($objs as $obj) {
-            echo ',' . str_replace(',', '', $obj->answer);
+            echo ',';
+            if (is_array($obj->answer)) {
+                echo '[' . implode(" ", str_replace(',', '', $obj->answer)) . ']';
+            } else {
+                str_replace(',', '', $obj->answer);
+            }
         }
-        echo '\n';
+        echo "\n";
     }
 } else {
 ?>
