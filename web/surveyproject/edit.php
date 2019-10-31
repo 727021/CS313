@@ -146,7 +146,7 @@ if ($stmt_survey->rowCount() == 0) { // Either the survey doesn't exist, or you 
                     $iOption = 1;
 
                     while ($question = $stmt_question->fetch(PDO::FETCH_ASSOC)) {
-
+                        var_dump($question);
                         $qindex = $question['index'];
                         $questionObj = json_decode($question['content']);
                     ?>
@@ -297,6 +297,5 @@ if ($stmt_survey->rowCount() == 0) { // Either the survey doesn't exist, or you 
         pageCount = <?php echo $pageCount; ?>;
         questionCount = <?php echo '[' . implode(", ", $questionCount) . ']'; ?>;
     </script>
-    <?php var_dump($questionCount); ?>
 </body>
 </html>
