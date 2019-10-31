@@ -31,16 +31,17 @@ $title = $survey['title'];
     <title>Results - Survey Project</title>
 </head>
 <body class="bg-info">
-    <div class="container bg-light mt-2 mb-2 rounded">
-        <div class="row">
-            <div class="col">
-                <h3 class="border-bottom display-4"><?php echo empty($title) ? 'Survey' : $title; ?> <small><small class="text-muted">Results</small></small></h3>
-            </div>
-            <div class="col text-right">
-                <a href="dashboard.php" class="btn btn-primary" role="button">Dashboard</a>
-                <a href="csv.php?s=<?php echo $sid; ?>" class="btn btn-success" role="button"><i class="fas fa-cloud-download-alt">CSV</i></a>
-            </div>
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+        <div class="container">
+            <span class="navbar-brand">Results</span>
+            <span class="navbar-text"><u><?php echo empty($title) ? 'Survey' : $title; ?></u></span>
+            <span class="navbar-text text-light">
+                <a href="csv.php?s=<?php echo $sid; ?>" class="btn btn-success"><i class="fas fa-cloud-download-alt"></i>CSV</a>
+                <a href="dashboard.php" class="btn btn-primary">Dashboard</a>
+            </span>
         </div>
+    </nav>
+    <div class="container bg-light mt-2 mb-2 rounded">
 
     <?php
         $stmt1 = $db->prepare('SELECT response_data AS data, responded_on, ip_address AS ip FROM surveys.response WHERE survey_id=:sid');
