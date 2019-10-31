@@ -79,7 +79,7 @@ if ($stmt_survey->rowCount() == 0) { // Either the survey doesn't exist, or you 
                         <button role="button" class="btn btn-success" title="Save Title" id="save-title" data-toggle="tooltip" data-placement="left" style="display: none;"><i class="far fa-save"></i></button>
                     </div>
                     <div class="col-6">
-                        <h3 class="mb-0" id="survey-title"><?php echo $survey['title']; ?></h3>
+                        <h3 class="mb-0" id="survey-title" data-sid="<?php echo $sid; ?>"><?php echo $survey['title']; ?></h3>
                         <input class="form-control font-weight-bold" type="text" value="<?php echo $survey['title']; ?>" id="edit-title-input" style="display: none;">
                     </div>
                     <div class="col-5 text-right">
@@ -112,7 +112,12 @@ if ($stmt_survey->rowCount() == 0) { // Either the survey doesn't exist, or you 
         $stmt_page->bindValue(':sid', $sid, PDO::PARAM_INT);
         $stmt_page->execute();
 
+        $pageCount = 0;
+        $questionCount = array();
+
         while ($page = $stmt_page->fetch(PDO::FETCH_ASSOC)) {
+            $pageCount++;
+            array_push($questionCount, 0);
         ?>
 
         <div class="container mt-2 page" data-page="<?php echo $page['index']; ?>">
@@ -131,57 +136,104 @@ if ($stmt_survey->rowCount() == 0) { // Either the survey doesn't exist, or you 
 
                     <?php
 
-                    $stmt_question = $db->prepare('SELECT row_number() over(ORDER BY question_id ASC) AS index, content FROM surveys.question WHERE page_id = :pid');
+                    $stmt_question = $db->prepare('SELECT row_number() over(ORDER BY question_id ASC) AS index, question_id AS id, content FROM surveys.question WHERE page_id = :pid');
                     $stmt_question->bindValue(':pid', $page['id'], PDO::PARAM_INT);
                     $stmt_question->execute();
 
+                    $iOption = 1;
+
                     while ($question = $stmt_question->fetch(PDO::FETCH_ASSOC)) {
+                        $questionCount[count($questionsCount) - 1]++;
 
+                        $qindex = $question['index'];
+                        $questionObj = json_decode($question['content']);
                     }
-
                     ?>
-
-                    <div class="card-body border-top border-bottom" data-page="1" data-question="1">
+                    <div class="card-body border-top border-bottom" data-page="<?php echo $page['index']; ?>" data-question="<?php echo $qindex; ?>">
                         <div class="row question-display">
                             <div class="col-10">
                                 <div class="form-group">
-                                    <label data-qtype="0">What is your answer?</label>
-                                    <input class="form-control" type="text">
+                                <?php
+                                switch($questionObj->type) {
+                                    case 0: // text
+                                    echo '<label data-qtype="0' . ($questionObj->content->multiline ? 'm' : '') . '">' . $questionObj->content->content . '</label>';
+                                    if ($questionObj->content->multiline) {
+                                        echo '<textarea class="form-control" rows="3"></textarea>';
+                                    } else {
+                                        echo '<input type="text" class="form-control">';
+                                    }
+                                    break;
+                                    case 1: // check/radio
+                                    echo '<label data-qtype="1' . ($questionObj->content->radio ? '' : 'm') . '">' . $questionObj->content->content . '</label>';
+                                    foreach ($questionObj->content->choices as $qChoice) {
+                                        if ($questionObj->content->radio) {
+                                            echo '<div class="custom-control custom-radio"><input type="radio" class="custom-control-input" id="rad' . (-1 * $iOption) . '" name="rad' . (-1 * $iOption) . '"><label class="custom-control-label" for="rad' . (-1 * $iOption++) . '">' . $qChoice . '</label></div>';
+                                        } else {
+                                            echo '<div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="chk' . (-1 * $iOption) . '" name="chk' . (-1 * $iOption) . '"><label class="custom-control-label" for="chk' . (-1 * $iOption++) . '">' . $qChoice . '</label></div>';
+                                        }
+                                    }
+                                    break;
+                                    case 2: // select
+                                    echo '<label data-qtype="2' . ($questionObj->content->multiple ? 'm' : '') . '">' . $questionObj->content->content . '</label>';
+                                    echo '<select class="custom-select" ' . ($questionObj->content->multiple ? 'multiple' : '') . '>';
+                                    foreach ($questionObj->content->choices as $qChoice) {
+                                        echo "<option>$qChoice</option>";
+                                    }
+                                    echo '</select>';
+                                    break;
+                                }
+                                ?>
                                 </div>
                             </div>
                             <div class="col-2 text-right">
-                                <button role="button" class="btn btn-info edit-question" data-toggle="tooltip" data-placement="top" title="Edit Question" data-page="1" data-question="1"><i class="far fa-edit"></i></button>
-                                <button role="button" class="btn btn-danger delete-question" data-toggle="tooltip" data-placement="top" title="Delete Question" data-page="1" data-question="1"><i class="far fa-trash-alt"></i></button>
+                                <button data-page="<?php echo $page['index']; ?>" data-question="<?php echo $qindex; ?>" data-toggle="tooltip" data-placement="top" title="Edit Question" class="btn btn-info edit-question"><i class="far fa-edit"></i></button>
+                                <button data-page="<?php echo $page['index']; ?>" data-question="<?php echo $qindex; ?>" data-toggle="tooltip" data-placement="top" title="Delete Question" class="btn btn-danger delete-question"><i class="far fa-trash-alt"></i></button>
                             </div>
                         </div>
                         <div class="question-editor" style="display: none;">
-                            <div class="row form-group">
+                        <div class="row form-group">
                                 <div class="col-4">
                                     <select class="custom-select question-type">
-                                        <option value="0" selected>Textbox</option>
-                                        <option value="0m">Textarea</option>
-                                        <option value="1m">Checkboxes</option>
-                                        <option value="1">Radio Buttons</option>
-                                        <option value="2">Dropdown</option>
-                                        <option value="2m">Select Menu</option>
+                                        <option value="0" <?php if ($questionObj->type == 0) echo 'selected'; ?>>Textbox</option>
+                                        <option value="0m" <?php if ($questionObj->type == 0 && $questionObj->multiline) echo 'selected'; ?>>Textarea</option>
+                                        <option value="1m" <?php if ($questionObj->type == 1) echo 'selected'; ?>>Checkboxes</option>
+                                        <option value="1" <?php if ($questionObj->type == 1 && $questionObj->radio) echo 'selected'; ?>>Radio Buttons</option>
+                                        <option value="2" <?php if ($questionObj->type == 2) echo 'selected'; ?>>Dropdown</option>
+                                        <option value="2m" <?php if ($questionObj->type == 2 && $questionObj->multiple) echo 'selected'; ?>>Select Menu</option>
                                     </select>
                                 </div>
                                 <div class="col-6"></div>
                                 <div class="col-2 text-right">
-                                    <button role="button" class="btn btn-success save-question" data-toggle="tooltip" data-placement="top" title="Save Question" data-page="1" data-question="1"><i class="far fa-save"></i></button>
-                                    <button role="button" class="btn btn-danger discard-question" data-toggle="tooltip" data-placement="top" title="Discard Changes" data-page="1" data-question="1"><i class="fas fa-times"></i></button>
+                                    <button role="button" class="btn btn-success save-question" data-toggle="tooltip" data-placement="top" title="Save Question" data-page="<?php echo $page['index']; ?>" data-question="<?php echo $qindex; ?>"><i class="far fa-save"></i></button>
+                                    <button role="button" class="btn btn-danger discard-question" data-toggle="tooltip" data-placement="top" title="Discard Changes" data-page="<?php echo $page['index']; ?>" data-question="<?php echo $qindex; ?>"><i class="fas fa-times"></i></button>
                                 </div>
                             </div>
                             <div class="row form-group">
                                 <div class="col">
                                     <div class="form-group">
-                                        <input type="text" class="form-control question-content" value="What is your answer?" placeholder="Question">
+                                        <input type="text" class="form-control question-content" value="<?php echo $questionObj->content->content; ?>" placeholder="Question">
                                     </div>
-                                    <div class="question-details" style="display: none;"><!-- Not used for textbox/textarea questions -->
-                                        <div class="options" data-page="1" data-question="1">
+                                    <div class="question-details" <?php if ($questionObj->type == 0) echo 'style="display: none;"'; ?>><!-- Not used for textbox/textarea questions -->
+                                        <div class="options" data-page="<?php echo $page['index']; ?>" data-question="<?php echo $qindex; ?>">
+                                            <?php
+                                                if ($questionObj->type > 0) {
+                                                    foreach ($questionObj->content->options as $option) {
+                                                        ?>
+                                                        <div class="row form-group option">
+                                                            <div class="col-5 pr-2">
+                                                                <input type="text" class="form-control" data-page="<?php echo $page['index']; ?>" data-question="<?php echo $qindex; ?>"" value="<?php echo $option; ?>">
+                                                            </div>
+                                                            <div class="col pl-0">
+                                                                <button role="button" class="btn btn-danger delete-option" data-toggle="tooltip" data-placement="right" title="Delete Option"><i class="fas fa-minus"></i></button>
+                                                            </div>
+                                                        </div>
+                                                        <?php
+                                                    }
+                                                } else {
+                                            ?>
                                             <div class="row form-group option">
                                                 <div class="col-5 pr-2">
-                                                    <input class="form-control" type="text" data-page="1" data-question="1" value="Choice 1">
+                                                    <input class="form-control" type="text" data-page="<?php echo $page['index']; ?>" data-question="<?php echo $qindex; ?>" value="Choice 1">
                                                 </div>
                                                 <div class="col pl-0">
                                                     <button role="button" class="btn btn-danger delete-option" data-toggle="tooltip" data-placement="right" title="Delete Option"><i class="fas fa-minus"></i></button>
@@ -189,7 +241,7 @@ if ($stmt_survey->rowCount() == 0) { // Either the survey doesn't exist, or you 
                                             </div>
                                             <div class="row form-group option">
                                                 <div class="col-5 pr-2">
-                                                    <input class="form-control" type="text" data-page="1" data-question="1" value="Choice 2">
+                                                    <input class="form-control" type="text" data-page="<?php echo $page['index']; ?>" data-question="<?php echo $qindex; ?>" value="Choice 2">
                                                 </div>
                                                 <div class="col pl-0">
                                                     <button role="button" class="btn btn-danger delete-option" data-toggle="tooltip" data-placement="right" title="Delete Option"><i class="fas fa-minus"></i></button>
@@ -197,12 +249,13 @@ if ($stmt_survey->rowCount() == 0) { // Either the survey doesn't exist, or you 
                                             </div>
                                             <div class="row form-group option">
                                                 <div class="col-5 pr-2">
-                                                    <input class="form-control" type="text" data-page="1" data-question="1" value="Choice 3">
+                                                    <input class="form-control" type="text" data-page="<?php echo $page['index']; ?>" data-question="<?php echo $qindex; ?>" value="Choice 3">
                                                 </div>
                                                 <div class="col pl-0">
                                                     <button role="button" class="btn btn-danger delete-option" data-toggle="tooltip" data-placement="right" title="Delete Option"><i class="fas fa-minus"></i></button>
                                                 </div>
                                             </div>
+                                            <?php } ?>
                                         </div><!-- .options -->
                                         <div class="row form-group">
                                             <div class="col"><button role="button" class="btn btn-info add-option"><i class="fas fa-plus"></i> Add Option</button></div>
@@ -212,7 +265,6 @@ if ($stmt_survey->rowCount() == 0) { // Either the survey doesn't exist, or you 
                             </div>
                         </div>
                     </div>
-
 
 
                 </div><!-- .questions -->
@@ -240,5 +292,10 @@ if ($stmt_survey->rowCount() == 0) { // Either the survey doesn't exist, or you 
 
     <?php include 'inc/js.inc.php'; ?>
     <script src="createSurvey.js"></script>
+    <script>
+        // Set initial counts
+        pageCount = <?php echo $pageCount; ?>;
+        questionCount = <?php echo '[' . implode(", ", $questionCount) . ']'; ?>;
+    </script>
 </body>
 </html>

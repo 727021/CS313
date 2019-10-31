@@ -24,6 +24,89 @@ $(function() {
         $('#logout-modal').modal({backdrop: 'static', keyboard: false}).modal('show');
     });
 
+    $('button#save-edit-survey').click(function() {
+        // Open a 'loading' modal
+        $('#save-modal-body').html('<div class="spinner-border text-primary" role="status"></div><p>Saving...</p>');
+        $('#save-modal').modal({backdrop: 'static', keyboard: false}).modal('show');
+        // Gather survey data as json string
+        let title = $('#survey-title').text();
+
+        let json = `{"title":"${title}","pages":[`;
+        let first = true;
+        $('.page').each(function() {
+            $page = $(this);
+            if (!first) json += ",";
+            first = false;
+            json += '{"questions":[';
+            let firstQ = true;
+            $page.find('.questions').first().children().each(function() {
+                $question = $(this);
+                if (!firstQ) json += ",";
+                firstQ = false;
+                json += "{";
+                let type = Number($question.find('[data-qtype]').first().attr('data-qtype')[0]);
+                let multiple = (String($question.find('[data-qtype]').first().attr('data-qtype')).length == 2);
+                let content = $question.find('[data-qtype]').first().text();
+                let choices = [];
+
+                if (type == 1) { // check/radio
+                    $question.find('.custom-control-label').each(function() {
+                        choices.push($(this).text());
+                    });
+                } else if (type == 2) { // select
+                    $question.find('.question-display').first().find('option').each(function() {
+                        choices.push($(this).text());
+                    });
+                }
+
+                json += `"type":${type}, "content":{"content":"${content}",`;
+                if (type == 0) { // text
+                    json += `"placeholder":"","multiline":${multiple},"required":true}`;
+                } else if (type == 1) { // check/radio
+                    json += `"radio":${!multiple},"required":true,"choices":[`;
+                    let firstC = true;
+                    choices.forEach(choice => {
+                        if (!firstC) json += ",";
+                        firstC = false;
+                        json += `"${choice}"`;
+                    });
+                    json += "]}";
+                } else if (type == 2) { // select
+                    json += `"multiple":${multiple},"required":true,"choices":[`;
+                    let firstC = true;
+                    choices.forEach(choice => {
+                        if (!firstC) json += ",";
+                        firstC = false;
+                        json += `"${choice}"`;
+                    });
+                    json += "]}";
+                }
+
+                json += "}";
+            });//question
+            json += "]}";
+        });//page
+        json += "]}";
+        // Send AJAX to action.php
+        console.log(json);
+        let obj = { data: json };
+        console.log(obj);
+        $.post(`action.php?a=edit&s=${$('#survey-title').attr('data-sid')}`, {data:json}, function(data) {
+            // Update modal with buttons to keep editing or go to dashboard
+            console.log(data);
+            if (data.status == "fail") {
+                $('#save-modal-body').html(`<p class="text-center"><span class="text-danger"><i class="fas fa-exclamation"></i></span> Save failed</p><p class="d-none" id="save-error">${data.error}</p>`);
+                $('#save-modal-footer').show().html('<a href="dashboard.php" role="button" class="btn btn-info">Dashboard</a><button id="close-save-modal" role="button" class="btn btn-primary">Continue Working</button>');
+                $('#close-save-modal').click(function() {
+                    $('#save-modal').modal('hide');
+                });
+            } else if (data.status == "success") {
+                $('#save-modal-body').html('<p class="text-center"><span class="text-success"><i class="fas fa-check"></i></span> Saved</p>');
+                $('#save-modal-footer').show().html(`<a href="dashboard.php" role="button" class="btn btn-info">Dashboard</a><a href="edit.php?s=${data.id}" role="button" class="btn btn-primary">Continue Working</a>`);
+            }
+        });
+    });
+
     $("button#save-survey").click(function() {
         // Open a 'loading' modal
         $('#save-modal-body').html('<div class="spinner-border text-primary" role="status"></div><p>Saving...</p>');

@@ -61,6 +61,48 @@ if ($_GET['a'] == 'new') {
         die('{"status":"success","id":' . $id . ',"rows":' . $rowCount . '}');
     } catch (PDOException $ex) { die('{"status":"fail","error":"PDOException","details":"' . $ex->getMessage() . '"}'); }
 } elseif ($_GET['a'] == 'edit') {
+    if (!isset($_GET['s'])) {
+        die('{"status":"fail","error":"No survey provided"}');
+    }
 
+    try {
+        $stmt_delete - $db->prepare('DELETE FROM surveys.survey WHERE survey_id = :sid RETURNING survey_id');
+        $stmt_delete->bindValue(':sid', $_GET['s'], PDO::PARAM_INT);
+        $stmt_delete->execute();
+        if ($stmt_delete->rowCount() == 0) {
+            die('{"status":"fail","error":"Survey not found"}');
+        }
+
+        $stmt_survey = $db->prepare("INSERT INTO surveys.survey (title,user_id,status) VALUES (:title,:user,(SELECT common_lookup_id FROM surveys.common_lookup WHERE context = 'SURVEY.STATUS' AND value = 'UNPUBLISHED'))");
+        $stmt_survey->bindValue(':title', $title, PDO::PARAM_STR);
+        $stmt_survey->bindValue(':user', $_SESSION['user']['id'], PDO::PARAM_INT);
+        $stmt_survey->execute();
+        $rowCount += $stmt_survey->rowCount();
+
+        $stmt_id = $db->prepare("SELECT currval('surveys.survey_survey_id_seq')");
+        $stmt_id->execute();
+        $id = $stmt_id->fetch(PDO::FETCH_NUM)[0];
+
+        $pindex = 1;
+        foreach ($survey->pages as $page) {
+            $stmt_page = $db->prepare("INSERT INTO surveys.page (survey_id,page_index) VALUES (currval('surveys.survey_survey_id_seq'), :pindex)");
+            $stmt_page->bindValue(':pindex', $pindex++, PDO::PARAM_INT);
+            $stmt_page->execute();
+            $rowCount += $stmt_page->rowCount();
+
+            foreach ($page->questions as $question) {
+                $stmt_question = $db->prepare("INSERT INTO surveys.question (page_id,content) VALUES (currval('surveys.page_page_id_seq'), :content)");
+                $qjson = json_encode($question);
+                if ($qjson === false) {
+                    die('{"status":"fail","error":"json_encode failed"}');
+                }
+                $stmt_question->bindValue(':content', $qjson, PDO::PARAM_STR);
+                $stmt_question->execute();
+                $rowCount += $stmt_question->rowCount();
+            }
+        }
+
+        die('{"status":"success","id":' . $id . ',"rows":' . $rowCount . '}');
+    } catch (PDOException $ex) { die('{"status":"fail","error":"PDOException","details":"' . $ex->getMessage() . '"}'); }
 }
 ?>
