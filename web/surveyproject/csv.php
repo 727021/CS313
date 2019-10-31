@@ -43,7 +43,7 @@ if ($stmt_response->rowCount() > 0) {
             if (is_array($obj->answer)) {
                 echo '[' . implode(" ", str_replace(',', '', $obj->answer)) . ']';
             } else {
-                str_replace(',', '', $obj->answer);
+                echo str_replace(',', '', $obj->answer);
             }
         }
         echo "\n";
