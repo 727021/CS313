@@ -83,12 +83,16 @@ if (isset($_GET['delete'])) {
             <span class="navbar-text text-light">Welcome, <!--<a href="user.php">--><?php echo $_SESSION['user']['name']; ?><!--</a>-->!  <a class="btn btn-sm btn-info" role="button" href="logout.php">Log Out</a></span>
         </div>
     </nav>
-    <div class="container bg-light mt-2 rounded">
-        <div class="alert alert-primary" role="alert">
-          <h4 class="alert-heading">Like what you see?</h4>
-          <p>I want to know what you think! Once you've had a look around, <a href="http://afternoon-garden-39847.herokuapp.com/surveyproject/survey.php?s=979740e9f9329d83d58910542f913c78">take this survey</a>
-             and tell me how this site can be better.</p>
+    <div class="container mt-2">
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+            <h4 class="alert-heading d-inline-block">Like what you see?</h4>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <p>I want to know what you think! Once you've had a look around, <a href="http://afternoon-garden-39847.herokuapp.com/surveyproject/survey.php?s=979740e9f9329d83d58910542f913c78">take this survey</a> and tell me how this site can be better.</p>
         </div>
+    </div>
+    <div class="container bg-light mt-2 rounded">
         <div class="table-responsive">
             <table class="table">
                 <thead>
