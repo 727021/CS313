@@ -119,7 +119,6 @@ if ($stmt_survey->rowCount() == 0) { // Either the survey doesn't exist, or you 
 
         while ($page = $stmt_page->fetch(PDO::FETCH_ASSOC)) {
             $pageCount++;
-            array_push($questionCount, 0);
         ?>
 
         <div class="container mt-2 page" data-page="<?php echo $page['index']; ?>">
@@ -142,10 +141,11 @@ if ($stmt_survey->rowCount() == 0) { // Either the survey doesn't exist, or you 
                     $stmt_question->bindValue(':pid', $page['id'], PDO::PARAM_INT);
                     $stmt_question->execute();
 
+                    array_push($questionCount, $stmt_question->rowCount());
+
                     $iOption = 1;
 
                     while ($question = $stmt_question->fetch(PDO::FETCH_ASSOC)) {
-                        $questionCount[count($questionsCount) - 1]++;
 
                         $qindex = $question['index'];
                         $questionObj = json_decode($question['content']);
