@@ -84,6 +84,11 @@ if (isset($_GET['delete'])) {
         </div>
     </nav>
     <div class="container bg-light mt-2 rounded">
+        <div class="alert alert-primary" role="alert">
+          <h4 class="alert-heading">Like what you see?</h4>
+          <p>I want to know what you think! Once you've had a look around, <a href="http://afternoon-garden-39847.herokuapp.com/surveyproject/survey.php?s=979740e9f9329d83d58910542f913c78">take this survey</a>
+             and tell me how this site can be better.</p>
+        </div>
         <div class="table-responsive">
             <table class="table">
                 <thead>
