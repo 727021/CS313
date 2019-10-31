@@ -66,7 +66,7 @@ if ($_GET['a'] == 'new') {
     }
 
     try {
-        $stmt_delete - $db->prepare('DELETE FROM surveys.survey WHERE survey_id = :sid RETURNING survey_id');
+        $stmt_delete = $db->prepare('DELETE FROM surveys.survey WHERE survey_id = :sid RETURNING survey_id');
         $stmt_delete->bindValue(':sid', $_GET['s'], PDO::PARAM_INT);
         $stmt_delete->execute();
         if ($stmt_delete->rowCount() == 0) {
