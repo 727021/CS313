@@ -22,8 +22,6 @@ $stmt_survey->execute();
 
 $survey = $stmt_survey->fetch(PDO::FETCH_ASSOC);
 
-var_dump($survey);
-
 if ($stmt_survey->rowCount() == 0) { // Either the survey doesn't exist, or you don't own it
     header('location: dashboard.php');
     exit;
@@ -146,10 +144,8 @@ if ($stmt_survey->rowCount() == 0) { // Either the survey doesn't exist, or you 
                     $iOption = 1;
 
                     while ($question = $stmt_question->fetch(PDO::FETCH_ASSOC)) {
-                        var_dump($question);
                         $qindex = $question['index'];
                         $questionObj = json_decode($question['content']);
-                        var_dump($questionObj);
                     ?>
                     <div class="card-body border-top border-bottom" data-page="<?php echo $page['index']; ?>" data-question="<?php echo $qindex; ?>">
                         <div class="row question-display">
