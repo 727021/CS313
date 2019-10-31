@@ -17,8 +17,8 @@ $stmt_response->bindValue(':sid', htmlspecialchars(trim($_GET['s'])), PDO::PARAM
 $stmt_response->execute();
 
 if ($stmt_response->rowCount() > 0) {
-    // header('Content-Type: text/csv');
-    // header('Content-Disposition: attachment; filename="survey-results.csv"');
+    header('Content-Type: text/csv');
+    header('Content-Disposition: attachment; filename="survey-results.csv"');
     // Generate CSV from survey results
     $stmt_question = $db->prepare('SELECT q.content FROM surveys.question q, surveys.page p WHERE q.page_id = p.page_id AND p.survey_id = :sid');
     $stmt_question->bindValue(':sid', htmlspecialchars(trim($_GET['s'])), PDO::PARAM_INT);
