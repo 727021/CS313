@@ -23,6 +23,11 @@ if ($_SESSION['user']['id'] != $survey['owner_id']) {
 
 $title = $survey['title'];
 
+
+$stmt1 = $db->prepare('SELECT response_data AS data, responded_on, ip_address AS ip FROM surveys.response WHERE survey_id=:sid');
+$stmt1->bindValue(':sid', $sid, PDO::PARAM_INT);
+$stmt1->execute();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,27 +38,15 @@ $title = $survey['title'];
 <body class="bg-info">
     <nav class="navbar navbar-expand-md navbar-dark bg-primary">
         <div class="container">
-            <span class="navbar-brand">Results</span>
-            <span class="navbar-text"><u><?php echo empty($title) ? 'Survey' : $title; ?></u></span>
-            <span class="navbar-text text-light">
-                <a href="csv.php?s=<?php echo $sid; ?>" class="btn btn-success"><i class="fas fa-cloud-download-alt"></i>CSV</a>
-                <a href="dashboard.php" class="btn btn-primary">Dashboard</a>
+            <span class="navbar-brand">Results (<?php echo $stmt1->rowCount(); ?>)</span>
+            <span class="navbar-text text-light"><h3><?php echo empty($title) ? 'Survey' : $title; ?></h3></span>
+            <span class="navbar-text">
+                <a href="csv.php?s=<?php echo $sid; ?>" class="btn btn-success"><i class="fas fa-file-csv"></i> Download</a>
+                <a href="dashboard.php" class="btn btn-info">Dashboard</a>
             </span>
         </div>
     </nav>
     <div class="container bg-light mt-2 mb-2 rounded">
-
-    <?php
-        $stmt1 = $db->prepare('SELECT response_data AS data, responded_on, ip_address AS ip FROM surveys.response WHERE survey_id=:sid');
-        $stmt1->bindValue(':sid', $sid, PDO::PARAM_INT);
-        $stmt1->execute();
-
-        // $stmt2 = $db->prepare('SELECT q.content FROM surveys.question q, surveys.page p WHERE q.page_id=p.page_id AND p.survey_id=:sid');
-        // $stmt2->bindValue(':sid', $sid, PDO::PARAM_INT);
-        // $stmt2->execute();
-
-        // $questions = $stmt2->fetchAll(PDO::FETCH_ASSOC);
-    ?>
     <div class="table-responsive">
     <table class="table">
     <?php
