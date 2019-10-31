@@ -143,6 +143,7 @@ if ($stmt_survey->rowCount() == 0) { // Either the survey doesn't exist, or you 
                     $iOption = 1;
 
                     while ($question = $stmt_question->fetch(PDO::FETCH_ASSOC)) {
+                        echo 'test';
                         $questionCount[count($questionsCount) - 1]++;
 
                         $qindex = $question['index'];
