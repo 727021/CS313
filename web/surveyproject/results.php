@@ -38,10 +38,10 @@ $stmt1->execute();
 <body class="bg-info">
     <nav class="navbar navbar-expand-md navbar-dark bg-primary">
         <div class="container">
-            <span class="navbar-brand">Results (<?php echo $stmt1->rowCount(); ?>)</span>
+            <span class="navbar-brand">Results <span class="font-weight-lighter">(<?php echo $stmt1->rowCount(); ?>)</span></span>
             <span class="navbar-text text-light"><h3><?php echo empty($title) ? 'Survey' : $title; ?></h3></span>
             <span class="navbar-text">
-                <a href="csv.php?s=<?php echo $sid; ?>" class="btn btn-success"><i class="fas fa-file-csv"></i> Download</a>
+                <a href="csv.php?s=<?php echo $sid; ?>" class="btn btn-success"><i class="fas fa-download"></i> Download</a>
                 <a href="dashboard.php" class="btn btn-info">Dashboard</a>
             </span>
         </div>
