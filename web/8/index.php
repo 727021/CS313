@@ -12,12 +12,12 @@
   </head>
   <body>
 
-    <div class="container text-center">
-        <textarea class="code-highlight js text-left">
+    <div class="container">
+        <div class="code-highlight js border rounded p-2">
             <?php
                 echo file_get_contents('index.js');
             ?>
-        </textarea>
+        </div>
     </div>
 
     <!-- Optional JavaScript -->
@@ -28,7 +28,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script>
     document.addEventListener('DOMContentLoaded', (event) => {
-        document.querySelectorAll('.code-highlight').forEach((block) => {
+        hljs.configure({useBR: true});
+        document.querySelectorAll('div.code-highlight').forEach((block) => {
             hljs.highlightBlock(block);
         });
     });
