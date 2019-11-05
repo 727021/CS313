@@ -15,7 +15,7 @@
     <div class="container">
         <div class="code-highlight js border rounded p-2">
             <?php
-                echo nl2br(str_replace(' ', '&nbsp;', htmlspecialchars(file_get_contents('index.js'))));
+                echo str_replace(' ', '&nbsp;', nl2br(htmlspecialchars(file_get_contents('index.js'))));
             ?>
         </div>
     </div>
