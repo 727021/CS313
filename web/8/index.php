@@ -15,7 +15,7 @@
     <div class="container">
         <div class="code-highlight js border rounded p-2">
             <?php
-                echo htmlspecialchars(file_get_contents('index.js'));
+                echo nl2br(htmlspecialchars(file_get_contents('index.js')));
             ?>
         </div>
     </div>
