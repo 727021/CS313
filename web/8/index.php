@@ -10,7 +10,18 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.16.2/build/styles/default.min.css">
-  </head>
+    <style>
+    a[href="#top"] {
+        position: fixed;
+        bottom: 1rem;
+        right: 1rem;
+        font-size: 2rem;
+        padding: 0 0.75rem;
+        display: none;
+        border: none;
+    }
+</style>
+</head>
   <body>
   <header>
         <nav class="navbar navbar-expand-md navbar-dark bg-dark">
