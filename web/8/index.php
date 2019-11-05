@@ -44,7 +44,7 @@
 
     <div class="container mt-2 mb-2">
         <div class="border rounded p-2">
-            <h3 class="border-bottom text-muted display-4">
+            <h3 class="border-bottom border-secondary display-4">
                 Prove 08
                 <small><small><a class="text-muted" target="_blank" href="https://github.com/727021/CS313/blob/master/web/8/index.js">index.js</a></small></small>
             </h3>
