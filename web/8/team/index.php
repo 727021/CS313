@@ -2,14 +2,12 @@
 $active = true;
 $pills = "";
 $tabs = "";
-$files = array();
 foreach (glob('*.js') as $file) {
-    // $pills .= "";
-    // $tabs .= "";
-    // if ($active) { $active = false; }
-    $files[] = $file;
+    $id = str_replace('.', '_', $file);
+    $pills .= "<a class='nav-link" . ($active ? ' active' : '') . "' id='$id-tab' data-toggle='pill' href='#$id' role='tab' aria-controls='$id' aria-selected='$active'>Profile</a>";
+    $tabs .= "<div class='tab-pane fade" . ($active ? ' show active' : '') . "' id='$id' role='tabpanel' aria-labelledby='$id-tab'>" . nl2br(str_replace(' ', '&nbsp;', htmlspecialchars(file_get_contents($file)))) . "</div>";
+    if ($active) { $active = false; }
 }
-var_dump($files);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,11 +24,15 @@ var_dump($files);
     <div class="container">
         <div class="row">
             <div class="col-3">
-                <div class="nav flex-column nav-pills">
-
+                <div class="nav flex-column nav-pills" id="pills-tab" role="tablist" aria-orientation="vertical">
+                    <?php echo $pills; ?>
                 </div>
             </div>
-            <div class="col-9"></div>
+            <div class="col-9">
+                <div class="tab-content" id="pills-tabContent">
+                    <?php echo $tabs; ?>
+                </div>
+            </div>
         </div>
     </div>
 
