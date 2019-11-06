@@ -61,7 +61,7 @@ foreach ($files as $file) {
     <div class="container mt-2 mb-2 border rounded">
         <div class="mb-2 border-bottom border-secondary d-flex justify-content-between align-items-center">
             <h3 class="display-4">Team 08</h3>
-            <a href="https://github.com/727021/CS313/tree/master/web/8/team" target="_blank" class="btn btn-success" role="button" title="View on GitHub" data-toggle="tooltip" data-placement="left"><i class="fab fa-github"></i></a>
+            <a href="https://github.com/727021/CS313/tree/master/web/8/team" target="_blank" class="btn btn-success" role="button" title="View on Github" data-toggle="tooltip" data-placement="left"><i class="fab fa-github"></i></a>
         </div>
         <div class="row">
             <div class="col-3">

@@ -48,7 +48,7 @@
     <div class="container mt-2 mb-2 border rounded">
         <div class="mb-2 border-bottom border-secondary d-flex justify-content-between align-items-center">
             <h3 class="display-4">Prove 08 <small class="text-muted"><small>index.js</small></small></h3>
-            <a href="https://github.com/727021/CS313/tree/master/web/8/index.js" target="_blank" class="btn btn-success" role="button" title="View on GitHub" data-toggle="tooltip" data-placement="left"><i class="fab fa-github"></i></a>
+            <a href="https://github.com/727021/CS313/tree/master/web/8/index.js" target="_blank" class="btn btn-success" role="button" title="View on Github" data-toggle="tooltip" data-placement="left"><i class="fab fa-github"></i></a>
         </div>
         <pre class="line-numbers"><code class="lang-js"><?php echo nl2br(str_replace(' ', '&nbsp;', htmlspecialchars(file_get_contents('index.js')))); ?></code></pre>
     </div>
