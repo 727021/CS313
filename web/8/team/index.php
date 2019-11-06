@@ -3,7 +3,7 @@ $active = true;
 $pills = "";
 $tabs = "";
 $files = glob('*.js');
-usort( $files, function( $a, $b ) { return filemtime($a) - filemtime($b); } );
+usort( $files, function( $a, $b ) { return filectime($a) - filectime($b); } );
 foreach ($files as $file) {
     $id = str_replace('.', '_', $file);
     // $title = str_replace('.js', '', str_replace('-', ' ', $file));
