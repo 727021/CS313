@@ -1,3 +1,16 @@
+<?php
+$active = true;
+$pills = "";
+$tabs = "";
+$files = array();
+foreach (glob('*.js') as $file) {
+    // $pills .= "";
+    // $tabs .= "";
+    // if ($active) { $active = false; }
+    $files[] = $file;
+}
+var_dump($files);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,11 +23,18 @@
     <title>Team 08</title>
 </head>
 <body>
-    <pre class="line-numbers"><code class="language-js">let sum = 0;
-for (let i = 2; i < process.argv.length; i++) {
-    sum += Number(process.argv[i]);
-}
-console.log(sum);</code></pre>
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+                <div class="nav flex-column nav-pills">
+
+                </div>
+            </div>
+            <div class="col-9"></div>
+        </div>
+    </div>
+
+    <pre class="line-numbers"><code class="language-js"></code></pre>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
