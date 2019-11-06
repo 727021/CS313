@@ -10,8 +10,8 @@
     <title>Team 08</title>
 </head>
 <body>
-    <pre>
-    <code class="language-javascript line-numbers">
+    <pre class="line-numbers">
+    <code class="language-javascript">
 let sum = 0;
 for (let i = 2; i < process.argv.length; i++) {
     sum += Number(process.argv[i]);
