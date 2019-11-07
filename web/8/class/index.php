@@ -37,7 +37,7 @@ foreach ($files as $file) {
         border: none;
     }
     </style>
-    <title>Team 08</title>
+    <title>Class 08</title>
 </head>
 <body>
     <header>
