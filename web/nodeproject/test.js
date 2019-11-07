@@ -39,7 +39,6 @@ http.createServer((req, res) => {
             res.write('<head><title>Card Search</title><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></head><body>')
             res.write('<div class="container"><h3 class="display-4">Card Search</h3><table class="table table-striped table-hover"><thead><tr><th class="text-muted">#</th><th>Name</th><th>Type</th><th>Rarity</th><th>P/T</th></tr></thead><tbody>')
             all.on('data', (card) => {
-                // id name rarity p/t
             res.write(`<tr><td>${card.multiverseid}</td><td><a href="./card?id=${card.id}">${card.name}</a></td><td>${card.type}</td><td>${card.rarity}</td><td>${card.power || 'N'}/${card.toughness || 'A'}</td></tr>`)
             })
             all.on('error', console.error)
