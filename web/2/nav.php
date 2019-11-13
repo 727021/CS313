@@ -12,8 +12,8 @@ $filename = basename($_SERVER['PHP_SELF']);
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item<?php if ($filename == "index.php") echo " active"; ?>"><a href="index.php" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
                     <li class="nav-item<?php if ($filename == "about.php") echo " active"; ?>"><a href="about.php" class="nav-link"><i class="fas fa-question"></i> About</a></li>
-                    <li class="nav-item<?php if ($filename == "assignments.php") echo " active"; ?>"><a href="assignments.php" class="nav-link"><i class="fas fa-php"></i> PHP Assignments</a></li>
-                    <li class="nav-item"><a href="https://polar-peak-19768.herokuapp.com/assignments" class="nav-link"><i class="fas fa-node-js"></i> Node Assignments</a></li>
+                    <li class="nav-item<?php if ($filename == "assignments.php") echo " active"; ?>"><a href="assignments.php" class="nav-link"><i class="fab fa-php"></i> PHP Assignments</a></li>
+                    <li class="nav-item"><a href="https://polar-peak-19768.herokuapp.com/assignments" class="nav-link"><i class="fab fa-node-js"></i> Node Assignments</a></li>
                     <li class="nav-item"><a class="nav-link" target="_blank" href="https://727021.github.io"><i class="fab fa-github"></i> Github</a></li>
                 </ul>
             </div>

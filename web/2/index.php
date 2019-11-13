@@ -11,17 +11,22 @@
         <div class="container border rounded mt-1 mb-2 p-1">
             <h1 class="display-4 border-bottom border-secondary">Home</h1>
             <div class="row">
-                <div class="col-12 col-md-4">
+                <div class="col-12 col-md-3">
                     <div class="box">
                         <a class="text-center" href="about.php">About Me</a>
                     </div>
                 </div>
-                <div class="col-12 col-md-4">
+                <div class="col-12 col-md-3">
                     <div class="box">
-                        <a class="text-center" href="assignments.php">Assignments</a>
+                        <a class="text-center" href="assignments.php">PHP Assignments</a>
                     </div>
                 </div>
-                <div class="col-12 col-md-4">
+                <div class="col-12 col-md-3">
+                    <div class="box">
+                        <a class="text-center" href="https://polar-peak-19768.herokuapp.com/assignments">Node Assignments</a>
+                    </div>
+                </div>
+                <div class="col-12 col-md-3">
                     <div class="box">
                         <a class="text-center" target="_blank" href="https://727021.github.io">Github</a>
                     </div>
