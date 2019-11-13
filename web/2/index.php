@@ -23,7 +23,7 @@
                 </div>
                 <div class="col-12 col-md-3">
                     <div class="box">
-                        <a class="text-center" href="https://polar-peak-19768.herokuapp.com/assignments">Node Assignments</a>
+                        <a class="text-center" href="https://polar-peak-19768.herokuapp.com/">Node Assignments</a>
                     </div>
                 </div>
                 <div class="col-12 col-md-3">
