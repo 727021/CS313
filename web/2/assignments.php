@@ -9,7 +9,7 @@
     <!-- Main page content -->
     <main class="flex-shrink-0 pl-1 pr-1 pl-md-0 pr-md-0">
         <div class="container border rounded mt-1 mb-2 p-1">
-            <h1 class="display-4 border-bottom border-secondary">Assignments</h1>
+            <h1 class="display-4 border-bottom border-secondary">PHP Assignments</h1>
             <div class="table-responsive">
                 <table class="table table-hover text-center">
                     <caption>Links will become enabled as assignments are completed.</caption>
@@ -20,7 +20,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php for ($i = 1; $i <= 14; $i++) { // Make a row for each week ?>
+                        <?php for ($i = 1; $i <= 8; $i++) { // Make a row for each week ?>
                         <tr>
                             <th class="align-middle" scope="row"><?php echo $i; ?></th>
                             <td class="align-middle">
